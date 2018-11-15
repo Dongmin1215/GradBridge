@@ -6,8 +6,9 @@ class App extends Component {
     return (
       <div className="Initial">
         
-        <div className="Title"> 
-          GradBridge
+        <div className="Title">
+          <img id="logo" src={require('./images/logo.png')}/>
+          <h1>GradBridge</h1>
         </div>
         <div className="Text">
           Welcome! <br></br>
