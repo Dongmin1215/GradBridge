@@ -12,7 +12,6 @@
   width:fit-content;
   margin-right: auto;
   margin-left: auto;
-  
 }
 h1{
   display: block;
@@ -55,6 +54,11 @@ h1{
   margin-top:50px;
   margin-left:330px;
 }
+
+#CS:hover{
+  cursor: pointer;
+}
+
 #EE{
   width:200px;
   margin-top:50px;
