@@ -14,8 +14,6 @@ import AccountPage from './Account';
 
 import * as routes from '../constants/routes';
 
-import withAuthentication from './withAuthentication';
-
 const App = () =>
   <Router>
     <div>
@@ -29,7 +27,8 @@ const App = () =>
       <Route exact path={routes.PASSWORD_FORGET} component={PasswordForgetPage} />
       <Route exact path={routes.HOME} component={HomePage} />
       <Route exact path={routes.ACCOUNT} component={AccountPage} />
+      <Route exact path={routes.WIKI} component={WikiPage} />
     </div>
   </Router>
 
-export default withAuthentication(App);
+export default App;
