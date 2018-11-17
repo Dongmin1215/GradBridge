@@ -9,7 +9,7 @@ import * as routes from '../constants/routes';
 
 const SignUpVisitorPage = ({history}) =>
     <div>
-        <h1>SignUp</h1>
+        <h1>SignUp as Visitor</h1>
         <SignUpVisitorForm history={history} />
     </div>
 
@@ -105,7 +105,7 @@ class SignUpVisitorForm extends Component {
                     placeholder="Password"
                 />
                 <button disabled={isInvalid} type="submit">
-                    Sign Up V
+                    Sign Up
                 </button>
 
                 { error && <p>{error.message}</p> }
@@ -114,18 +114,8 @@ class SignUpVisitorForm extends Component {
     }
 }
 
-const SignUpVisitorLink = () =>
-    <div className="login-signup">
-        <p>
-            Don't have an account?
-            {' '}
-            <Link to={routes.SIGN_UP}>Sign Up</Link>
-        </p>
-    </div>
-
 export default withRouter(SignUpVisitorPage);
 
 export {
     SignUpVisitorForm,
-    SignUpVisitorLink,
 };

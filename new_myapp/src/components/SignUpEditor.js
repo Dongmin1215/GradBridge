@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
+import {
+    Link,
+    withRouter,
+} from 'react-router-dom';
+
+import { auth, db } from '../firebase';
+import * as routes from '../constants/routes';
 
 const SignUpEditorPage = ({history}) =>
     <div>
-        <h1>SignUp</h1>
+        <h1>SignUp as Editor</h1>
         <SignUpEditorForm history={history} />
     </div>
 
@@ -98,7 +105,7 @@ class SignUpEditorForm extends Component {
                     placeholder="Password"
                 />
                 <button disabled={isInvalid} type="submit">
-                    Sign Up E
+                    Sign Up
                 </button>
 
                 { error && <p>{error.message}</p> }
@@ -107,18 +114,8 @@ class SignUpEditorForm extends Component {
     }
 }
 
-const SignUpEditorLink = () =>
-    <div className="login-signup">
-        <p>
-            Don't have an account?
-            {' '}
-            <Link to={routes.SIGN_UP}>Sign Up</Link>
-        </p>
-    </div>
-
 export default withRouter(SignUpEditorPage);
 
 export {
-    SignUpEditorForm,
-    SignUpEditorLink,
+    SignUpEditorForm
 };
