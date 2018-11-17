@@ -9,15 +9,14 @@ import * as routes from '../constants/routes';
 
 const SignUpEditorPage = ({history}) =>
     <div>
-        <h1>SignUp as Editor</h1>
         <SignUpEditorForm history={history} />
     </div>
 
 const INITIAL_STATE = {
-    username: '',
     email: '',
     passwordOne: '',
     passwordTwo: '',
+    idnumber: '',
     error: null,
 };
 
@@ -35,9 +34,9 @@ class SignUpEditorForm extends Component {
 
     onSubmit = (event) => {
         const {
-            username,
             email,
             passwordOne,
+            idnumber,
         } = this.state;
 
         const {
@@ -48,7 +47,7 @@ class SignUpEditorForm extends Component {
             .then(authUser => {
                 
                 // Create a user in your own accessible Firebase Database too
-                db.doCreateUser(authUser.user.uid, username, email)
+                db.doCreateUser(authUser.user.uid, email)
                     .then(() => {
                     this.setState({ ...INITIAL_STATE });
                     history.push(routes.WIKI);
@@ -65,10 +64,10 @@ class SignUpEditorForm extends Component {
 
     render() {
         const {
-            username,
             email,
             passwordOne,
             passwordTwo,
+            idnumber,
             error,
         } = this.state;
 
@@ -76,7 +75,7 @@ class SignUpEditorForm extends Component {
             passwordOne !== passwordTwo ||
             passwordOne === '' ||
             email === '' ||
-            username === '';
+            idnumber ==='';
 
         return (
             <form onSubmit={this.onSubmit}>
@@ -92,7 +91,7 @@ class SignUpEditorForm extends Component {
 
                 <div className = "Sign-up-left">
                     <div className = "user-info">
-                        <div className = "Sing-up-category"> 
+                        <div className = "sign-up-category"> 
                             <div id = "sign-up-type">E-mail</div>
                         </div>
                         <div> 
@@ -103,7 +102,7 @@ class SignUpEditorForm extends Component {
                         </div>
                     </div>
                     <div className = "user-info">
-                        <div className = "Sing-up-category">
+                        <div className = "sign-up-category">
                         <div id = "sign-up-type">Password</div>
                         </div>
                         <div>
@@ -113,7 +112,7 @@ class SignUpEditorForm extends Component {
                         </div>
                     </div>
                     <div className = "user-info">
-                        <div className = "Sing-up-category">
+                        <div className = "sign-up-category">
                             <div id = "sign-up-type">Check Password</div>
                         </div>
                         <div>
@@ -125,7 +124,7 @@ class SignUpEditorForm extends Component {
 
 
                     <div className = "user-info">
-                        <div className = "Sing-up-category">
+                        <div className = "sign-up-category">
                             <div id = "sign-up-type">Undergraduate University</div>
                         </div>
                         <div>
@@ -200,6 +199,18 @@ class SignUpEditorForm extends Component {
                         </select>
                     </div>
                     </div>
+                    <div className = "user-info">
+                        <div className = "sign-up-category-right"> 
+                            <div id = "sign-up-type">Test Identification number</div>
+                        </div>
+                        <div> 
+                        <input className ="sign-up-input" value={idnumber}
+                        onChange={event => this.setState(byPropKey('idnumber', event.target.value))}
+                        type="text"
+                        placeholder="used only for verification"></input>
+                        </div>
+                    </div>
+
                 </div>
                 </div>
                     <div className ="button-wrapper">

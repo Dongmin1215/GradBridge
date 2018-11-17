@@ -128,7 +128,7 @@ h1{
   margin-bottom: 28px;
   display: flex;
 }
-.Sing-up-category{
+.sign-up-category{
   background-color :rgb(177, 167,210);
   height: -webkit-fill-available;
   width : 270px;
@@ -157,7 +157,7 @@ h1{
   text-align: center;
   margin: auto;
   color: white;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 #sign-up-type-right{
