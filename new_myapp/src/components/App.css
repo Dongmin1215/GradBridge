@@ -1,3 +1,81 @@
+.Initial {
+  background: rgb(217, 210, 232);
+  height: -webkit-fill-available;
+
+}
+.Title {
+  background: rgb(217, 210, 232);
+  font-size: 60px;
+  color:black;
+  text-align: center;
+  display:-webkit-box;
+  width:fit-content;
+  margin-right: auto;
+  margin-left: auto;
+}
+h1{
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  margin-top:80px;
+}
+#logo{
+  width:200px;
+  margin-left: 43px;
+  margin-right: 10px;
+  padding-top:50px;
+}
+.Major{
+  background: rgb(217, 210, 232);
+
+}
+.TeamName{
+  text-align: center;
+}
+
+.Text{
+  border: 1px solid grey;
+  margin-left: 180px;
+  margin-right:180px;
+  background:rgb(217, 210, 232);
+  color: black;
+  text-align: center;
+  padding: 25px;
+  font-size: 32px;
+
+}
+
+#CS{
+  width:200px;
+  margin-top:50px;
+  margin-left:330px;
+}
+
+#CS:hover{
+  cursor: pointer;
+}
+
+#EE{
+  width:200px;
+  margin-top:50px;
+  margin-left: 80px;
+}
+#ME{
+  width:200px;
+  margin-top:50px;
+  margin-left: 80px;
+}
+
+#AE{
+  width:200px;
+  margin-top:50px;
+  margin-left: 80px;
+}
+
 .App {
   text-align: center;
 }
