@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { SignUpLink } from './SignUp';
+import { PasswordForgetLink } from './PasswordForget';
 import { auth } from '../firebase';
 import * as routes from '../constants/routes';
 import './App.css';
@@ -113,7 +114,8 @@ class SignInForm extends Component {
         </div>
         </div>
         
-      <SignUpLink />
+        <PasswordForgetLink />
+        <SignUpLink />
         
       </div>
 

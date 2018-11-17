@@ -122,8 +122,13 @@
   width: 440px;
 }
 
-.login-additional{
+.login-findpwd{
   padding-top: 200px;
+  margin: auto;
+  text-align: center;
+}
+
+.login-signup{
   margin: auto;
   text-align: center;
 }

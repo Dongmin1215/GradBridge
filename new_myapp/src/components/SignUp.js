@@ -107,7 +107,7 @@ class SignUpForm extends Component {
 }
 
 const SignUpLink = () =>
-    <div className = "login-additional">
+    <div className="login-signup">
         <p>
             Don't have an account?
             {' '}
