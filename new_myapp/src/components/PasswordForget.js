@@ -17,6 +17,7 @@ const byPropKey = (propertyName, value) => () => ({
 const INITIAL_STATE = {
   email: '',
   error: null,
+  success: false,
 };
 
 class PasswordForgetForm extends Component {
@@ -31,7 +32,11 @@ class PasswordForgetForm extends Component {
 
     auth.doPasswordReset(email)
       .then(() => {
-        this.setState({ ...INITIAL_STATE });
+        this.setState({ 
+          email: '',
+          error: null,
+          success: true
+        });
       })
       .catch(error => {
         this.setState(byPropKey('error', error));
@@ -44,6 +49,7 @@ class PasswordForgetForm extends Component {
     const {
       email,
       error,
+      success,
     } = this.state;
 
     const isInvalid = email === '';
@@ -60,6 +66,7 @@ class PasswordForgetForm extends Component {
           Reset My Password
         </button>
 
+        { success && <p>success</p>}
         { error && <p>{error.message}</p> }
       </form>
     );
