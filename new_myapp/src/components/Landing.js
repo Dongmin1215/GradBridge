@@ -5,7 +5,6 @@ import './App.css';
 
 const LandingPage = () =>
 	<div className="Initial">
-			
 		<div className="Title">
 			<img id="logo" src={require('./images/logo.png')}/>
 			<h1>GradBridge</h1>
@@ -26,6 +25,5 @@ const LandingPage = () =>
 			<img id="AE" src ={require('./images/AE.png')}/>
 		</div>
 	</div>
-
 
 export default LandingPage;
