@@ -177,10 +177,10 @@ class SignUpEditorForm extends Component {
                     <div>
                         <select className = "sign-up-selection">
                         <option value="" disabled selected>Select your Admission Year</option>
-                        <option value="09s">2019 Spring</option>
-                        <option value="08f">2018 Fall</option>
-                        <option value="08s">2018 Spring</option>
-                        <option value="07f">2017 Fall</option>
+                        <option value="19s">2019 Spring</option>
+                        <option value="18f">2018 Fall</option>
+                        <option value="18s">2018 Spring</option>
+                        <option value="17f">2017 Fall</option>
                         <option value="etc">Before</option>
                         </select>
                     </div>

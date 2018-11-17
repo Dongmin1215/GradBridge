@@ -9,7 +9,6 @@ import * as routes from '../constants/routes';
 
 const SignUpVisitorPage = ({history}) =>
     <div>
-        <h1>SignUp as Visitor</h1>
         <SignUpVisitorForm history={history} />
     </div>
 
@@ -151,6 +150,25 @@ class SignUpVisitorForm extends Component {
                             <option value="ee">Electrical Engineering</option>
                             <option value="me">Mechanical Engineering</option>
                             <option value="ae">Aerospace Engineering</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div className = "user-info">
+                        <div className = "sign-up-category-right">
+                            <div id = "sign-up-type-right">Expected graduation</div>
+                        </div>
+                        <div>
+                            <select className = "sign-up-selection">
+                            <option value="" disabled selected>Select your expected graduation year</option>
+                            <option value="19f">2019 Fall</option>
+                            <option value="20s">2020 Spring</option>
+                            <option value="20f">2020 Fall</option>
+                            <option value="21s">2021 Spring</option>
+                            <option value="21f">2021 Fall</option>
+                            <option value="22s">2022 Spring</option>
+                            <option value="22f">2022 Fall</option>
+                            <option value="etc">Before</option>
                             </select>
                         </div>
                     </div>
