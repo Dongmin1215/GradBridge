@@ -1,3 +1,4 @@
+
 .Initial {
   background: rgb(217, 210, 232);
   height: -webkit-fill-available;
@@ -6,6 +7,34 @@
 .Title {
   background: rgb(217, 210, 232);
   font-size: 60px;
+
+.sign-up-page{
+  background: rgb(217, 210, 232);
+  height: -webkit-fill-available;
+}
+
+* {
+  box-sizing: border-box;
+}
+.Top{
+  background: rgb(217, 210, 232);
+}
+
+#top-logo{
+  width:70px;
+  margin-left: 43px;
+  margin-right: 10px;
+  padding-top:25px;
+}
+
+.log-in-box{
+  padding-top: 120px;
+}
+
+.Top-Title {
+  background: rgb(217, 210, 232);
+  font-size: 30px;
+
   color:black;
   text-align: center;
   display:-webkit-box;
@@ -13,6 +42,7 @@
   margin-right: auto;
   margin-left: auto;
 }
+
 h1{
   display: block;
   font-size: 1.5em;
@@ -76,35 +106,110 @@ h1{
   margin-left: 80px;
 }
 
-.App {
+
+
+.Sign-up-left{
+  background:rgb(217, 210, 232);
+  height: fit-content;
+  float: left;
+  width: 70%;
+}
+.sign-up-right{
+  background: rgb(217, 210, 232);
+  height: fit-content;
+  width: 30%;
+  float: right;
+}
+
+.user-info{
+  height: 80px;
+  margin-bottom: 28px;
+  display: flex;
+}
+.Sing-up-category{
+  background-color :rgb(177, 167,210);
+  height: -webkit-fill-available;
+  width : 270px;
+  margin-left: 100px;
+  display: flex;
+  font-size: xx-large;
+  border-radius: 15px;
+}
+
+.sign-up-category-right{
+  background-color :rgb(177, 167,210);
+  height: -webkit-fill-available;
+  width : 270px;
+  display: flex;
+  font-size: xx-large;
+  border-radius: 15px;
+
+}
+#sign-up-type{
+  text-align: center;
+  margin: auto;
+  font-size: smaller;
+}
+
+#login-btn{
+  text-align: center;
+  margin: auto;
+  color: white;
+  font-size: 20px;
+}
+
+#sign-up-type-right{
+  text-align: center;
+  font-size: smaller;
+  margin: auto;
+}
+
+.login-button{
+  margin: auto;
+  padding-top:40px;
+  padding-bottom: 40px;
+}
+.sign-up-login{
+  background-color: rgb(126, 110, 181);
+  margin-right: 120px;
+  width: 40%;
+  height: 120px;
+  font-size: xx-large;
+  border-radius: 15px;
+  display: -webkit-box;
+
+}
+.sign-up-register:hover{
+  cursor: pointer;
+}
+
+.sign-up-input{
+  margin-left:10px;
+  height: -webkit-fill-available;
+  width: 480px;
+  font-size: x-large;
+  border-radius: 3px;
+}
+
+.sign-up-selection{
+  margin-left:10px;
+  height: -webkit-fill-available;
+  font-size: larger;
+  width: 440px;
+}
+
+.login-findpwd{
+  padding-top: 200px;
+  margin: auto;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.login-signup{
+  margin: auto;
+  text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
+
