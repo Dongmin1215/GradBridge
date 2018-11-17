@@ -14,13 +14,13 @@ const LandingPage = () =>
 			Welcome! <br></br>
 			GradBridge provides information related to admission of KAIST graduate school.
 			<br></br>
-			Previous applicants can collaborate to make GradBridge more reliable and awesome!s
+			Previous applicants can collaborate to make GradBridge more reliable and awesome!
 			<br></br>
 			<br></br>
 			To get started, click on the department that you are interested in.
 			</div>
 			<div className="Major">
-			<img id="CS" Link to={routes.WIKI} src={require('./images/CS.png')}/>
+			<Link to={routes.WIKI}><img id="CS" src={require('./images/CS.png')}/></Link>
 			<img id="EE" src ={require('./images/EE.png')}/>
 			<img id="ME" src ={require('./images/ME.png')}/>
 			<img id="AE" src ={require('./images/AE.png')}/>
