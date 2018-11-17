@@ -153,24 +153,12 @@ h1{
   font-size: smaller;
 }
 
-#login-btn{
-  text-align: center;
-  margin: auto;
-  color: white;
-  font-size: 20px;
-}
-
 #sign-up-type-right{
   text-align: center;
   font-size: smaller;
   margin: auto;
 }
 
-.login-button{
-  margin: auto;
-  padding-top:40px;
-  padding-bottom: 40px;
-}
 .sign-up-login{
   background-color: rgb(126, 110, 181);
   margin-right: 120px;
@@ -199,6 +187,24 @@ h1{
   font-size: larger;
   width: 440px;
 }
+
+.login-button{
+  margin: auto;
+  padding-top:40px;
+  padding-bottom: 40px;
+}
+
+#login-btn{
+  text-align: center;
+  margin: auto;
+  color: white;
+  font-size: 20px;
+}
+
+#login-btn:hover{
+  cursor: pointer;
+}
+
 
 .login-findpwd{
   padding-top: 200px;
@@ -340,3 +346,4 @@ h1{
   margin: auto;
   border-radius: 20px;
 }
+

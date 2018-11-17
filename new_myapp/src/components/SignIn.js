@@ -76,9 +76,9 @@ class SignInForm extends Component {
 
           <div className = "Sign-up-left">
             <div className = "user-info">
-              <button className = "Sing-up-category"> 
+              <div className = "Sing-up-category"> 
               <div id = "sign-up-type">E-mail</div>
-              </button>
+              </div>
               <div>
                 <input className ="sign-up-input"
                   value={email}
@@ -89,9 +89,9 @@ class SignInForm extends Component {
               </div>
             </div>
             <div className = "user-info">
-              <button className = "Sing-up-category">
+              <div className = "Sing-up-category">
                 <div id = "sign-up-type">Password</div>
-              </button>
+              </div>
               <div>
                 <input className ="sign-up-input"
                   value={password}
