@@ -75,9 +75,9 @@ class SignInForm extends Component {
         </div>
         <div className = "login-box">
           <div className = "login-left">
-            <div className = "user-info">
-              <div className = "sign-up-category"> 
-              <div id = "sign-up-type">E-mail</div>
+            <div className = "login-item">
+              <div className = "login-category"> 
+                <div id = "sign-up-type">Email</div>
               </div>
               <div>
                 <input className ="sign-up-input"
@@ -88,8 +88,8 @@ class SignInForm extends Component {
                 />
               </div>
             </div>
-            <div className = "user-info">
-              <div className = "sign-up-category">
+            <div className = "login-item">
+              <div className = "login-category">
                 <div id = "sign-up-type">Password</div>
               </div>
               <div>
@@ -103,15 +103,11 @@ class SignInForm extends Component {
             </div>
           </div>
         
-        <div className = "login-right">
-          <div className ="button-wrapper">
-            <div className = "login-button">
-              <button className = "sign-up-login" disabled={isInvalid} type="submit">
-                <div id = "login-btn">LOG IN</div>
-              </button>
-            </div>
+          <div className = "login-right">
+            <button className = "login-button" disabled={isInvalid} type="submit">
+              <div id = "login-btn">LOG IN</div>
+            </button>
           </div>
-        </div>
         </div>
         
         <PasswordForgetLink />
