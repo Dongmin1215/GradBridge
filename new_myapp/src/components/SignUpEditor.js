@@ -48,7 +48,7 @@ class SignUpEditorForm extends Component {
             .then(authUser => {
                 
                 // Create a user in your own accessible Firebase Database too
-                db.doCreateUser(authUser.user.uid, username, email)
+                db.doCreateEditor(authUser.user.uid, username, email)
                     .then(() => {
                     this.setState({ ...INITIAL_STATE });
                     history.push(routes.HOME);
