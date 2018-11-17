@@ -7,10 +7,10 @@ import {
 import { auth, db } from '../firebase';
 import * as routes from '../constants/routes';
 
-const SignUpPage = ({history}) =>
+const SignUpVisitorPage = ({history}) =>
     <div>
         <h1>SignUp</h1>
-        <SignUpForm history={history} />
+        <SignUpVisitorForm history={history} />
     </div>
 
 const INITIAL_STATE = {
@@ -26,7 +26,7 @@ const byPropKey = (propertyName, value) => () => ({
 });
 
 
-class SignUpForm extends Component {
+class SignUpVisitorForm extends Component {
     constructor(props) {
         super(props);
 
@@ -105,7 +105,7 @@ class SignUpForm extends Component {
                     placeholder="Password"
                 />
                 <button disabled={isInvalid} type="submit">
-                    Sign Up
+                    Sign Up V
                 </button>
 
                 { error && <p>{error.message}</p> }
@@ -114,7 +114,7 @@ class SignUpForm extends Component {
     }
 }
 
-const SignUpLink = () =>
+const SignUpVisitorLink = () =>
     <div className="login-signup">
         <p>
             Don't have an account?
@@ -123,9 +123,9 @@ const SignUpLink = () =>
         </p>
     </div>
 
-export default withRouter(SignUpPage);
+export default withRouter(SignUpVisitorPage);
 
 export {
-    SignUpForm,
-    SignUpLink,
+    SignUpVisitorForm,
+    SignUpVisitorLink,
 };
