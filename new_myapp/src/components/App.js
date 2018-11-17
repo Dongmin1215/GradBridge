@@ -11,6 +11,7 @@ import SignInPage from './SignIn';
 import PasswordForgetPage from './PasswordForget';
 import HomePage from './Home';
 import AccountPage from './Account';
+import WikiPage from './Wiki'
 
 import * as routes from '../constants/routes';
 
