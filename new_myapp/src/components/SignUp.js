@@ -1,10 +1,6 @@
-import React, { Component } from 'react';
-import {
-    Link,
-    withRouter,
-} from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { auth, db } from '../firebase';
 import * as routes from '../constants/routes';
 
 const SignUpPage = () =>
@@ -17,8 +13,6 @@ const SignUpPage = () =>
         <Link to={routes.SIGN_UP_VISITOR}><button className='sign-up-ans'> No </button></Link>
         </div>
     </div>
-        {/* <li><Link to={routes.SIGN_UP_EDITOR}>Yes</Link></li>
-        <li><Link to={routes.SIGN_UP_VISITOR}>No</Link></li> */}
 
 const SignUpLink = () =>
     <div className="login-signup">
