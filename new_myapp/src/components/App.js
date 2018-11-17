@@ -10,6 +10,7 @@ import SignInPage from './SignIn';
 import PasswordForgetPage from './PasswordForget';
 import HomePage from './Home';
 import AccountPage from './Account';
+import WikiPage from './Wiki';
 
 import * as routes from '../constants/routes';
 import { firebase } from '../firebase';
@@ -37,7 +38,6 @@ class App extends Component {
                 <div>
                     <Navigation authUser={this.state.authUser} />
                     <hr />
-
                     <Route
                         exact path={routes.LANDING}
                         component={LandingPage}
@@ -61,6 +61,10 @@ class App extends Component {
                     <Route
                         exact path={routes.ACCOUNT}
                         component={AccountPage}
+                    />
+                    <Route
+                        exact path={routes.WIKI}
+                        component={WikiPage}
                     />
                 </div>
             </Router>
