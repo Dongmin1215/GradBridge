@@ -7,8 +7,9 @@ const LandingPage = () =>
 	<div className="Initial">
 			
 		<div className="Title">
-			<img id="logo" src={require('./images/logo.png')}/>
-			<h1>GradBridge</h1>
+			<Link to={routes.LANDING}>
+				<img id="logo" src={require('./images/logo.png')}/>
+			</Link>
 		</div>
 		<div className="Text">
 			Welcome! <br></br>

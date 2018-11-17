@@ -24,11 +24,17 @@ h1{
   margin-top:80px;
 }
 #logo{
-  width:200px;
-  margin-left: 43px;
-  margin-right: 10px;
+  width:35%;
+  margin: auto;
   padding-top:50px;
 }
+
+#top-logo{
+  width:20%;
+  margin: auto;
+  padding-top: 25px;
+}
+
 .Major{
   background: rgb(217, 210, 232);
 
@@ -84,22 +90,11 @@ h1{
 * {
   box-sizing: border-box;
 }
-.Top{
+.top{
   background: rgb(217, 210, 232);
 }
 
-#top-logo{
-  width:70px;
-  margin-left: 43px;
-  margin-right: 10px;
-  padding-top:25px;
-}
-
-.log-in-box{
-  padding-top: 120px;
-}
-
-.Top-Title {
+.top-title {
   background: rgb(217, 210, 232);
   font-size: 30px;
   color:black;
@@ -110,7 +105,7 @@ h1{
   margin-left: auto;
 }
 
-.Sign-up-left{
+.sign-up-left{
   background:rgb(217, 210, 232);
   height: fit-content;
   float: left;
@@ -195,6 +190,20 @@ h1{
   width: 440px;
 }
 
+.login-box{
+  padding-top: 150px;
+}
+
+.login-left{
+  float: left;
+  width: 70%;
+}
+
+.login-right{
+  float: right;
+  width: 30%;
+}
+
 .login-button{
   margin: auto;
   padding-top:40px;
@@ -223,6 +232,139 @@ h1{
   margin: auto;
   text-align: center;
 }
+
+.sign-up-row::after{
+  content: "";
+    display: table;
+    clear: both;
+}
+
+.Top-Title {
+  background: rgb(217, 210, 232);
+  font-size: 60px;
+  color:black;
+  text-align: center;
+  display:-webkit-box;
+  width:fit-content;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.sign-up-left{
+  background:rgb(217, 210, 232);
+  height: fit-content;
+  float: left;
+  width: 52%;
+}
+.sign-up-right{
+  background: rgb(217, 210, 232);
+  height: fit-content;
+  width: 48%;
+  float: right;
+}
+
+.user-info{
+  height: 80px;
+  margin-bottom: 28px;
+  display: flex;
+}
+.sign-up-category{
+  background-color :rgb(177, 167,210);
+  height: -webkit-fill-available;
+  width : 270px;
+  margin-left: 100px;
+  display: flex;
+  font-size: xx-large;
+  border-radius: 15px;
+}
+
+.sign-up-category-right{
+  background-color :rgb(177, 167,210);
+  height: -webkit-fill-available;
+  width : 270px;
+  display: flex;
+  font-size: xx-large;
+  border-radius: 15px;
+
+}
+#sign-up-type{
+  text-align: center;
+  margin: auto;
+  font-size: smaller;
+}
+
+#sign-up-type-right{
+  text-align: center;
+  font-size: smaller;
+  margin: auto;
+}
+
+.register-button{
+  margin: auto;
+  padding-top:40px;
+  padding-bottom: 40px;
+}
+.sign-up-register{
+  background-color: rgb(126, 110, 181);
+  margin: auto;
+  width: 20%;
+  height: 80px;
+  font-size: xx-large;
+  border-radius: 15px;
+  display: -webkit-box;
+
+}
+.sign-up-register:hover{
+  cursor: pointer;
+}
+
+.sign-up-input{
+  margin-left:10px;
+  height: -webkit-fill-available;
+  width: 440px;
+  font-size: x-large;
+  border-radius: 3px;
+}
+
+.sign-up-selection{
+  margin-left:10px;
+  height: -webkit-fill-available;
+  font-size: larger;
+  width: 440px;
+}
+
+.sign-up-question{
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+  color: #1a202b;
+  padding-top: 80px;
+}
+
+.sign-up-types{
+  width: 50%;
+  margin: auto;
+  padding-top: 100px;
+  text-align: center;
+}
+
+.sign-up-ans{
+  display: inline-block;
+  width: 40%;
+  height: 100px;
+  font-size: 30px;
+  background-color: rgb(126, 110, 181);
+  color: white;
+  border-radius: 15px;
+  padding: 10px; 
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.sign-up-ans:hover{
+  cursor: pointer;
+}
+
 
 .wiki{
   height:100vh;
@@ -356,136 +498,4 @@ h1{
   border-radius:20px;
   margin: auto;
   border-radius: 20px;
-}
-
-.sign-up-row::after{
-  content: "";
-    display: table;
-    clear: both;
-}
-
-.Top-Title {
-  background: rgb(217, 210, 232);
-  font-size: 60px;
-  color:black;
-  text-align: center;
-  display:-webkit-box;
-  width:fit-content;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.Sign-up-left{
-  background:rgb(217, 210, 232);
-  height: fit-content;
-  float: left;
-  width: 52%;
-}
-.sign-up-right{
-  background: rgb(217, 210, 232);
-  height: fit-content;
-  width: 48%;
-  float: right;
-}
-
-.user-info{
-  height: 80px;
-  margin-bottom: 28px;
-  display: flex;
-}
-.Sing-up-category{
-  background-color :rgb(177, 167,210);
-  height: -webkit-fill-available;
-  width : 270px;
-  margin-left: 100px;
-  display: flex;
-  font-size: xx-large;
-  border-radius: 15px;
-}
-
-.sign-up-category-right{
-  background-color :rgb(177, 167,210);
-  height: -webkit-fill-available;
-  width : 270px;
-  display: flex;
-  font-size: xx-large;
-  border-radius: 15px;
-
-}
-#sign-up-type{
-  text-align: center;
-  margin: auto;
-  font-size: smaller;
-}
-
-#sign-up-type-right{
-  text-align: center;
-  font-size: smaller;
-  margin: auto;
-}
-
-.register-button{
-  margin: auto;
-  padding-top:40px;
-  padding-bottom: 40px;
-}
-.sign-up-register{
-  background-color: rgb(126, 110, 181);
-  margin: auto;
-  width: 20%;
-  height: 80px;
-  font-size: xx-large;
-  border-radius: 15px;
-  display: -webkit-box;
-
-}
-.sign-up-register:hover{
-  cursor: pointer;
-}
-
-.sign-up-input{
-  margin-left:10px;
-  height: -webkit-fill-available;
-  width: 440px;
-  font-size: x-large;
-  border-radius: 3px;
-}
-
-.sign-up-selection{
-  margin-left:10px;
-  height: -webkit-fill-available;
-  font-size: larger;
-  width: 440px;
-}
-
-.sign-up-question{
-  text-align: center;
-  font-weight: bold;
-  font-size: 50px;
-  color: #1a202b;
-  padding-top: 80px;
-}
-
-.sign-up-types{
-  width: 50%;
-  margin: auto;
-  padding-top: 100px;
-  text-align: center;
-}
-
-.sign-up-ans{
-  display: inline-block;
-  width: 40%;
-  height: 100px;
-  font-size: 30px;
-  background-color: rgb(126, 110, 181);
-  color: white;
-  border-radius: 15px;
-  padding: 10px; 
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.sign-up-ans:hover{
-  cursor: pointer;
 }

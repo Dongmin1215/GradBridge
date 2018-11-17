@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-
 import { SignUpLink } from './SignUp';
 import { PasswordForgetLink } from './PasswordForget';
 import { auth } from '../firebase';
+import { Link } from 'react-router-dom';
 import * as routes from '../constants/routes';
 import './App.css';
 
@@ -66,17 +66,17 @@ class SignInForm extends Component {
       <form onSubmit={this.onSubmit}>
 
       <div className = "sign-up-page">
-        <div className = "Top">
-          <div className="Top-Title">
-            <img id="top-logo" src={require('./images/logo.png')}/>
-            <p>GradBridge</p>
+        <div className = "top">
+          <div className="top-title">
+            <Link to={routes.LANDING}>
+              <img id="logo" src={require('./images/logo.png')}/>
+            </Link>
           </div>
         </div>
-        <div className = "log-in-box">
-
-          <div className = "Sign-up-left">
+        <div className = "login-box">
+          <div className = "login-left">
             <div className = "user-info">
-              <div className = "Sing-up-category"> 
+              <div className = "sign-up-category"> 
               <div id = "sign-up-type">E-mail</div>
               </div>
               <div>
@@ -89,7 +89,7 @@ class SignInForm extends Component {
               </div>
             </div>
             <div className = "user-info">
-              <div className = "Sing-up-category">
+              <div className = "sign-up-category">
                 <div id = "sign-up-type">Password</div>
               </div>
               <div>
@@ -103,7 +103,7 @@ class SignInForm extends Component {
             </div>
           </div>
         
-        <div className = "sign-up-right">
+        <div className = "login-right">
           <div className ="button-wrapper">
             <div className = "login-button">
               <button className = "sign-up-login" disabled={isInvalid} type="submit">

@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import * as routes from '../constants/routes';
 import 'font-awesome/css/font-awesome.min.css';
 import './App.css';
 
 const WikiPage = () =>
     <div className='wiki'>
-        <div className = "Top">
-          <div className="Top-Title">
+        <div className = "top">
+          <div className="top-title">
+          <Link to={routes.LANDING}>
             <img id="top-logo" src={require('./images/logo.png')}/>
-            <p>GradBridge</p>
+          </Link>
           </div>
         </div>
 
@@ -23,9 +26,11 @@ const WikiPage = () =>
             <div className='wiki-navbar-text'>2019 Spring</div>
             <div className='wiki-navbar-signin'>
               <div className='wiki-signin-wrapper'>
-                <button className='wiki-signin'>
-                  <div id='wiki-signin-text'>Sign In</div>
-                </button>
+                <Link to={routes.SIGN_IN}>
+                  <button className='wiki-signin'>
+                    <div id='wiki-signin-text'>Log In</div>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
