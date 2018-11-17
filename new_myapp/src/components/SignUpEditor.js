@@ -16,7 +16,12 @@ const INITIAL_STATE = {
     email: '',
     passwordOne: '',
     passwordTwo: '',
-    idnumber: '',
+    under_uni: '',
+    under_major: '',
+    gpa: '',
+    adm_year: '',
+    app_dept: '',
+    id_number: '',
     error: null,
 };
 
@@ -36,7 +41,11 @@ class SignUpEditorForm extends Component {
         const {
             email,
             passwordOne,
-            idnumber,
+            under_uni,
+            under_major,
+            gpa,
+            admission_year,
+            applied_dept,
         } = this.state;
 
         const {
@@ -47,7 +56,7 @@ class SignUpEditorForm extends Component {
             .then(authUser => {
                 
                 // Create a user in your own accessible Firebase Database too
-                db.doCreateUser(authUser.user.uid, email)
+                db.doCreateEditor(authUser.user.uid, email, admission_year, applied_dept, under_uni, under_major, gpa)
                     .then(() => {
                     this.setState({ ...INITIAL_STATE });
                     history.push(routes.WIKI);
@@ -67,7 +76,12 @@ class SignUpEditorForm extends Component {
             email,
             passwordOne,
             passwordTwo,
-            idnumber,
+            under_uni,
+            under_major,
+            gpa,
+            admission_year,
+            applied_dept,
+            id_number,
             error,
         } = this.state;
 
@@ -75,7 +89,12 @@ class SignUpEditorForm extends Component {
             passwordOne !== passwordTwo ||
             passwordOne === '' ||
             email === '' ||
-            idnumber ==='';
+            under_uni === '' ||
+            under_major === '' ||
+            gpa === '' ||
+            admission_year === '' ||
+            applied_dept === '' ||
+            id_number === '';
 
         return (
             <form onSubmit={this.onSubmit}>
@@ -128,7 +147,8 @@ class SignUpEditorForm extends Component {
                             <div id = "sign-up-type">Undergraduate University</div>
                         </div>
                         <div>
-                        <select className = "sign-up-selection">
+                        <select className = "sign-up-selection"
+                            onChange={event => this.setState(byPropKey('under_uni', event.target.value))}>
                             <option value="" disabled selected>Select your Undergraduate University</option>
                             <option value="kaist">KAIST</option>
                             <option value="others">Others</option>
@@ -144,7 +164,8 @@ class SignUpEditorForm extends Component {
                         <div id = "sign-up-type-right">Undergraduate Major</div>
                     </div>
                     <div>
-                        <select className = "sign-up-selection">
+                        <select className = "sign-up-selection"
+                            onChange={event => this.setState(byPropKey('under_major', event.target.value))}>
                         <option value="" disabled selected>Select your Undergraduate Major</option>
                         <option value="cs">Computer Science</option>
                         <option value="ee">Electrical Engineering</option>
@@ -159,7 +180,8 @@ class SignUpEditorForm extends Component {
                         <div id = "sign-up-type-right">GPA</div>
                     </div>
                     <div>
-                    <select className = "sign-up-selection">
+                    <select className = "sign-up-selection"
+                            onChange={event => this.setState(byPropKey('gpa', event.target.value))}>
                         <option value="" disabled selected>Select your GPA range (Out of 4.3)</option>
                         <option value="0.0">0.0 ~ 2.5</option>
                         <option value="2.5">2.5 ~ 3.0</option>
@@ -175,7 +197,8 @@ class SignUpEditorForm extends Component {
                         <div id = "sign-up-type">Admission Year</div>
                     </div>
                     <div>
-                        <select className = "sign-up-selection">
+                        <select className = "sign-up-selection"
+                            onChange={event => this.setState(byPropKey('admission_year', event.target.value))}>
                         <option value="" disabled selected>Select your Admission Year</option>
                         <option value="19s">2019 Spring</option>
                         <option value="18f">2018 Fall</option>
@@ -190,7 +213,8 @@ class SignUpEditorForm extends Component {
                         <div id = "sign-up-type">Applied Department</div>
                     </div>
                     <div>
-                        <select className = "sign-up-selection">
+                        <select className = "sign-up-selection"
+                            onChange={event => this.setState(byPropKey('applied_dept', event.target.value))}>
                         <option value="" disabled selected>Select your Applied Department</option>
                         <option value="cs">Computer Science</option>
                         <option value="ee">Electrical Engineering</option>
@@ -204,8 +228,8 @@ class SignUpEditorForm extends Component {
                             <div id = "sign-up-type">Test Identification number</div>
                         </div>
                         <div> 
-                        <input className ="sign-up-input" value={idnumber}
-                        onChange={event => this.setState(byPropKey('idnumber', event.target.value))}
+                        <input className ="sign-up-input" value={id_number}
+                        onChange={event => this.setState(byPropKey('id_number', event.target.value))}
                         type="text"
                         placeholder="used only for verification"></input>
                         </div>

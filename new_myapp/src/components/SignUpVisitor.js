@@ -13,10 +13,12 @@ const SignUpVisitorPage = ({history}) =>
     </div>
 
 const INITIAL_STATE = {
-    username: '',
     email: '',
     passwordOne: '',
     passwordTwo: '',
+    under_uni: '',
+    under_major: '',
+    expected_grad: '',
     error: null,
 };
 
@@ -34,9 +36,11 @@ class SignUpVisitorForm extends Component {
 
     onSubmit = (event) => {
         const {
-            username,
             email,
             passwordOne,
+            under_uni,
+            under_major,
+            expected_grad,
         } = this.state;
 
         const {
@@ -47,7 +51,7 @@ class SignUpVisitorForm extends Component {
             .then(authUser => {
                 
                 // Create a user in your own accessible Firebase Database too
-                db.doCreateUser(authUser.user.uid, username, email)
+                db.doCreateVisitor(authUser.user.uid, email, "null", under_uni, under_major, expected_grad)
                     .then(() => {
                     this.setState({ ...INITIAL_STATE });
                     history.push(routes.WIKI);
@@ -68,6 +72,9 @@ class SignUpVisitorForm extends Component {
             email,
             passwordOne,
             passwordTwo,
+            under_uni,
+            under_major,
+            expected_grad,
             error,
         } = this.state;
 
@@ -75,7 +82,10 @@ class SignUpVisitorForm extends Component {
             passwordOne !== passwordTwo ||
             passwordOne === '' ||
             email === '' ||
-            username === '';
+            username === '' ||
+            under_uni === '' ||
+            under_major === '' ||
+            expected_grad === '';
 
         return (
             <form onSubmit={this.onSubmit}>
@@ -131,7 +141,8 @@ class SignUpVisitorForm extends Component {
                             <div id = "sign-up-type-right">Undergraduate University</div>
                         </div>
                         <div>
-                            <select className = "sign-up-selection">
+                            <select className = "sign-up-selection"
+                            onChange={event => this.setState(byPropKey('under_uni', event.target.value))}>
                                 <option value="" disabled selected>Select your Undergraduate University</option>
                                 <option value="kaist">KAIST</option>
                                 <option value="others">Others</option>
@@ -144,7 +155,8 @@ class SignUpVisitorForm extends Component {
                             <div id = "sign-up-type-right">Undergraduate Major</div>
                         </div>
                         <div>
-                            <select className = "sign-up-selection">
+                            <select className = "sign-up-selection"
+                            onChange={event => this.setState(byPropKey('under_major', event.target.value))}>
                             <option value="" disabled selected>Select your Undergraduate Major</option>
                             <option value="cs">Computer Science</option>
                             <option value="ee">Electrical Engineering</option>
@@ -159,7 +171,8 @@ class SignUpVisitorForm extends Component {
                             <div id = "sign-up-type-right">Expected graduation</div>
                         </div>
                         <div>
-                            <select className = "sign-up-selection">
+                            <select className = "sign-up-selection"
+                            onChange={event => this.setState(byPropKey('expected_grad', event.target.value))}>
                             <option value="" disabled selected>Select your expected graduation year</option>
                             <option value="19f">2019 Fall</option>
                             <option value="20s">2020 Spring</option>
