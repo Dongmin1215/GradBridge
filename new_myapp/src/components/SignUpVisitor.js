@@ -164,12 +164,12 @@ class SignUpVisitorForm extends Component {
 
                     <div className = "user-info">
                         <div className = "sign-up-category-right">
-                            <div id = "sign-up-type">Expected graduation</div>
+                            <div id = "sign-up-type">Expected Graduation</div>
                         </div>
                         <div>
                             <select className = "sign-up-selection"
                             onChange={event => this.setState(byPropKey('expected_grad', event.target.value))}>
-                            <option value="" disabled selected>-------------</option>
+                            <option value="" disabled selected>final semester</option>
                             <option value="19f">2019 Fall</option>
                             <option value="20s">2020 Spring</option>
                             <option value="20f">2020 Fall</option>
@@ -177,7 +177,7 @@ class SignUpVisitorForm extends Component {
                             <option value="21f">2021 Fall</option>
                             <option value="22s">2022 Spring</option>
                             <option value="22f">2022 Fall</option>
-                            <option value="etc">Before</option>
+                            <option value="etc">After</option>
                             </select>
                         </div>
                     </div>
