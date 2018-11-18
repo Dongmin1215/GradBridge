@@ -498,7 +498,7 @@ h1{
 
   /* Comment is on ; width : 65% */
   /* Comment is on : height : 100%*/
-  width: 100%;
+  width: 65%;
   height: 100%;
   
 }
@@ -513,24 +513,7 @@ h1{
 
 }
 
-.wiki-comment-col{
-  background: rgb(217, 210, 232);
-  float: right;
-  width: 35%;
-  height: 100%;
 
-  /* Comment is off : display : none /
-  /* Comment is on : display : -websit-box */
-  display: none;
-}
-
-.wiki-comment-wrapper{
-  background: rgb(204,204,204);
-  width: 95%;
-  border-radius:20px;
-  margin: auto;
-  border-radius: 20px;
-}
 
 .wiki-info-doc{
   padding: 23px;
@@ -562,3 +545,52 @@ h1{
 }
 
 
+.wiki-comment-col{
+  background: rgb(217, 210, 232);
+  float: right;
+  width: 35%;
+  height: 100%;
+
+  /* Comment is off : display : none /
+  /* Comment is on : display : -webkit-box */
+  display: -webkit-box;
+}
+
+.wiki-comment-wrapper{
+  background: rgb(204,204,204);
+  width: 95%;
+  height: 100%;
+  border-radius:20px;
+  margin: auto;
+  border-radius: 20px;
+}
+
+.wiki-comment-filter{
+
+  height:8%;
+}
+
+.wiki-comment-filter-row::after{
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.wiki-comment-filter-col{
+
+  float: left;
+  width: 33.33%;
+  height:-webkit-fill-available;
+}
+
+.wiki-comment-filter-wrapper{
+  padding: 5px;
+  margin-top:3px;
+}
+
+
+.wiki-comment-filter-select{
+  height: 40px;
+  width: -webkit-fill-available;
+  font-size: inherit;
+}
