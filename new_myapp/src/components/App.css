@@ -453,7 +453,7 @@ h1{
 
   /* Comment is on ; width : 65% */
   /* Comment is on : height : 100%*/
-  width: 65%;
+  width: 100%;
   height: 100%;
   
 }
@@ -508,7 +508,7 @@ h1{
 
   /* Comment is off : display : none /
   /* Comment is on : display : -webkit-box */
-  display: -webkit-box;
+  display: none;
 }
 
 .wiki-comment-wrapper{
