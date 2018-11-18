@@ -24,3 +24,6 @@ export const doCreateVisitor = (id, email, admission_year, under_uni, under_majo
 export const onceGetUsers = () =>
   db.ref('users').once('value');
 
+
+export const getIntroduction = (semester) =>
+  db.ref(`pages/${semester}/Document/Introduction`);
