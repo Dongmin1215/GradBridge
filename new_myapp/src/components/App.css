@@ -550,6 +550,7 @@ h1{
 
 .wiki-comment-user{
   height: 92%;
+  display: block;
 }
 
 .wiki-comment-user-box{
@@ -578,7 +579,8 @@ h1{
   font-size: x-large;
   padding-left: 10px;
   padding-top: 10px;
-  overflow: scroll;
+  padding-right: 9px;
+  overflow-y: scroll;
 }
 
 .wiki-comment-user-context{
@@ -589,4 +591,46 @@ h1{
   width: 35px;
   margin-left: 5px;
   margin-top: 15px;
+}
+
+.wiki-reply-wrapper{
+  overflow-y: scroll;
+  height: 100px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  margin-right: 12px;
+
+
+}
+
+
+.wiki-reply-box{
+  background: rgb(220, 233, 213);
+  height: -webkit-fill-available;
+  margin-right : 14.5px;
+  width: 85%;
+  float: right;
+  padding:15px;
+  overflow-y: scroll;
+
+}
+
+.wiki-reply-context{
+  font-size: larger;
+  overflow-y: scroll;
+
+}
+
+.wiki-reply-tri-wrapper{
+
+  height: 10px;
+  margin-right: 14.5px;
+}
+
+.wiki-reply-tri{
+  width : 0px;
+  height: 0px;
+  border-bottom: 10px solid rgb(220, 233, 213);
+  border-left: 10px solid transparent;
+  float: right;
 }
