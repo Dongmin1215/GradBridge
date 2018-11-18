@@ -505,10 +505,10 @@ h1{
   border-radius:20px;
   margin: auto;
   border-radius: 20px;
+  overflow-y: scroll;
 }
 
 .wiki-comment-filter{
-
   height:8%;
 }
 
@@ -535,4 +535,43 @@ h1{
   height: 40px;
   width: -webkit-fill-available;
   font-size: inherit;
+}
+
+.wiki-comment-user{
+  height: 92%;
+}
+
+.wiki-comment-user-box{
+  margin : 15px;
+  background: rgb(204, 218,245);
+  height: 120px;
+}
+
+
+.wiki-comment-user-row::after{
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.wiki-comment-user-col-left{
+  float: left;
+  width: 10%;
+  height:-webkit-fill-available;
+}
+
+.wiki-comment-user-col-right{
+  float: right;
+  width: 90%;
+  height:-webkit-fill-available;
+  font-size: x-large;
+  padding-left: 10px;
+  padding-top: 10px;
+  overflow: scroll;
+}
+
+.user-pic{
+  width: 35px;
+  margin-left: 5px;
+  margin-top: 15px;
 }
