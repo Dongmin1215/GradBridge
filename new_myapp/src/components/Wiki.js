@@ -4,6 +4,8 @@ import * as routes from '../constants/routes';
 import 'font-awesome/css/font-awesome.min.css';
 import './App.css';
 
+
+
 const WikiPage = () =>
     <div className='wiki'>
         <div className = "top">
@@ -40,9 +42,105 @@ const WikiPage = () =>
           <div className='wiki-main-row'>
             <div className = "wiki-info-col">
               <div className = 'wiki-info-wrapper'>
+              
+                <div className = 'wiki-info-doc'>
+                  <div className = 'wiki-info-title'>
+                    Document Review
+                  </div>
+                  
+                  <div className = 'wiki-info-subtitle'>
+                    <ul>
+                      <li>Self Introduction</li>
+                      <div className = 'wiki-info-qid'>
+                        <ul>
+                          <li> In what language?</li>
+                        </ul>
+                      </div>
+                    </ul>
+                  </div>
+
+                  <div className = 'wiki-info-subtitle'>
+                    <ul>
+                      <li>Extra</li>
+                      <div className = 'wiki-info-qid'>
+                        <ul>
+                          <li> ~~~~~~~</li>
+                        </ul>
+                      </div>
+                    </ul>
+                  </div>
+
+                  <div className = 'wiki-info-subtitle'>
+                    <ul>
+                      <li>Hello</li>
+                      <div className = 'wiki-info-qid'>
+                        <ul>
+                          <li>##########</li>
+                        </ul>
+                      </div>
+                    </ul>
+                  </div>
+
+                  <div className = 'wiki-info-subtitle'>
+                    <ul>
+                      <li>Hello</li>
+                      <div className = 'wiki-info-qid'>
+                        <ul>
+                          <li>##########</li>
+                        </ul>
+                      </div>
+                    </ul>
+                  </div>
+
+                  <div className = 'wiki-info-subtitle'>
+                    <ul>
+                      <li>Hello</li>
+                      <div className = 'wiki-info-qid'>
+                        <ul>
+                          <li>##########</li>
+                        </ul>
+                      </div>
+                    </ul>
+                  </div>
+
+
+                </div>
+
+                <hr></hr>
+                
+                <div className = 'wiki-info-interviews'>
+                  <div className = 'wiki-info-title'>
+                    Extra Curricular
+                  </div>
+                  <div className = 'wiki-info-subtitle'>
+                    <ul>
+                      <li>Self Introduction</li>
+                      <div className = 'wiki-info-qid'>
+                        <ul>
+                          <li> In what language?</li>
+                        </ul>
+                      </div>
+                    </ul>
+                  </div>
+                  <div className = 'wiki-info-subtitle'>
+                    <ul>
+                      <li>Extra</li>
+                      <div className = 'wiki-info-qid'>
+                        <ul>
+                          <li> ~~~~~~~</li>
+                        </ul>
+                      </div>
+                    </ul>
+                  </div>
+
+                </div>
               </div>
 
             </div>
+
+
+
+
             <div className='wiki-comment-col'>
               <div className='wiki-comment-wrapper'>
               

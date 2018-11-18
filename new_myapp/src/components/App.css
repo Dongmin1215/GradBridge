@@ -508,6 +508,8 @@ h1{
   width: 95%;
   border-radius:20px;
   margin: auto;
+  height: 100%;
+  overflow-y: scroll;
 
 }
 
@@ -529,3 +531,34 @@ h1{
   margin: auto;
   border-radius: 20px;
 }
+
+.wiki-info-doc{
+  padding: 23px;
+  height:fit-content;
+  line-height: 1.8em;
+  font-size: 18px ;
+}
+
+.wiki-info-interviews{
+  padding: 23px;
+  height: fit-content;
+  font-size: 18px;
+  line-height: 1.8em;
+}
+
+.wiki-info-title{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.wiki-info-subtitle{
+  font-size: 18px;
+
+}
+
+
+.wiki-info-qid{
+
+}
+
+
