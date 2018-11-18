@@ -97,7 +97,7 @@ class SignUpVisitorForm extends Component {
 		        </div>
             
                 <div className = "sign-up-row">
-                <div className = "Sign-up-left">
+                <div className = "sign-up-left">
                     <div className = "user-info">
                         <div className = "sign-up-category"> 
                             <div id = "sign-up-type">Email</div>
@@ -128,7 +128,7 @@ class SignUpVisitorForm extends Component {
                         onChange={event => this.setState(byPropKey('passwordTwo', event.target.value))}
                         placeholder="password again"></input>
                         </div>
-                    </div>      
+                    </div>
                 </div>
 
                 <div className = "sign-up-right">

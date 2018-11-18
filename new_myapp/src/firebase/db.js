@@ -45,3 +45,6 @@ db.ref(`pages/${semester}/Interview/Room2`);
 
 export const getRoom3 = (semester) =>
 db.ref(`pages/${semester}/Interview/Room3`);
+
+export const getComments = (qid) =>
+db.ref(`questions/${qid}`);

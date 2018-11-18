@@ -17,6 +17,8 @@ const INITIAL_STATE = {
   room1s : [],
   room2s : [],
   room3s : [],
+  comment_que : 'none',
+  comments : [],
 };
 
 class WikiPage extends Component {
@@ -53,8 +55,10 @@ class WikiPage extends Component {
     var that = this;
     introduction.once("value").then(function(snapshot) {
       snapshot.forEach(function(child) {
+        const qid = child.key;
         const {text, uid, visibility, vote} = child.val();
         intros.push({
+          qid,
           text,
           uid,
           visibility,
@@ -67,8 +71,10 @@ class WikiPage extends Component {
     });
     extracurricular.once("value").then(function(snapshot) {
       snapshot.forEach(function(child) {
+        const qid = child.key;
         const {text, uid, visibility, vote} = child.val();
         extras.push({
+          qid,
           text,
           uid,
           visibility,
@@ -81,8 +87,10 @@ class WikiPage extends Component {
     });
     programming.once("value").then(function(snapshot) {
       snapshot.forEach(function(child) {
+        const qid = child.key;
         const {text, uid, visibility, vote} = child.val();
         progs.push({
+          qid,
           text,
           uid,
           visibility,
@@ -95,8 +103,10 @@ class WikiPage extends Component {
     });
     waiting.once("value").then(function(snapshot) {
       snapshot.forEach(function(child) {
+        const qid = child.key;
         const {text, uid, visibility, vote} = child.val();
         waits.push({
+          qid,
           text,
           uid,
           visibility,
@@ -109,8 +119,10 @@ class WikiPage extends Component {
     });
     room1.once("value").then(function(snapshot) {
       snapshot.forEach(function(child) {
+        const qid = child.key;
         const {text, uid, visibility, vote} = child.val();
         room1s.push({
+          qid,
           text,
           uid,
           visibility,
@@ -123,8 +135,10 @@ class WikiPage extends Component {
     });
     room2.once("value").then(function(snapshot) {
       snapshot.forEach(function(child) {
+        const qid = child.key;
         const {text, uid, visibility, vote} = child.val();
         room2s.push({
+          qid,
           text,
           uid,
           visibility,
@@ -137,8 +151,10 @@ class WikiPage extends Component {
     });
     room3.once("value").then(function(snapshot) {
       snapshot.forEach(function(child) {
+        const qid = child.key;
         const {text, uid, visibility, vote} = child.val();
         room3s.push({
+          qid,
           text,
           uid,
           visibility,
@@ -183,6 +199,48 @@ class WikiPage extends Component {
     });
   }
 
+  handleClick(e, question) {
+    var qid = question.qid
+    if (this.state.comment_que === qid) {
+      this.setState({
+        comment_que: 'none',
+        comment_display: 'none',
+        comment_width: '100%',
+      });
+      this.setState({
+        comments: []
+      });
+    }
+    else {
+      this.setState({
+        comment_que: qid,
+        comment_display: '-webkit-box',
+        comment_width: '65%',
+      });
+      const comments = []
+      var all_comment = db.getComments(qid);
+      var that = this;
+      all_comment.once("value").then(function(snapshot) {
+        snapshot.forEach(function(child) {
+          const cid = child.key;
+          const {gpa, kaist, major, replies, text, uid} = child.val();
+          comments.push({
+            cid,
+            text,
+            uid,
+            gpa,
+            kaist,
+            major,
+            replies,
+          });
+        });
+        that.setState({
+          comments
+        });
+      });
+    }
+  }
+
   render() {
     const {
       intros,
@@ -192,35 +250,72 @@ class WikiPage extends Component {
       room1s,
       room2s,
       room3s,
+      comments,
     } = this.state;
     
     var intro_questions = intros.map(function(que){
-        return <li>{que.text}</li>;
-    });
+      return <li onClick={((e) => this.handleClick(e, que))}>{que.text}</li>;
+    }, this);
     
     var extra_questions = extras.map(function(que){
-      return <li>{que.text}</li>;
-    });
+      return <li onClick={((e) => this.handleClick(e, que))}>{que.text}</li>;
+    }, this);
     
     var prog_questions = progs.map(function(que){
-      return <li>{que.text}</li>;
-    });
+      return <li onClick={((e) => this.handleClick(e, que))}>{que.text}</li>;
+    }, this);
 
     var wait_questions = waits.map(function(que){
-      return <li>{que.text}</li>;
-    });
+      return <li onClick={((e) => this.handleClick(e, que))}>{que.text}</li>;
+    }, this);
     
     var room1_questions = room1s.map(function(que){
-      return <li>{que.text}</li>;
-    });
+      return <li onClick={((e) => this.handleClick(e, que))}>{que.text}</li>;
+    }, this);
     
     var room2_questions = room2s.map(function(que){
-      return <li>{que.text}</li>;
-    });
+      return <li onClick={((e) => this.handleClick(e, que))}>{que.text}</li>;
+    }, this);
     
     var room3_questions = room3s.map(function(que){
-      return <li>{que.text}</li>;
-    });
+      return <li onClick={((e) => this.handleClick(e, que))}>{que.text}</li>;
+    }, this);
+
+    if (this.state.comment_que != 'none') {
+      var comment_list = comments.map(function(com){
+        return <div className = 'wiki-comment-and-reply'>
+          <div className = 'wiki-comment-user-box'>
+            <div className = 'wiki-comment-user-row'>
+              <div className = 'wiki-comment-user-col-left'>
+                <img className = 'user-pic' src={require('./images/user.png')}/>
+              </div>
+              <div className = 'wiki-comment-user-col-right'>
+                <div className = 'wiki-comment-user-context'>
+                {com.text}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className='wiki-reply-wrapper'>
+            <div className = 'wiki-reply-tri-wrapper'>
+              <div className = 'wiki-reply-tri'>
+              </div>
+            </div>
+            <div className = 'wiki-reply-box'>
+              <div className = 'wiki-reply-context'>
+              How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?
+              </div>
+            </div>
+          </div>
+
+          
+
+
+
+        </div>;
+      }, this);
+    }
 
     return (
       <div className='wiki'>
@@ -234,7 +329,7 @@ class WikiPage extends Component {
 
           <div className="wiki-navbar-row">
             <div className='wiki-navbar-left'>
-              <div className='wiki-navbar-text'>Computer Science</div>
+              <div className='wiki-navbar-text'>Dept: Computer Science</div>
             </div>
             <div className='wiki-navbar-middle'>
               <div className='wiki-other-year' onClick={this.changePrev}>{this.state.prev}</div>
@@ -353,7 +448,7 @@ class WikiPage extends Component {
                 </div>
               </div>
 
-              <div className='wiki-comment-col'>
+              <div className='wiki-comment-col' style={{display:this.state.comment_display}}>
                 <div className='wiki-comment-wrapper'>
                   <div className = 'wiki-comment-filter'>
 
@@ -362,7 +457,7 @@ class WikiPage extends Component {
                       <div className ='wiki-comment-filter-col'>
                         <div className = 'wiki-comment-filter-wrapper'>
                             <select className = "wiki-comment-filter-select">
-                              <option>University</option>
+                              <option>under. univeristy</option>
                               <option>KAIST</option>
                               <option>Others</option>
                             </select>
@@ -372,7 +467,7 @@ class WikiPage extends Component {
                       <div className ='wiki-comment-filter-col'>
                         <div className = 'wiki-comment-filter-wrapper'>
                           <select className = "wiki-comment-filter-select">
-                            <option>Under. Major</option>
+                            <option>under. major</option>
                             <option>CS</option>
                             <option>Others</option>
                           </select>
@@ -391,38 +486,14 @@ class WikiPage extends Component {
                           </select>
                         </div>
                       </div>
-                      
                     </div>
                   </div>
 
                   <div className = 'wiki-comment-user'>
-                    <div className = 'wiki-comment-user-box'>
-                      <div className = 'wiki-comment-user-row'>
-                        <div className = 'wiki-comment-user-col-left'>
-                          <img className = 'user-pic' src={require('./images/user.png')}/>
-                        </div>
-                        <div className = 'wiki-comment-user-col-right'>
-                          <div className = 'wiki-comment-user-context'>
-                          How did you implement page table in the pintos project?
-                          </div>
-                        </div>
-                      
-                      </div>
-                      
-                    </div>
+                    { comment_list }
+ 
                     
-                    <div className = 'wiki-comment-user-box'>
-                    </div>
-                    <div className = 'wiki-comment-user-box'>
-                    </div>
                     
-                    <div className = 'wiki-comment-user-box'>
-                    </div>
-                    <div className = 'wiki-comment-user-box'>
-                    </div>
-                    
-                    <div className = 'wiki-comment-user-box'>
-                    </div>
                   
                   </div>
 
