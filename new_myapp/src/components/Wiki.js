@@ -361,14 +361,40 @@ class WikiPage extends Component {
                         </div>
                         <div className = 'wiki-comment-user-col-right'>
                           <div className = 'wiki-comment-user-context'>
-                          How did you implement page table in the pintos project?
+                          How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?
                           </div>
                         </div>
                       
                       </div>
                       
                     </div>
+
+
+                    <div className='wiki-reply-wrapper'>
+                      <div className = 'wiki-reply-tri-wrapper'>
+                        <div className = 'wiki-reply-tri'>
+                        </div>
+                      </div>
+                      <div className = 'wiki-reply-box'>
+                        <div className = 'wiki-reply-context'>
+                        How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className='wiki-reply-wrapper'>
+                      <div className = 'wiki-reply-tri-wrapper'>
+                        <div className = 'wiki-reply-tri'>
+                        </div>
+                      </div>
+                      <div className = 'wiki-reply-box'>
+                        <div className = 'wiki-reply-context'>
+                        How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?
+                        </div>
+                      </div>
+                    </div>
                     
+
                     <div className = 'wiki-comment-user-box'>
                     </div>
                     <div className = 'wiki-comment-user-box'>
