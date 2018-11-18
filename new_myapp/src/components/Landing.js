@@ -20,7 +20,7 @@ const LandingPage = () =>
 			To get started, click on the department that you are interested in.
 		</div>
 		<div className="major-list">
-			<Link to={routes.WIKI}><img className="major" src={require('./images/CS.png')}/></Link>
+			<Link to={routes.SIGN_IN}><img className="major" src={require('./images/CS.png')}/></Link>
 			<img className="major" src ={require('./images/EE.png')}/>
 			<img className="major" src ={require('./images/ME.png')}/>
 			<img className="major" src ={require('./images/AE.png')}/>

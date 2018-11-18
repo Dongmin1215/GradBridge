@@ -95,71 +95,15 @@ h1{
   margin-left: auto;
 }
 
-.sign-up-left{
-  background:rgb(217, 210, 232);
-  height: fit-content;
-  float: left;
-  width: 70%;
-}
-.sign-up-right{
+.Top-Title {
   background: rgb(217, 210, 232);
-  height: fit-content;
-  width: 30%;
-  float: right;
-}
-
-.user-info{
-  height: 80px;
-  margin-bottom: 28px;
-  display: flex;
-}
-.sign-up-category{
-  background-color :rgb(177, 167,210);
-  height: 45px;
-  width : 270px;
-  margin-left: 45px;
-  display: flex;
-  font-size: x-large;
-  border-radius: 15px;
-}
-
-.sign-up-category-right{
-  background-color :rgb(177, 167,210);
-  height: 45px;
-  width : 45px;
-  display: flex;
-  font-size: x-large;
-  border-radius: 15px;
-
-}
-#sign-up-type{
+  font-size: 60px;
+  color:black;
   text-align: center;
-  margin: auto;
-  font-size: smaller;
-}
-
-#sign-up-btn{
-  text-align: center;
-  margin: auto;
-  color: white;
-  font-size: 30px;
-}
-
-#sign-up-type-right{
-  text-align: center;
-  font-size: smaller;
-  margin: auto;
-}
-
-.sign-up-register:hover{
-  cursor: pointer;
-}
-
-.sign-up-selection{
-  margin-left:10px;
-  height: -webkit-fill-available;
-  font-size: larger;
-  width: 440px;
+  display:-webkit-box;
+  width:fit-content;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .login-box{
@@ -168,6 +112,11 @@ h1{
   width: 530px;
   margin: auto;
   height: 210px;
+}
+
+.login-item{
+  margin-bottom: 10px;
+  display: flex;
 }
 
 .login-left{
@@ -179,6 +128,22 @@ h1{
   float: right;
   width: 35%;
 }
+
+#login-type{
+  text-align: center;
+  margin: auto;
+  font-size: smaller;
+}
+
+.login-input{
+  margin-left:15px;
+  height: 50px;
+  width: 100%;
+  min-width: 250px;
+  font-size: large;
+  border-radius: 5px;
+}
+
 .login-category{
   background-color :rgb(177, 167,210);
   height: 45px;
@@ -199,7 +164,7 @@ h1{
   height: 110px;
   font-size: xx-large;
   border-radius: 15px;
-  display: -webkit-box;
+  display: block;
   float: right;
 }
 
@@ -224,92 +189,78 @@ h1{
   text-align: center;
 }
 
-.sign-up-row::after{
-  content: "";
-    display: table;
-    clear: both;
-}
-
-.Top-Title {
-  background: rgb(217, 210, 232);
-  font-size: 60px;
-  color:black;
+.sign-up-row{
+  background:rgb(217, 210, 232);
+  display: flex;
+  margin: auto;
+  margin-top: 25px;
+  width: 95%;
   text-align: center;
-  display:-webkit-box;
-  width:fit-content;
-  margin-right: auto;
-  margin-left: auto;
 }
 
 .sign-up-left{
-  background:rgb(217, 210, 232);
   height: fit-content;
   float: left;
-  width: 52%;
-}
-.sign-up-right{
-  background: rgb(217, 210, 232);
-  height: fit-content;
-  width: 48%;
-  float: right;
+  width: 50%;
 }
 
-.login-item{
-  margin-bottom: 10px;
-  display: flex;
+.sign-up-right{
+  height: fit-content;
+  width: 50%;
+  float: right;
 }
 
 .user-info{
   height: 80px;
-  margin-bottom: 28px;
+  margin-bottom: 5px;
   display: flex;
 }
+
 .sign-up-category{
   background-color :rgb(177, 167,210);
-  height: 45px;
-  width : 200px;
+  height: 50px;
+  width : 160px;
+  min-width: 50px;
   margin-left: 100px;
   display: flex;
-  font-size: x-large;
   border-radius: 15px;
 }
 
 .sign-up-category-right{
   background-color :rgb(177, 167,210);
-  height: 45px;
-  width : 270px;
+  height: 50px;
+  width : 160px;
+  min-width: 50px;
   display: flex;
-  font-size: xx-large;
   border-radius: 15px;
-
+  margin-left: 50px;
 }
 #sign-up-type{
   text-align: center;
   margin: auto;
-  font-size: smaller;
-}
-
-#sign-up-type-right{
-  text-align: center;
-  font-size: smaller;
-  margin: auto;
+  font-size: 18px;
 }
 
 .register-button{
   margin: auto;
-  padding-top:40px;
-  padding-bottom: 40px;
 }
+
+#sign-up-btn{
+  text-align: center;
+  margin: auto;
+  color: white;
+  font-size: 25px;
+}
+
 .sign-up-register{
   background-color: rgb(126, 110, 181);
   margin: auto;
-  width: 20%;
-  height: 80px;
-  font-size: xx-large;
+  width: 18%;
+  height: 75px;
   border-radius: 15px;
   display: -webkit-box;
-
 }
+
 .sign-up-register:hover{
   cursor: pointer;
 }
@@ -317,29 +268,30 @@ h1{
 .sign-up-input{
   margin-left:15px;
   height: 50px;
-  width: 100%;
+  width: 300px;
   min-width: 250px;
   font-size: large;
   border-radius: 5px;
 }
 
 .sign-up-selection{
-  margin-left:10px;
-  height: -webkit-fill-available;
+  margin-left:15px;
+  height: 50px;
   font-size: larger;
-  width: 440px;
+  width: 300px;
+  min-width: 250px;
 }
 
 .sign-up-question{
   text-align: center;
   font-weight: 500;
-  font-size: 50px;
+  font-size: 40px;
   color: #1a202b;
   padding-top: 80px;
 }
 
 .sign-up-types{
-  width: 50%;
+  width: 45%;
   margin: auto;
   padding-top: 100px;
   text-align: center;
@@ -364,6 +316,7 @@ h1{
 
 .find-pw-input{
   margin-left:15px;
+  margin-right:15px;
   margin-top: 5px;
   height: 50px;
   width: 100%;
@@ -401,37 +354,70 @@ h1{
   background: rgb(217, 210, 232);
 }
 
-.Top-Title {
-  background: rgb(217, 210, 232);
-  font-size: 60px;
-  color:black;
+.wiki-navbar-row{
+  background:rgb(217, 210, 232);
+  content: "";
+  clear: both;
+  display: flex;
+  width: 95%;
+  margin: auto;
+  padding: 10px;
+}
+
+.wiki-navbar-left{
+  width: 20%;
+}
+
+.wiki-navbar-middle{
+  width: auto;
+  margin: auto;
   text-align: center;
-  display:-webkit-box;
-  width:fit-content;
-  margin-right: auto;
-  margin-left: auto;
+}
+
+.wiki-navbar-right{
+  width: 20%;
 }
 
 .wiki-navbar-text{
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 28px;
-  margin-left: 15px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 2;
+  float: left;
 }
-.wiki-past-year{
+
+.wiki-other-year{
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 24px;
+  font-size: 18px;
   font-style: italic;
-  padding-right: 10px;
+  color: gray;
+  display: inline-block;
+}
+
+.wiki-year{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-style: italic;
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.wiki-arrow{
+  font-size: x-large;
+  display: inline-block;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .wiki-navbar-signin{
   background: rgb(217, 210, 232);
-  width: inherit;
+  float: right;
 }
 
 .wiki-signin{
   height: 40px;
-  width: 150px;
+  width: 120px;
   background: rgb(177, 167,210);
   border-radius: 15px;
 }
@@ -441,43 +427,12 @@ h1{
 }
 
 #wiki-signin-text{
-  font-size:23px;
-}
-
-.wiki-signin-wrapper{
-  float: right;
-}
-.wiki-navbar-row{
-  background:rgb(217, 210, 232);
-  content: "";
-  display: table;
-  clear: both;
-  display: flex;
-  width: inherit;
-  padding-bottom: 15px;
-}
-
-.wiki-navbar-left{
-  float: left;
-  margin-left: auto;
-  margin-right: auto;
-  display: -webkit-box;
-  
-}
-.wiki-arrow-left{
-  font-size: xx-large;
-}
-
-.wiki-navbar-right{
-  float: right;
-  width: 66%;
-  display: -webkit-box;
+  font-size: 20px;
 }
 
 .wiki-main{
   background: rgb(217, 210, 232);
   height:73.8%;
-
 }
 
 .wiki-main-row{
@@ -498,7 +453,7 @@ h1{
 
   /* Comment is on ; width : 65% */
   /* Comment is on : height : 100%*/
-  width: 100%;
+  width: 65%;
   height: 100%;
   
 }
@@ -513,24 +468,7 @@ h1{
 
 }
 
-.wiki-comment-col{
-  background: rgb(217, 210, 232);
-  float: right;
-  width: 35%;
-  height: 100%;
 
-  /* Comment is off : display : none /
-  /* Comment is on : display : -websit-box */
-  display: none;
-}
-
-.wiki-comment-wrapper{
-  background: rgb(204,204,204);
-  width: 95%;
-  border-radius:20px;
-  margin: auto;
-  border-radius: 20px;
-}
 
 .wiki-info-doc{
   padding: 23px;
@@ -562,3 +500,91 @@ h1{
 }
 
 
+.wiki-comment-col{
+  background: rgb(217, 210, 232);
+  float: right;
+  width: 35%;
+  height: 100%;
+
+  /* Comment is off : display : none /
+  /* Comment is on : display : -webkit-box */
+  display: -webkit-box;
+}
+
+.wiki-comment-wrapper{
+  background: rgb(204,204,204);
+  width: 95%;
+  height: 100%;
+  border-radius:20px;
+  margin: auto;
+  border-radius: 20px;
+  overflow-y: scroll;
+}
+
+.wiki-comment-filter{
+  height:8%;
+}
+
+.wiki-comment-filter-row::after{
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.wiki-comment-filter-col{
+
+  float: left;
+  width: 33.33%;
+  height:-webkit-fill-available;
+}
+
+.wiki-comment-filter-wrapper{
+  padding: 5px;
+  margin-top:3px;
+}
+
+
+.wiki-comment-filter-select{
+  height: 40px;
+  width: -webkit-fill-available;
+  font-size: inherit;
+}
+
+.wiki-comment-user{
+  height: 92%;
+}
+
+.wiki-comment-user-box{
+  margin : 15px;
+  background: rgb(204, 218,245);
+  height: 120px;
+}
+
+
+.wiki-comment-user-row::after{
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.wiki-comment-user-col-left{
+  float: left;
+  width: 10%;
+  height:-webkit-fill-available;
+}
+
+.wiki-comment-user-col-right{
+  float: right;
+  width: 90%;
+  height:-webkit-fill-available;
+  font-size: x-large;
+  padding-left: 10px;
+  padding-top: 10px;
+  overflow: scroll;
+}
+
+.user-pic{
+  width: 35px;
+  margin-left: 5px;
+  margin-top: 15px;
+}

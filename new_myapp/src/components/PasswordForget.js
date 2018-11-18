@@ -69,7 +69,7 @@ class PasswordForgetForm extends Component {
               value={email}
               onChange={event => this.setState(byPropKey('email', event.target.value))}
               type="text"
-              placeholder="Email Address"
+              placeholder="email address"
             />
           </div>
           <div className='login-right'>
