@@ -32,7 +32,6 @@ const WikiPage = () =>
             <div className='wiki-other-year'>2019 Fall</div>
           </div>
           <div className='wiki-navbar-right'>
-            <div className='wiki-navbar-text' id = 'wiki-year'>2019 Spring</div>
             <div className='wiki-navbar-signin'>
               <Link to={routes.LANDING}>
                 <button className='wiki-signin'>

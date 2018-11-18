@@ -103,7 +103,7 @@ class SignInForm extends Component {
             </div>
           </div>
         
-          <div className = "login-right">>
+          <div className = "login-right">
             <button className = "login-button" disabled={isInvalid} type="submit">
               <div id = "login-btn">LOG IN</div>
             </button>
