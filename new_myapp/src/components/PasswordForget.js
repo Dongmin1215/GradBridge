@@ -5,8 +5,10 @@ import { auth } from '../firebase';
 import * as routes from '../constants/routes';
 
 const PasswordForgetPage = () =>
-  <div>
-    <h1>PasswordForget</h1>
+  <div className="sign-up-page">
+    <div className='sign-up-question'>
+    Do you want to reset your password?
+    </div>
     <PasswordForgetForm />
   </div>
 
@@ -55,20 +57,22 @@ class PasswordForgetForm extends Component {
     const isInvalid = email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          value={this.state.email}
-          onChange={event => this.setState(byPropKey('email', event.target.value))}
-          type="text"
-          placeholder="Email Address"
-        />
-        <button disabled={isInvalid} type="submit">
-          Reset My Password
-        </button>
+      <div className='sign-up-types'>
+        <form onSubmit={this.onSubmit}>
+          <input className = ""
+            value={this.state.email}
+            onChange={event => this.setState(byPropKey('email', event.target.value))}
+            type="text"
+            placeholder="Email Address"
+          />
+          <button disabled={isInvalid} type="submit" className='sign-up-ans'>
+            Reset My Password
+          </button>
 
-        { success && <p>success</p>}
-        { error && <p>{error.message}</p> }
-      </form>
+          { success && <p>success</p>}
+          { error && <p>{error.message}</p> }
+        </form>
+      </div>
     );
   }
 }

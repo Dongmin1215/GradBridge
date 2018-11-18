@@ -24,11 +24,17 @@ h1{
   margin-top:80px;
 }
 #logo{
-  width:200px;
-  margin-left: 43px;
-  margin-right: 10px;
+  width:35%;
+  margin: auto;
   padding-top:50px;
 }
+
+#top-logo{
+  width:20%;
+  margin: auto;
+  padding-top: 25px;
+}
+
 .Major{
   background: rgb(217, 210, 232);
 
@@ -84,22 +90,11 @@ h1{
 * {
   box-sizing: border-box;
 }
-.Top{
+.top{
   background: rgb(217, 210, 232);
 }
 
-#top-logo{
-  width:70px;
-  margin-left: 43px;
-  margin-right: 10px;
-  padding-top:25px;
-}
-
-.log-in-box{
-  padding-top: 120px;
-}
-
-.Top-Title {
+.top-title {
   background: rgb(217, 210, 232);
   font-size: 30px;
   color:black;
@@ -110,7 +105,7 @@ h1{
   margin-left: auto;
 }
 
-.Sign-up-left{
+.sign-up-left{
   background:rgb(217, 210, 232);
   height: fit-content;
   float: left;
@@ -128,19 +123,171 @@ h1{
   margin-bottom: 28px;
   display: flex;
 }
-.Sing-up-category{
+.sign-up-category{
   background-color :rgb(177, 167,210);
-  height: -webkit-fill-available;
+  height: 45px;
   width : 270px;
-  margin-left: 100px;
+  margin-left: 45px;
   display: flex;
-  font-size: xx-large;
+  font-size: x-large;
   border-radius: 15px;
 }
 
 .sign-up-category-right{
   background-color :rgb(177, 167,210);
+  height: 45px;
+  width : 45px;
+  display: flex;
+  font-size: x-large;
+  border-radius: 15px;
+
+}
+#sign-up-type{
+  text-align: center;
+  margin: auto;
+  font-size: smaller;
+}
+
+#sign-up-btn{
+  text-align: center;
+  margin: auto;
+  color: white;
+  font-size: 30px;
+}
+
+#sign-up-type-right{
+  text-align: center;
+  font-size: smaller;
+  margin: auto;
+}
+
+.sign-up-register:hover{
+  cursor: pointer;
+}
+
+.sign-up-selection{
+  margin-left:10px;
   height: -webkit-fill-available;
+  font-size: larger;
+  width: 440px;
+}
+
+.login-box{
+  margin-top: 100px;
+  padding-top: 50px;
+  width: 530px;
+  margin: auto;
+  height: 250px;
+}
+
+.login-left{
+  float: left;
+  width: 65%;
+}
+
+.login-right{
+  float: right;
+  width: 35%;
+}
+.login-category{
+  background-color :rgb(177, 167,210);
+  height: 45px;
+  min-width: 100px;
+  width : 25%;
+  display: flex;
+  font-size: x-large;
+  border-radius: 15px;
+}
+
+.login-button:hover{
+  cursor: pointer;
+}
+
+.login-button{
+  background-color: rgb(126, 110, 181);
+  width: 120px;
+  height: 110px;
+  font-size: xx-large;
+  border-radius: 15px;
+  display: -webkit-box;
+  float: right;
+}
+
+#login-btn{
+  text-align: center;
+  margin: auto;
+  color: white;
+  font-size: 20px;
+}
+
+.login-btn:hover{
+  cursor: pointer;
+}
+
+.login-findpwd{
+  margin: auto;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.login-signup{
+  margin: auto;
+  text-align: center;
+}
+
+.sign-up-row::after{
+  content: "";
+    display: table;
+    clear: both;
+}
+
+.Top-Title {
+  background: rgb(217, 210, 232);
+  font-size: 60px;
+  color:black;
+  text-align: center;
+  display:-webkit-box;
+  width:fit-content;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.sign-up-left{
+  background:rgb(217, 210, 232);
+  height: fit-content;
+  float: left;
+  width: 52%;
+}
+.sign-up-right{
+  background: rgb(217, 210, 232);
+  height: fit-content;
+  width: 48%;
+  float: right;
+}
+
+.login-item{
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.user-info{
+  height: 80px;
+  margin-bottom: 28px;
+  display: flex;
+}
+.sign-up-category{
+  background-color :rgb(177, 167,210);
+  height: 45px;
+  width : 200px;
+  margin-left: 100px;
+  display: flex;
+  font-size: x-large;
+  border-radius: 15px;
+}
+
+.sign-up-category-right{
+  background-color :rgb(177, 167,210);
+  height: 45px;
   width : 270px;
   display: flex;
   font-size: xx-large;
@@ -159,11 +306,16 @@ h1{
   margin: auto;
 }
 
-.sign-up-login{
+.register-button{
+  margin: auto;
+  padding-top:40px;
+  padding-bottom: 40px;
+}
+.sign-up-register{
   background-color: rgb(126, 110, 181);
-  margin-right: 120px;
-  width: 40%;
-  height: 120px;
+  margin: auto;
+  width: 20%;
+  height: 80px;
   font-size: xx-large;
   border-radius: 15px;
   display: -webkit-box;
@@ -174,11 +326,12 @@ h1{
 }
 
 .sign-up-input{
-  margin-left:10px;
-  height: -webkit-fill-available;
-  width: 480px;
-  font-size: x-large;
-  border-radius: 3px;
+  margin-left:15px;
+  height: 50px;
+  width: 100%;
+  min-width: 250px;
+  font-size: large;
+  border-radius: 5px;
 }
 
 .sign-up-selection{
@@ -188,34 +341,38 @@ h1{
   width: 440px;
 }
 
-.login-button{
-  margin: auto;
-  padding-top:40px;
-  padding-bottom: 40px;
-}
-
-#login-btn{
+.sign-up-question{
   text-align: center;
-  margin: auto;
-  color: white;
-  font-size: 20px;
+  font-weight: bold;
+  font-size: 50px;
+  color: #1a202b;
+  padding-top: 80px;
 }
 
-#login-btn:hover{
+.sign-up-types{
+  width: 50%;
+  margin: auto;
+  padding-top: 100px;
+  text-align: center;
+}
+
+.sign-up-ans{
+  display: inline-block;
+  width: 40%;
+  height: 100px;
+  font-size: 30px;
+  background-color: rgb(126, 110, 181);
+  color: white;
+  border-radius: 15px;
+  padding: 10px; 
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.sign-up-ans:hover{
   cursor: pointer;
 }
 
-
-.login-findpwd{
-  padding-top: 200px;
-  margin: auto;
-  text-align: center;
-}
-
-.login-signup{
-  margin: auto;
-  text-align: center;
-}
 
 .wiki{
   height:100vh;
@@ -255,6 +412,10 @@ h1{
   width: 150px;
   background: rgb(177, 167,210);
   border-radius: 15px;
+}
+
+.wiki-signin:hover{
+  cursor: pointer;
 }
 
 #wiki-signin-text{
@@ -346,4 +507,3 @@ h1{
   margin: auto;
   border-radius: 20px;
 }
-

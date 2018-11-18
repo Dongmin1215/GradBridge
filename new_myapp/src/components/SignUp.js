@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import {
-    Link,
-    withRouter,
-} from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { auth, db } from '../firebase';
 import * as routes from '../constants/routes';
 
 const SignUpPage = () =>
-    <ul>
-        <li>Have you applied to graduate school before?</li>
-        <li><Link to={routes.SIGN_UP_EDITOR}>Yes</Link></li>
-        <li><Link to={routes.SIGN_UP_VISITOR}>No</Link></li>
-    </ul>
+    <div className="sign-up-page">
+        <div className='sign-up-question'>
+        Have you applied to graduate school before?
+        </div>
+        <div className='sign-up-types'>
+        <Link to={routes.SIGN_UP_EDITOR}><button className='sign-up-ans'> Yes </button></Link>
+        <Link to={routes.SIGN_UP_VISITOR}><button className='sign-up-ans'> No </button></Link>
+        </div>
+    </div>
 
 const SignUpLink = () =>
     <div className="login-signup">
