@@ -6,8 +6,13 @@ import * as routes from '../constants/routes';
 
 const PasswordForgetPage = () =>
   <div className="sign-up-page">
+    <div className="Title">
+			<Link to={routes.LANDING}>
+				<img id="top-logo" src={require('./images/logo.png')}/>
+			</Link>
+		</div>
     <div className='sign-up-question'>
-    Do you want to reset your password?
+    Type your email address please.
     </div>
     <PasswordForgetForm />
   </div>
@@ -57,17 +62,21 @@ class PasswordForgetForm extends Component {
     const isInvalid = email === '';
 
     return (
-      <div className='sign-up-types'>
+      <div className='find-pw-types'>
         <form onSubmit={this.onSubmit}>
-          <input className = ""
-            value={this.state.email}
-            onChange={event => this.setState(byPropKey('email', event.target.value))}
-            type="text"
-            placeholder="Email Address"
-          />
-          <button disabled={isInvalid} type="submit" className='sign-up-ans'>
-            Reset My Password
-          </button>
+          <div className='login-left'>
+            <input className ="find-pw-input"
+              value={email}
+              onChange={event => this.setState(byPropKey('email', event.target.value))}
+              type="text"
+              placeholder="Email Address"
+            />
+          </div>
+          <div className='login-right'>
+            <button disabled={isInvalid} type="submit" className='find-pw-ans'>
+              Reset Password
+            </button>
+          </div>
 
           { success && <p>success</p>}
           { error && <p>{error.message}</p> }

@@ -5,6 +5,11 @@ import * as routes from '../constants/routes';
 
 const SignUpPage = () =>
     <div className="sign-up-page">
+        <div className="Title">
+			<Link to={routes.LANDING}>
+				<img id="top-logo" src={require('./images/logo.png')}/>
+			</Link>
+		</div>
         <div className='sign-up-question'>
         Have you applied to graduate school before?
         </div>

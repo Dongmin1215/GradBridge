@@ -4,7 +4,6 @@
 
 }
 .Title {
-  background: rgb(217, 210, 232);
   font-size: 60px;
   color:black;
   text-align: center;
@@ -35,51 +34,42 @@ h1{
   padding-top: 25px;
 }
 
-.Major{
-  background: rgb(217, 210, 232);
-
-}
 .TeamName{
   text-align: center;
 }
 
-.Text{
-  border: 1px solid grey;
-  margin-left: 180px;
-  margin-right:180px;
-  background:rgb(217, 210, 232);
+.text{
+  border: 1.5px dashed grey;
+  margin: auto;
   color: black;
   text-align: center;
-  padding: 25px;
-  font-size: 32px;
-
+  padding: 20px;
+  font-size: 22px;
+  line-height: 1.4;
+  border-radius: 10px;
+  width: 70%;
 }
 
-#CS{
-  width:200px;
-  margin-top:50px;
-  margin-left:330px;
+.major-list{
+  background: rgb(217, 210, 232);
+  margin: auto;
+  width: 80%;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 30px;
 }
 
-#CS:hover{
+.major{
+  width: 200px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#major:hover{
   cursor: pointer;
-}
-
-#EE{
-  width:200px;
-  margin-top:50px;
-  margin-left: 80px;
-}
-#ME{
-  width:200px;
-  margin-top:50px;
-  margin-left: 80px;
-}
-
-#AE{
-  width:200px;
-  margin-top:50px;
-  margin-left: 80px;
 }
 
 .sign-up-page{
@@ -177,7 +167,7 @@ h1{
   padding-top: 50px;
   width: 530px;
   margin: auto;
-  height: 250px;
+  height: 210px;
 }
 
 .login-left{
@@ -226,7 +216,6 @@ h1{
 
 .login-findpwd{
   margin: auto;
-  margin-top: 20px;
   text-align: center;
 }
 
@@ -343,7 +332,7 @@ h1{
 
 .sign-up-question{
   text-align: center;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 50px;
   color: #1a202b;
   padding-top: 80px;
@@ -373,6 +362,39 @@ h1{
   cursor: pointer;
 }
 
+.find-pw-input{
+  margin-left:15px;
+  margin-top: 5px;
+  height: 50px;
+  width: 100%;
+  min-width: 250px;
+  font-size: large;
+  border-radius: 5px;
+}
+
+.find-pw-types{
+  width: 40%;
+  margin: auto;
+  padding-top: 100px;
+  text-align: center;
+}
+
+.find-pw-ans{
+  display: inline-block;
+  width: 60%;
+  height: 60px;
+  font-size: 17px;
+  background-color: rgb(126, 110, 181);
+  color: white;
+  border-radius: 15px;
+  margin-left: 0px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.find-pw-ans:hover{
+  cursor: pointer;
+}
 
 .wiki{
   height:100vh;
