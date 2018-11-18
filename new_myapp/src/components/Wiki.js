@@ -449,18 +449,7 @@ class WikiPage extends Component {
                     { comment_list }
  
                     
-                    <div className = 'wiki-comment-user-box'>
-                    </div>
-                    <div className = 'wiki-comment-user-box'>
-                    </div>
                     
-                    <div className = 'wiki-comment-user-box'>
-                    </div>
-                    <div className = 'wiki-comment-user-box'>
-                    </div>
-                    
-                    <div className = 'wiki-comment-user-box'>
-                    </div>
                   
                   </div>
 
