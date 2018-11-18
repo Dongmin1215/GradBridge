@@ -239,18 +239,37 @@ class WikiPage extends Component {
 
     if (this.state.comment_que != 'none') {
       var comment_list = comments.map(function(com){
-        return <div className = 'wiki-comment-user-box'>
-        <div className = 'wiki-comment-user-row'>
-          <div className = 'wiki-comment-user-col-left'>
-            <img className = 'user-pic' src={require('./images/user.png')}/>
-          </div>
-          <div className = 'wiki-comment-user-col-right'>
-            <div className = 'wiki-comment-user-context'>
-            {com.text}
+        return <div className = 'wiki-comment-and-reply'>
+          <div className = 'wiki-comment-user-box'>
+            <div className = 'wiki-comment-user-row'>
+              <div className = 'wiki-comment-user-col-left'>
+                <img className = 'user-pic' src={require('./images/user.png')}/>
+              </div>
+              <div className = 'wiki-comment-user-col-right'>
+                <div className = 'wiki-comment-user-context'>
+                {com.text}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>;
+
+          <div className='wiki-reply-wrapper'>
+            <div className = 'wiki-reply-tri-wrapper'>
+              <div className = 'wiki-reply-tri'>
+              </div>
+            </div>
+            <div className = 'wiki-reply-box'>
+              <div className = 'wiki-reply-context'>
+              How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?
+              </div>
+            </div>
+          </div>
+
+          
+
+
+
+        </div>;
       }, this);
     }
 
@@ -428,31 +447,8 @@ class WikiPage extends Component {
 
                   <div className = 'wiki-comment-user'>
                     { comment_list }
-
-                    <div className='wiki-reply-wrapper'>
-                      <div className = 'wiki-reply-tri-wrapper'>
-                        <div className = 'wiki-reply-tri'>
-                        </div>
-                      </div>
-                      <div className = 'wiki-reply-box'>
-                        <div className = 'wiki-reply-context'>
-                        How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className='wiki-reply-wrapper'>
-                      <div className = 'wiki-reply-tri-wrapper'>
-                        <div className = 'wiki-reply-tri'>
-                        </div>
-                      </div>
-                      <div className = 'wiki-reply-box'>
-                        <div className = 'wiki-reply-context'>
-                        How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?
-                        </div>
-                      </div>
-                    </div>                    
-
+ 
+                    
                     <div className = 'wiki-comment-user-box'>
                     </div>
                     <div className = 'wiki-comment-user-box'>

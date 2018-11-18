@@ -455,7 +455,7 @@ h1{
 
   /* Comment is on ; width : 65% */
   /* Comment is on : height : 100%*/
-  width: 100%;
+  width: 65%;
   height: 100%;
   
 }
@@ -494,8 +494,8 @@ h1{
 }
 
 
-.wiki-info-qid{
-
+.wiki-info-qid:hover{
+  cursor: pointer;
 }
 
 
@@ -507,7 +507,7 @@ h1{
 
   /* Comment is off : display : none /
   /* Comment is on : display : -webkit-box */
-  display: none;
+  display: -webkit-box;
 }
 
 .wiki-comment-wrapper{
@@ -634,3 +634,4 @@ h1{
   border-left: 10px solid transparent;
   float: right;
 }
+
