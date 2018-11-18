@@ -4,7 +4,7 @@ import { db } from './firebase';
 
 export const doCreateEditor = (id, email, admission_year, applied_dept, under_uni, under_major, gpa) =>
   db.ref(`users/${id}`).set({
-  	email,
+  	    email,
 		admission_year,
 		applied_dept,
 		under_uni,
