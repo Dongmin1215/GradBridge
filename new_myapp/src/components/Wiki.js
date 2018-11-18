@@ -192,7 +192,7 @@ class WikiPage extends Component {
 
           <div className="wiki-navbar-row">
             <div className='wiki-navbar-left'>
-              <div className='wiki-navbar-text'>Computer Science</div>
+              <div className='wiki-navbar-text'>Dept: Computer Science</div>
             </div>
             <div className='wiki-navbar-middle'>
               <div className='wiki-other-year'>2018 Fall</div>
@@ -320,7 +320,7 @@ class WikiPage extends Component {
                       <div className ='wiki-comment-filter-col'>
                         <div className = 'wiki-comment-filter-wrapper'>
                             <select className = "wiki-comment-filter-select">
-                              <option>University</option>
+                              <option>under. univeristy</option>
                               <option>KAIST</option>
                               <option>Others</option>
                             </select>
@@ -330,7 +330,7 @@ class WikiPage extends Component {
                       <div className ='wiki-comment-filter-col'>
                         <div className = 'wiki-comment-filter-wrapper'>
                           <select className = "wiki-comment-filter-select">
-                            <option>Under. Major</option>
+                            <option>under. major</option>
                             <option>CS</option>
                             <option>Others</option>
                           </select>
