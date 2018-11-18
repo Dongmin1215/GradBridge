@@ -4,14 +4,13 @@ import * as routes from '../constants/routes';
 import './App.css';
 
 const LandingPage = () =>
-	<div className="Initial">
-			
+	<div className="Initial">	
 		<div className="Title">
 			<Link to={routes.LANDING}>
 				<img id="logo" src={require('./images/logo.png')}/>
 			</Link>
 		</div>
-		<div className="Text">
+		<div className="text">
 			Welcome! <br></br>
 			GradBridge provides information related to admission of KAIST graduate school.
 			<br></br>
@@ -19,12 +18,12 @@ const LandingPage = () =>
 			<br></br>
 			<br></br>
 			To get started, click on the department that you are interested in.
-			</div>
-			<div className="Major">
-			<Link to={routes.WIKI}><img id="CS" src={require('./images/CS.png')}/></Link>
-			<img id="EE" src ={require('./images/EE.png')}/>
-			<img id="ME" src ={require('./images/ME.png')}/>
-			<img id="AE" src ={require('./images/AE.png')}/>
+		</div>
+		<div className="major-list">
+			<Link to={routes.WIKI}><img className="major" src={require('./images/CS.png')}/></Link>
+			<img className="major" src ={require('./images/EE.png')}/>
+			<img className="major" src ={require('./images/ME.png')}/>
+			<img className="major" src ={require('./images/AE.png')}/>
 		</div>
 	</div>
 
