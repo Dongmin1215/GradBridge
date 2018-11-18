@@ -144,12 +144,13 @@ const WikiPage = () =>
             <div className='wiki-comment-col'>
               <div className='wiki-comment-wrapper'>
                 <div className = 'wiki-comment-filter'>
+
                   <div className='wiki-comment-filter-row'>
 
                     <div className ='wiki-comment-filter-col'>
                       <div className = 'wiki-comment-filter-wrapper'>
                           <select className = "wiki-comment-filter-select">
-                            <option disabled selected>University</option>
+                            <option>University</option>
                             <option>KAIST</option>
                             <option>Others</option>
                           </select>
@@ -159,7 +160,7 @@ const WikiPage = () =>
                     <div className ='wiki-comment-filter-col'>
                       <div className = 'wiki-comment-filter-wrapper'>
                         <select className = "wiki-comment-filter-select">
-                          <option disabled selected>Under. Major</option>
+                          <option>Under. Major</option>
                           <option>CS</option>
                           <option>Others</option>
                         </select>
@@ -169,7 +170,7 @@ const WikiPage = () =>
                     <div className ='wiki-comment-filter-col'>
                       <div className = 'wiki-comment-filter-wrapper'>
                         <select className = "wiki-comment-filter-select">
-                          <option disabled selected>GPA</option>
+                          <option>GPA</option>
                           <option>0.0 ~ 2.5</option>
                           <option>2.5 ~ 3.0</option>
                           <option>3.0 ~ 3.5</option>
@@ -180,9 +181,40 @@ const WikiPage = () =>
                     </div>
                     
                   </div>
-                
+                </div>
+
+                <div className = 'wiki-comment-user'>
+                  <div className = 'wiki-comment-user-box'>
+                    <div className = 'wiki-comment-user-row'>
+                      <div className = 'wiki-comment-user-col-left'>
+                        <img className = 'user-pic' src={require('./images/user.png')}/>
+                      </div>
+                      <div className = 'wiki-comment-user-col-right'>
+                        <div className = 'wiki-comment-user-context'>
+                        How did you implement page table in the pintos project?
+                        </div>
+                      </div>
+                    
+                    </div>
+                    
+                  </div>
+                  
+                  <div className = 'wiki-comment-user-box'>
+                  </div>
+                  <div className = 'wiki-comment-user-box'>
+                  </div>
+                  
+                  <div className = 'wiki-comment-user-box'>
+                  </div>
+                  <div className = 'wiki-comment-user-box'>
+                  </div>
+                  
+                  <div className = 'wiki-comment-user-box'>
+                  </div>
                 
                 </div>
+
+
               </div>
             
             </div>
