@@ -77,27 +77,27 @@ class SignInForm extends Component {
           <div className = "login-left">
             <div className = "login-item">
               <div className = "login-category"> 
-                <div id = "sign-up-type">Email</div>
+                <div id = "login-type">Email</div>
               </div>
               <div>
-                <input className ="sign-up-input"
+                <input className ="login-input"
                   value={email}
                   onChange={event => this.setState(byPropKey('email', event.target.value))}
                   type="text"
-                  placeholder="Email Address"
+                  placeholder="email address"
                 />
               </div>
             </div>
             <div className = "login-item">
               <div className = "login-category">
-                <div id = "sign-up-type">Password</div>
+                <div id = "login-type">Password</div>
               </div>
               <div>
-                <input className ="sign-up-input"
+                <input className ="login-input"
                   value={password}
                   onChange={event => this.setState(byPropKey('password', event.target.value))}
                   type="password"
-                  placeholder="Password"
+                  placeholder="password"
                 />
               </div>
             </div>
