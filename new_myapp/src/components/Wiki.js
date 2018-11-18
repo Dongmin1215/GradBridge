@@ -7,6 +7,9 @@ import { db } from '../firebase';
 
 
 const INITIAL_STATE = {
+  current : '19s',
+  prev: '18f',
+  next: '19f',
   intros : [],
   extras : [],
   progs : [],
@@ -21,9 +24,18 @@ class WikiPage extends Component {
     super(props);
 
     this.state = { ...INITIAL_STATE };
+    this.changeState = this.changeState.bind(this);
+    this.changeNext = this.changeNext.bind(this);
+    this.changePrev = this.changePrev.bind(this);
   }
 
   componentDidMount(){
+    this.changeState();
+  }
+
+  changeState(){
+    console.log("changestate");
+    console.log(this.state.current);
     const intros = []
     const extras = []
     const progs = []
@@ -31,13 +43,13 @@ class WikiPage extends Component {
     const room1s = []
     const room2s = []
     const room3s = []
-    var introduction = db.getIntroduction('19s');
-    var extracurricular = db.getExtracurricular('19s');
-    var programming = db.getProgramming('19s');
-    var waiting = db.getWaiting('19s');
-    var room1 = db.getRoom1('19s');
-    var room2 = db.getRoom2('19s');
-    var room3 = db.getRoom3('19s');
+    var introduction = db.getIntroduction(this.state.current);
+    var extracurricular = db.getExtracurricular(this.state.current);
+    var programming = db.getProgramming(this.state.current);
+    var waiting = db.getWaiting(this.state.current);
+    var room1 = db.getRoom1(this.state.current);
+    var room2 = db.getRoom2(this.state.current);
+    var room3 = db.getRoom3(this.state.current);
     var that = this;
     introduction.once("value").then(function(snapshot) {
       snapshot.forEach(function(child) {
@@ -139,6 +151,38 @@ class WikiPage extends Component {
     });
   }
 
+  changeNext() {
+    if (this.state.next.endsWith("f")) {
+      var next = Number(this.state.next.slice(0,2));
+      next = String(next + 1) + "s"; 
+    } else {
+      var next = this.state.next.replace("s", "f");
+    }
+    this.setState({
+      prev: this.state.current,
+      current : this.state.next,
+      next: next,
+    }, () => {
+      this.changeState();
+    });
+  }
+
+  changePrev() {
+    if (this.state.prev.endsWith("s")) {
+      var prev = Number(this.state.prev.slice(0,2));
+      prev = String(prev - 1) + "f"; 
+    } else {
+      var prev = this.state.prev.replace("f", "s");
+    }
+    this.setState({
+      prev: prev,
+      current : this.state.prev,
+      next: this.state.current
+    }, () => {
+      this.changeState();
+    });
+  }
+
   render() {
     const {
       intros,
@@ -149,8 +193,6 @@ class WikiPage extends Component {
       room2s,
       room3s,
     } = this.state;
-
-    console.log(intros);
     
     var intro_questions = intros.map(function(que){
         return <li>{que.text}</li>;
@@ -195,15 +237,15 @@ class WikiPage extends Component {
               <div className='wiki-navbar-text'>Computer Science</div>
             </div>
             <div className='wiki-navbar-middle'>
-              <div className='wiki-other-year'>2018 Fall</div>
+              <div className='wiki-other-year' onClick={this.changePrev}>{this.state.prev}</div>
               <div className= 'wiki-arrow'>
                   <i className="fa fa-angle-double-left"></i>
               </div>
-              <div className='wiki-year'>2019 Spring</div>
+              <div className='wiki-year'>{this.state.current}</div>
               <div className= 'wiki-arrow'>
                     <i className="fa fa-angle-double-right"></i>
               </div>
-              <div className='wiki-other-year'>2019 Fall</div>
+              <div className='wiki-other-year' onClick={this.changeNext}>{this.state.next}</div>
             </div>
             <div className='wiki-navbar-right'>
               <div className='wiki-navbar-signin'>
