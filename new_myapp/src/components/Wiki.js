@@ -4,7 +4,7 @@ import * as routes from '../constants/routes';
 import 'font-awesome/css/font-awesome.min.css';
 import './App.css';
 import { db } from '../firebase';
-
+import SignOutButton from './SignOut';
 
 const INITIAL_STATE = {
   current : '19s',
@@ -251,7 +251,7 @@ class WikiPage extends Component {
               <div className='wiki-navbar-signin'>
                 <Link to={routes.LANDING}>
                   <button className='wiki-signin'>
-                    <div id='wiki-signin-text'>Log out</div>
+                    <SignOutButton />
                   </button>
                 </Link>
               </div>

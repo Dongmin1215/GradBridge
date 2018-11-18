@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import * as routes from '../constants/routes';
+import AuthUserContext from './AuthUserContext';
 import './App.css';
+import withAuthentication from './withAuthentication';
 
-const LandingPage = ({ authUser }) =>
+const LandingPage = () =>
 	<div className="Initial">	
 		<div className="Title">
 			<Link to={routes.LANDING}>
@@ -20,14 +22,22 @@ const LandingPage = ({ authUser }) =>
 			To get started, click on the department that you are interested in.
 		</div>
 		<div className="major-list">
-			{authUser
-      			? <Link to={routes.WIKI}><img className="major" src={require('./images/CS.png')}/></Link>
-      			: <Link to={routes.SIGN_IN}><img className="major" src={require('./images/CS.png')}/></Link>
-    		}
+			<AuthUserContext.Consumer>
+			 	{authUser => authUser
+	  				? <LinkAuth />
+	  				: <LinkNonAuth />
+				}
+    		</AuthUserContext.Consumer>
 			<img className="major" src ={require('./images/EE.png')}/>
 			<img className="major" src ={require('./images/ME.png')}/>
 			<img className="major" src ={require('./images/AE.png')}/>
 		</div>
 	</div>
 
-export default LandingPage;
+const LinkAuth = () =>
+	<Link to={routes.WIKI}><img className="major" src={require('./images/CS.png')}/></Link>
+
+const LinkNonAuth = () =>
+	<Link to={routes.SIGN_IN}><img className="major" src={require('./images/CS.png')}/></Link>
+
+export default withAuthentication(LandingPage);
