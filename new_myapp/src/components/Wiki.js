@@ -538,8 +538,8 @@ class WikiPage extends Component {
                           </ul>
                         </div>
                         { topic_input[1] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text'></input>
-                          <button className = 'wiki-info-submit' type="submit">
+                          <input className = 'wiki-info-inputbox'type = 'text' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Document/Extracurricular"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
@@ -563,8 +563,8 @@ class WikiPage extends Component {
                           </ul>
                         </div>
                         { topic_input[2] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text'></input>
-                          <button className = 'wiki-info-submit' type="submit">
+                          <input className = 'wiki-info-inputbox'type = 'text' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Programming"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
@@ -582,8 +582,8 @@ class WikiPage extends Component {
                           </ul>
                         </div>
                         { topic_input[3] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text'></input>
-                          <button className = 'wiki-info-submit' type="submit">
+                          <input className = 'wiki-info-inputbox'type = 'text' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Waiting"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
@@ -601,8 +601,8 @@ class WikiPage extends Component {
                           </ul>
                         </div>
                         { topic_input[4] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text'></input>
-                          <button className = 'wiki-info-submit' type="submit">
+                          <input className = 'wiki-info-inputbox'type = 'text' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Room1"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
@@ -620,8 +620,8 @@ class WikiPage extends Component {
                           </ul>
                         </div>
                         { topic_input[5] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text'></input>
-                          <button className = 'wiki-info-submit' type="submit">
+                          <input className = 'wiki-info-inputbox'type = 'text' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Room2"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
@@ -639,8 +639,8 @@ class WikiPage extends Component {
                           </ul>
                         </div>
                         { topic_input[6] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text'></input>
-                          <button className = 'wiki-info-submit' type="submit">
+                          <input className = 'wiki-info-inputbox'type = 'text' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Room3"))}>
                            <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
