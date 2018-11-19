@@ -36,8 +36,6 @@ class WikiPage extends Component {
   }
 
   changeState(){
-    console.log("changestate");
-    console.log(this.state.current);
     const intros = []
     const extras = []
     const progs = []
@@ -286,7 +284,7 @@ class WikiPage extends Component {
         return <div className = 'wiki-comment-and-reply'>
           <div className = 'wiki-comment-user-box'>
             <div className = 'wiki-comment-user-row'>
-              <div className = 'wiki-comment-user-col-left'>
+              <div className = 'wiki-comment-user-col-left' onClick={this.showProfile(com.uid)}>
                 <img className = 'user-pic' src={require('./images/user.png')}/>
               </div>
               <div className = 'wiki-comment-user-col-right'>
@@ -296,7 +294,6 @@ class WikiPage extends Component {
               </div>
             </div>
           </div>
-
           <div className='wiki-reply-wrapper'>
             <div className = 'wiki-reply-tri-wrapper'>
               <div className = 'wiki-reply-tri'>
@@ -308,11 +305,6 @@ class WikiPage extends Component {
               </div>
             </div>
           </div>
-
-          
-
-
-
         </div>;
       }, this);
     }
@@ -326,7 +318,6 @@ class WikiPage extends Component {
                 </Link>
             </div>
           </div>
-
           <div className="wiki-navbar-row">
             <div className='wiki-navbar-left'>
               <div className='wiki-navbar-text'>Dept: Computer Science</div>
@@ -491,15 +482,8 @@ class WikiPage extends Component {
 
                   <div className = 'wiki-comment-user'>
                     { comment_list }
- 
-                    
-                    
-                  
                   </div>
-
-
                 </div>
-              
               </div>
             </div>
           </div>
