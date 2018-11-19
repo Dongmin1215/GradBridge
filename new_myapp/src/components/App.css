@@ -500,6 +500,9 @@ h1{
   font-size: 18px;
 
 }
+.wiki-info-item{
+  display: -webkit-box;
+}
 
 
 .wiki-info-item:hover{
@@ -788,4 +791,31 @@ h1{
 
 .wiki-info-submit{
   margin-left: 20px;
+}
+
+.agree{
+  width: 20px;
+  margin-left: 16px;
+  padding-top: 5px;
+}
+
+.agreeNum{
+  padding-left: 6px;
+  font-size: inherit;
+}
+
+.divide{
+  padding-left: 6px;
+
+}
+
+.disagreeNum{
+  padding-left: 6px;
+  font-size: inherit;
+}
+
+.disagree{
+  width: 20px;
+  margin-left: 10px;
+  padding-top: 5px;
 }

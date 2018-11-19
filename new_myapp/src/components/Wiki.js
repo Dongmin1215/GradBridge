@@ -307,7 +307,17 @@ class WikiPage extends Component {
 
     if (myid !== '') {
       var intro_questions = intros.map(function(que){
-        return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
+        return <div className="wiki-info-item">
+        <li onClick={((e) => this.handleClick(e, que))}>{que.text}</li>
+        
+        <img className = 'agree' src={require('./images/agree.png')}/>
+        <div className = 'agreeNum'>3</div>
+        <div className = 'divide'>/</div>
+        <div className = 'disagreeNum'>3</div>
+        <img className = 'disagree' src={require('./images/disagree.png')}/>
+
+
+        </div>;
       }, this);
       
       var extra_questions = extras.map(function(que){
