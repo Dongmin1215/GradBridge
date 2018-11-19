@@ -58,9 +58,9 @@ db.ref(`pages/${qid_path}`);
 export const removeQuestion = (qid_path) =>
 db.ref(`pages/${qid_path}`).remove();
 
-export const doVote = (path, vote, votefor, voteagainst, text, uid, visibility) =>
-db.ref(`pages/${path}`).set({
-	vote, votefor, voteagainst, text, uid, visibility
+export const doVote = (path, vote, votefor, voteagainst, visibility) =>
+db.ref(`pages/${path}`).update({
+	vote, votefor, voteagainst, visibility
 });
 
 export const addQuestion = (path, text, uid) =>
@@ -72,3 +72,9 @@ db.ref(`pages/${path}`).set({
 	votefor : '',
 	voteagainst : '',
 });
+
+export const getQid = () =>
+db.ref('base_qid');
+
+export const incQid = (v) =>
+db.ref('/').update({ base_qid: v });

@@ -245,7 +245,7 @@ class WikiPage extends Component {
 
   clickAdd(topic_idx) {
     var init = [false, false, false, false, false, false, false];
-    if (!this.state.topic_input[topic_idx]) {
+    if (topic_idx !== -1 && !this.state.topic_input[topic_idx]) {
       init[topic_idx] = true;
     }
     this.setState({
@@ -297,7 +297,7 @@ class WikiPage extends Component {
         var newvote = (parseInt(qinfo.vote[0])+1).toString() + qinfo.vote.substr(1,3);
         var newvotefor = qinfo.votefor + " " + that.state.myid;
         var visib = qinfo.vote[0] === '4';
-        db.doVote(full_path, newvote, newvotefor, qinfo.voteagainst, qinfo.text, qinfo.uid, visib);
+        db.doVote(full_path, newvote, newvotefor, qinfo.voteagainst, visib);
       }
       else {
         if (qinfo.vote[2] === '4') {
@@ -307,7 +307,7 @@ class WikiPage extends Component {
         }
         var newvote = qinfo.vote.substr(0,2) + (parseInt(qinfo.vote[2])+1).toString();
         var newvoteagainst = qinfo.voteagainst + " " + that.state.myid;
-        db.doVote(full_path, newvote, qinfo.votefor, newvoteagainst, qinfo.text, qinfo.uid, qinfo.visibility);
+        db.doVote(full_path, newvote, qinfo.votefor, newvoteagainst, qinfo.visibility);
       }
       that.changeState();
     })
@@ -329,15 +329,20 @@ class WikiPage extends Component {
   }
 
   addTopic(path) {
+    var that = this;
     var text = this.state.new_topic;
     if (text === '' || text.length < 5) {
       alert("Please type in a proper topic/question to talk about");
       return;
     }
-    var qid = 4;
-    var full_path = `${this.state.current}/${path}/${qid}`;
-    db.addQuestion(full_path, text, this.state.myid);
-    this.changeState();
+    db.getQid().once("value").then(function(snapshot) {
+      var qid = snapshot.val();
+      db.incQid(qid+1);
+      var full_path = `${that.state.current}/${path}/${qid}`;
+      db.addQuestion(full_path, text, that.state.myid);
+      that.clickAdd(-1);
+      that.changeState();
+    })
   }
 
   render() {
