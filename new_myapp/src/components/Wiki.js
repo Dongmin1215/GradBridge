@@ -242,7 +242,7 @@ class WikiPage extends Component {
     }
   }
 
-  addTopic(topic_idx) {
+  clickAdd(topic_idx) {
     var init = [false, false, false, false, false, false, false];
     if (!this.state.add_topics[topic_idx]) {
       init[topic_idx] = true;
@@ -324,6 +324,10 @@ class WikiPage extends Component {
       </div>
       }
       </div>;
+  }
+
+  addTopic(event) {
+    alert(event);
   }
 
   render() {
@@ -484,7 +488,7 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Self Introduction</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(0))}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(0))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
@@ -493,7 +497,7 @@ class WikiPage extends Component {
                         </div>
                         { add_topics[0] && <div className = 'wiki-info-add'>
                           <input className = 'wiki-info-inputbox'type = 'text'></input>
-                          <button className = 'wiki-info-submit' type="submit">
+                          <button className = 'wiki-info-submit' type="submit" onSubmit={((event) => this.addTopic(event))}>
                             <div>ADD</div>
                           </button>
                         </div> }
@@ -503,7 +507,7 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Extracurricular</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(1))}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(1))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
@@ -528,7 +532,7 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Programming Test</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(2))}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(2))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
@@ -547,7 +551,7 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Waiting Room</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(3))}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(3))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
@@ -566,7 +570,7 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Room 1</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(4))}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(4))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
@@ -585,7 +589,7 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Room 2</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(5))}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(5))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
@@ -604,7 +608,7 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Room 3</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(6))}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(6))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
