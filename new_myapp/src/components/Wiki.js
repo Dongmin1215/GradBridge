@@ -8,9 +8,9 @@ import SignOutButton from './SignOut';
 import UserInfo from './UserInfo';
 
 const INITIAL_STATE = {
-  current : '19s',
-  prev: '18f',
-  next: '19f',
+  current : '19 spring',
+  prev: '18 fall',
+  next: '19 fall',
   intros : [],
   extras : [],
   progs : [],
@@ -40,8 +40,6 @@ class WikiPage extends Component {
   }
 
   changeState(){
-    console.log("changestate");
-    console.log(this.state.current);
     const intros = []
     const extras = []
     const progs = []
@@ -172,11 +170,11 @@ class WikiPage extends Component {
   }
 
   changeNext() {
-    if (this.state.next.endsWith("f")) {
+    if (this.state.next.endsWith("fall")) {
       var next = Number(this.state.next.slice(0,2));
-      next = String(next + 1) + "s"; 
+      next = String(next + 1) + " spring"; 
     } else {
-      var next = this.state.next.replace("s", "f");
+      var next = this.state.next.replace("spring", "fall");
     }
     this.setState({
       prev: this.state.current,
@@ -188,11 +186,11 @@ class WikiPage extends Component {
   }
 
   changePrev() {
-    if (this.state.prev.endsWith("s")) {
+    if (this.state.prev.endsWith("spring")) {
       var prev = Number(this.state.prev.slice(0,2));
-      prev = String(prev - 1) + "f"; 
+      prev = String(prev - 1) + " fall"; 
     } else {
-      var prev = this.state.prev.replace("f", "s");
+      var prev = this.state.prev.replace("fall", "spring");
     }
     this.setState({
       prev: prev,
@@ -296,12 +294,8 @@ class WikiPage extends Component {
         return <div className = 'wiki-comment-and-reply'>
           <div className = 'wiki-comment-user-box'>
             <div className = 'wiki-comment-user-row'>
-              <div className = 'wiki-comment-user-col-left'>
-                <img className = 'user-pic' src={require('./images/user.png')} onClick={this.showDialog}/>
-                <UserInfo show={this.state.isOpen}
-                  onClose={this.showDialog}>
-                  Here's some content for the modal
-                </UserInfo>
+              <div className = 'wiki-comment-user-col-left' onClick={this.showProfile(com.uid)}>
+                <img className = 'user-pic' src={require('./images/user.png')}/>
               </div>
               <div className = 'wiki-comment-user-col-right'>
                 <div className = 'wiki-comment-user-context'>
@@ -310,7 +304,6 @@ class WikiPage extends Component {
               </div>
             </div>
           </div>
-
           <div className='wiki-reply-wrapper'>
             <div className = 'wiki-reply-tri-wrapper'>
               <div className = 'wiki-reply-tri'>
@@ -322,11 +315,6 @@ class WikiPage extends Component {
               </div>
             </div>
           </div>
-
-          
-
-
-
         </div>;
       }, this);
     }
@@ -340,7 +328,6 @@ class WikiPage extends Component {
                 </Link>
             </div>
           </div>
-
           <div className="wiki-navbar-row">
             <div className='wiki-navbar-left'>
               <div className='wiki-navbar-text'>Dept: Computer Science</div>
@@ -369,7 +356,7 @@ class WikiPage extends Component {
 
           <div className="wiki-main">
             <div className='wiki-main-row'>
-              <div className = "wiki-info-col">
+              <div className = "wiki-info-col" style = {{width: this.state.comment_width}}>
                 <div className = 'wiki-info-wrapper'>
                 
                   <div className = 'wiki-info-doc'>
@@ -505,15 +492,8 @@ class WikiPage extends Component {
 
                   <div className = 'wiki-comment-user'>
                     { comment_list }
- 
-                    
-                    
-                  
                   </div>
-
-
                 </div>
-              
               </div>
             </div>
           </div>

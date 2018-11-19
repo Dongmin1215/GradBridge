@@ -496,6 +496,7 @@ h1{
 
 .wiki-info-item:hover{
   cursor: pointer;
+  width: fit-content;
   background-color: antiquewhite;
 }
 
