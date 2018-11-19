@@ -598,7 +598,6 @@ h1{
 }
 
 .wiki-reply-wrapper{
-  overflow-y: scroll;
   height: 100px;
   padding-bottom: 10px;
   margin-bottom: 10px;
