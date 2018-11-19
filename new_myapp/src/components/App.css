@@ -858,3 +858,7 @@ h1{
   margin-left: 10px;
   padding-top: 5px;
 }
+
+.vote-info{
+  display: contents;
+}

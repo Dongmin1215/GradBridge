@@ -76,9 +76,9 @@ class WikiPage extends Component {
         introduction.once("value").then(function(snapshot) {
           snapshot.forEach(function(child) {
             const qid = child.key;
-            const {text, uid, visibility, vote} = child.val();
+            const {text, uid, visibility, vote,} = child.val();
             if (visibility || is_editor) {
-              intros.push({qid, text, uid, visibility, vote});
+              intros.push({qid, text, uid, visibility, vote,});
             }
           });
           that.setState({
@@ -89,9 +89,9 @@ class WikiPage extends Component {
         extracurricular.once("value").then(function(snapshot) {
           snapshot.forEach(function(child) {
             const qid = child.key;
-            const {text, uid, visibility, vote} = child.val();
+            const {text, uid, visibility, vote,} = child.val();
             if (visibility || is_editor) {
-              extras.push({qid, text, uid, visibility, vote});
+              extras.push({qid, text, uid, visibility, vote,});
             }
           });
           that.setState({
@@ -102,9 +102,9 @@ class WikiPage extends Component {
         programming.once("value").then(function(snapshot) {
           snapshot.forEach(function(child) {
             const qid = child.key;
-            const {text, uid, visibility, vote} = child.val();
+            const {text, uid, visibility, vote,} = child.val();
             if (visibility || is_editor) {
-              progs.push({qid, text, uid, visibility, vote});
+              progs.push({qid, text, uid, visibility, vote,});
             }
           });
           that.setState({
@@ -115,9 +115,9 @@ class WikiPage extends Component {
         waiting.once("value").then(function(snapshot) {
           snapshot.forEach(function(child) {
             const qid = child.key;
-            const {text, uid, visibility, vote} = child.val();
+            const {text, uid, visibility, vote,} = child.val();
             if (visibility || is_editor) {
-              waits.push({qid, text, uid, visibility, vote});
+              waits.push({qid, text, uid, visibility, vote,});
             }
           });
           that.setState({
@@ -128,9 +128,9 @@ class WikiPage extends Component {
         room1.once("value").then(function(snapshot) {
           snapshot.forEach(function(child) {
             const qid = child.key;
-            const {text, uid, visibility, vote} = child.val();
+            const {text, uid, visibility, vote,} = child.val();
             if (visibility || is_editor) {
-              room1s.push({qid, text, uid, visibility, vote});
+              room1s.push({qid, text, uid, visibility, vote,});
             }
           });
           that.setState({
@@ -141,9 +141,9 @@ class WikiPage extends Component {
         room2.once("value").then(function(snapshot) {
           snapshot.forEach(function(child) {
             const qid = child.key;
-            const {text, uid, visibility, vote} = child.val();
+            const {text, uid, visibility, vote,} = child.val();
             if (visibility || is_editor) {
-              room2s.push({qid, text, uid, visibility, vote});
+              room2s.push({qid, text, uid, visibility, vote,});
             }
           });
           that.setState({
@@ -154,9 +154,9 @@ class WikiPage extends Component {
         room3.once("value").then(function(snapshot) {
           snapshot.forEach(function(child) {
             const qid = child.key;
-            const {text, uid, visibility, vote} = child.val();
+            const {text, uid, visibility, vote,} = child.val();
             if (visibility || is_editor) {
-              room3s.push({qid, text, uid, visibility, vote});
+              room3s.push({qid, text, uid, visibility, vote,});
             }
           });
           that.setState({
@@ -267,6 +267,50 @@ class WikiPage extends Component {
     })
   }
 
+  vote(fa, qid_path) {
+    var that = this;
+    var full_path = `${this.state.current}/${qid_path}`
+    var question = db.getQuestion(full_path);
+    question.once("value").then(function(snapshot) {
+      var qinfo = snapshot.val();
+      if (qinfo.vote[2] === '5') {
+        alert("This topic has already been deleted.")
+        this.changeState();
+        return;
+      }
+      if (qinfo.vote[0] === '5') {
+        alert("This topic has already been added.");
+        this.changeState();
+        return;
+      }
+      if (qinfo.votefor.includes(that.state.myid)) {
+        alert("You have already voted for this topic!");
+        return;
+      }
+      if (qinfo.voteagainst.includes(that.state.myid)) {
+        alert("You have already voted against this topic!");
+        return;
+      }
+      if (fa === 'f') {
+        var newvote = (parseInt(qinfo.vote[0])+1).toString() + qinfo.vote.substr(1,3);
+        var newvotefor = qinfo.votefor + " " + that.state.myid;
+        var visib = qinfo.vote[0] === '4';
+        db.doVote(full_path, newvote, newvotefor, qinfo.voteagainst, qinfo.text, qinfo.uid, visib);
+      }
+      else {
+        if (qinfo.vote[2] === '4') {
+          db.removeQuestion(full_path);
+          that.changeState();
+          return;
+        }
+        var newvote = qinfo.vote.substr(0,2) + (parseInt(qinfo.vote[2])+1).toString();
+        var newvoteagainst = qinfo.voteagainst + " " + that.state.myid;
+        db.doVote(full_path, newvote, qinfo.votefor, newvoteagainst, qinfo.text, qinfo.uid, qinfo.visibility);
+      }
+      that.changeState();
+    })
+  }
+
   render() {
     const {
       myid,
@@ -294,38 +338,106 @@ class WikiPage extends Component {
       var intro_questions = intros.map(function(que){
         return <div className="wiki-info-item">
         <li onClick={(() => this.handleClick(que))}>{que.text}</li>
-        
-        <img className = 'agree' src={require('./images/agree.png')}/>
-        <div className = 'agreeNum'>3</div>
-        <div className = 'divide'>/</div>
-        <div className = 'disagreeNum'>3</div>
-        <img className = 'disagree' src={require('./images/disagree.png')}/>
-
+        { is_editor && !que.visibility && 
+        <div className = 'vote-info'>
+          <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`Document/Introduction/${que.qid}`))}/>
+          <div className = 'agreeNum'>{que.vote[0]}</div>
+          <div className = 'divide'>/</div>
+          <div className = 'disagreeNum'>{que.vote[2]}</div>
+          <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`Document/Introduction/${que.qid}`))}/> 
+        </div>
+        }
         </div>;
       }, this);
       
       var extra_questions = extras.map(function(que){
-        return <div className="wiki-info-item"><li onClick={(() => this.handleClick(que))}>{que.text}</li></div>;
+        return <div className="wiki-info-item">
+        <li onClick={(() => this.handleClick(que))}>{que.text}</li>
+        { is_editor && !que.visibility && 
+        <div className = 'vote-info'>
+          <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`Document/Extracurricular/${que.qid}`))}/>
+          <div className = 'agreeNum'>{que.vote[0]}</div>
+          <div className = 'divide'>/</div>
+          <div className = 'disagreeNum'>{que.vote[2]}</div>
+          <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`Document/Extracurricular/${que.qid}`))}/> 
+        </div>
+        }
+        </div>;
       }, this);
       
       var prog_questions = progs.map(function(que){
-        return <div className="wiki-info-item"><li onClick={(() => this.handleClick(que))}>{que.text}</li></div>;
+        return <div className="wiki-info-item">
+        <li onClick={(() => this.handleClick(que))}>{que.text}</li>
+        { is_editor && !que.visibility && 
+        <div className = 'vote-info'>
+          <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`Interview/Programming/${que.qid}`))}/>
+          <div className = 'agreeNum'>{que.vote[0]}</div>
+          <div className = 'divide'>/</div>
+          <div className = 'disagreeNum'>{que.vote[2]}</div>
+          <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`Interview/Programming/${que.qid}`))}/> 
+        </div>
+        }
+        </div>;
       }, this);
 
       var wait_questions = waits.map(function(que){
-        return <div className="wiki-info-item"><li onClick={(() => this.handleClick(que))}>{que.text}</li></div>;
+        return <div className="wiki-info-item">
+        <li onClick={(() => this.handleClick(que))}>{que.text}</li>
+        { is_editor && !que.visibility && 
+        <div className = 'vote-info'>
+          <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`Interview/Waiting/${que.qid}`))}/>
+          <div className = 'agreeNum'>{que.vote[0]}</div>
+          <div className = 'divide'>/</div>
+          <div className = 'disagreeNum'>{que.vote[2]}</div>
+          <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`Interview/Waiting/${que.qid}`))}/> 
+        </div>
+        }
+        </div>;
       }, this);
       
       var room1_questions = room1s.map(function(que){
-        return <div className="wiki-info-item"><li onClick={(() => this.handleClick(que))}>{que.text}</li></div>;
+        return <div className="wiki-info-item">
+        <li onClick={(() => this.handleClick(que))}>{que.text}</li>
+        { is_editor && !que.visibility && 
+        <div className = 'vote-info'>
+          <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`Interview/Room1/${que.qid}`))}/>
+          <div className = 'agreeNum'>{que.vote[0]}</div>
+          <div className = 'divide'>/</div>
+          <div className = 'disagreeNum'>{que.vote[2]}</div>
+          <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`Interview/Room1/${que.qid}`))}/> 
+        </div>
+        }
+        </div>;
       }, this);
       
       var room2_questions = room2s.map(function(que){
-        return <div className="wiki-info-item"><li onClick={(() => this.handleClick(que))}>{que.text}</li></div>;
+        return <div className="wiki-info-item">
+        <li onClick={(() => this.handleClick(que))}>{que.text}</li>
+        { is_editor && !que.visibility && 
+        <div className = 'vote-info'>
+          <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`Interview/Room2/${que.qid}`))}/>
+          <div className = 'agreeNum'>{que.vote[0]}</div>
+          <div className = 'divide'>/</div>
+          <div className = 'disagreeNum'>{que.vote[2]}</div>
+          <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`Interview/Room2/${que.qid}`))}/> 
+        </div>
+        }
+        </div>;
       }, this);
       
       var room3_questions = room3s.map(function(que){
-        return <div className="wiki-info-item"><li onClick={(() => this.handleClick(que))}>{que.text}</li></div>;
+        return <div className="wiki-info-item">
+        <li onClick={(() => this.handleClick(que))}>{que.text}</li>
+        { is_editor && !que.visibility && 
+        <div className = 'vote-info'>
+          <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`Interview/Room3/${que.qid}`))}/>
+          <div className = 'agreeNum'>{que.vote[0]}</div>
+          <div className = 'divide'>/</div>
+          <div className = 'disagreeNum'>{que.vote[2]}</div>
+          <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`Interview/Room3/${que.qid}`))}/> 
+        </div>
+        }
+        </div>;
       }, this);
     }
 
