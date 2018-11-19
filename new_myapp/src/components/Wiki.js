@@ -46,6 +46,16 @@ class WikiPage extends Component {
     this.changeState();
   }
 
+  closeComments(){
+    this.setState({
+      comment_que : 'none',
+      comment_width : '100%',
+      comment_display : 'none',
+      topic_input: [false, false, false, false, false, false, false],
+      new_topic : "",
+    })
+  }
+
   changeState(){
     this.setState({ ready: 0 });
     const intros = []
@@ -176,6 +186,7 @@ class WikiPage extends Component {
     } else {
       var next = this.state.next.replace("Spring", "Fall");
     }
+    this.closeComments();
     this.setState({
       prev: this.state.current,
       current : this.state.next,
@@ -192,6 +203,7 @@ class WikiPage extends Component {
     } else {
       var prev = this.state.prev.replace("Fall", "Spring");
     }
+    this.closeComments();
     this.setState({
       prev: prev,
       current : this.state.prev,
