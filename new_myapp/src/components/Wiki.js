@@ -5,6 +5,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import './App.css';
 import { db } from '../firebase';
 import SignOutButton from './SignOut';
+import UserInfo from './UserInfo';
 
 const INITIAL_STATE = {
   current : '19s',
@@ -19,7 +20,10 @@ const INITIAL_STATE = {
   room3s : [],
   comment_que : 'none',
   comments : [],
+  displayUserInfo: false
 };
+
+let userinfo = null;
 
 class WikiPage extends Component {
   constructor(props) {
@@ -241,6 +245,12 @@ class WikiPage extends Component {
     }
   }
 
+  showDialog = () => {
+    this.setState({
+      displayUserInfo: !this.state.displayUserInfo
+    });
+  }
+
   render() {
     const {
       intros,
@@ -287,7 +297,11 @@ class WikiPage extends Component {
           <div className = 'wiki-comment-user-box'>
             <div className = 'wiki-comment-user-row'>
               <div className = 'wiki-comment-user-col-left'>
-                <img className = 'user-pic' src={require('./images/user.png')}/>
+                <img className = 'user-pic' src={require('./images/user.png')} onClick={this.showDialog}/>
+                <UserInfo show={this.state.isOpen}
+                  onClose={this.showDialog}>
+                  Here's some content for the modal
+                </UserInfo>
               </div>
               <div className = 'wiki-comment-user-col-right'>
                 <div className = 'wiki-comment-user-context'>
