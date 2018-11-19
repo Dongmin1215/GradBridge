@@ -362,6 +362,21 @@ class WikiPage extends Component {
               </div>
             </div>
           </div>
+
+          <div className = 'wiki-comment-wrapper'>
+          
+            <div className = 'wiki-comment-user-box'>
+              <div className = 'wiki-comment-addbox'>
+                <input className = 'wiki-comment-input' type = 'text'></input>
+                <button className = 'wiki-comment-addbutton'  type="submit">
+                  <div>ADD</div>
+                </button>
+              
+              </div>
+            </div>
+            </div>
+
+
         </div>;
       }, this);
     }
@@ -451,6 +466,12 @@ class WikiPage extends Component {
                           <ul>
                             { prog_questions }
                           </ul>
+                        </div>
+                        <div className = 'wiki-info-add'>
+                          <input className = 'wiki-info-inputbox'type = 'text'></input>
+                          <button className = 'wiki-info-submit' type="submit">
+                            <div>ADD</div>
+                          </button>
                         </div>
                       </ul>
                     </div>
