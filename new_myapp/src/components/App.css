@@ -500,13 +500,15 @@ h1{
   font-size: 18px;
 
 }
+.wiki-info-item{
+  display: -webkit-box;
+}
 
-.wiki-info-item:hover{
+.wiki-info-item>li:hover{
   cursor: pointer;
   width: fit-content;
   background-color: antiquewhite;
 }
-
 
 .wiki-comment-col{
   background: rgb(217, 210, 232);
@@ -651,6 +653,17 @@ h1{
   overflow-y: scroll;
 }
 
+.wiki-reply-input-box{
+  background: rgb(220, 233, 213);
+  height: -webkit-fill-available;
+  margin-right : 14.5px;
+  width: 85%;
+  float: right;
+  padding:15px;
+  overflow-y: scroll;
+
+}
+
 .wiki-comment-user-replyimg-wrap{
 
   width: 33px;
@@ -686,6 +699,10 @@ h1{
 .wiki-reply-input{
   width:80%;
   height:-webkit-fill-available;
+}
+
+.wiki-reply-add{
+  display: flex;
 }
 
 .wiki-reply-addbutton{
@@ -783,4 +800,61 @@ h1{
 
 .profile-user-text{
   margin-left: 10px;
+}
+
+.wiki-comment-addbox{
+  background: rgb(204, 218,245);
+  height: -webkit-fill-available;
+  margin-right : 14.5px;
+
+  display: flex;
+  padding:15px;
+  overflow-y: scroll;
+}
+
+.wiki-comment-addbutton{
+  margin-left: 8.5px;
+  height:-webkit-fill-available;
+  width: 50px;
+  background: rgb(163, 196, 254);
+}
+
+.wiki-info-add{
+
+}
+
+.wiki-info-inputbox{
+  width: 90%;
+  font-size: large;
+}
+
+.wiki-info-submit{
+  margin-left: 20px;
+}
+
+.agree{
+  width: 20px;
+  margin-left: 16px;
+  padding-top: 5px;
+}
+
+.agreeNum{
+  padding-left: 6px;
+  font-size: inherit;
+}
+
+.divide{
+  padding-left: 6px;
+
+}
+
+.disagreeNum{
+  padding-left: 6px;
+  font-size: inherit;
+}
+
+.disagree{
+  width: 20px;
+  margin-left: 10px;
+  padding-top: 5px;
 }

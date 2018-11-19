@@ -6,6 +6,7 @@ import './App.css';
 import { firebase, db } from '../firebase';
 import SignOutButton from './SignOut';
 import UserInfo from './UserInfo';
+import WikiTemplate from './WikiTemplate';
 
 const INITIAL_STATE = {
   myid: '',
@@ -24,6 +25,8 @@ const INITIAL_STATE = {
   comments : [],
   currentUser: null,
   displayUserInfo: false,
+  ready : 0,
+  add_topics: [false, false, false, false, false, false, false],
 };
 
 class WikiPage extends Component {
@@ -43,6 +46,7 @@ class WikiPage extends Component {
   }
 
   changeState(){
+    this.setState({ ready: 0 });
     const intros = []
     const extras = []
     const progs = []
@@ -83,7 +87,8 @@ class WikiPage extends Component {
           });
         });
         that.setState({
-          intros
+          intros,
+          ready : that.state.ready + 1
         });
       });
       extracurricular.once("value").then(function(snapshot) {
@@ -99,7 +104,8 @@ class WikiPage extends Component {
           });
         });
         that.setState({
-          extras
+          extras,
+          ready : that.state.ready + 1
         });
       });
       programming.once("value").then(function(snapshot) {
@@ -115,7 +121,8 @@ class WikiPage extends Component {
           });
         });
         that.setState({
-          progs
+          progs,
+          ready : that.state.ready + 1
         });
       });
       waiting.once("value").then(function(snapshot) {
@@ -131,7 +138,8 @@ class WikiPage extends Component {
           });
         });
         that.setState({
-          waits
+          waits,
+          ready : that.state.ready + 1
         });
       });
       room1.once("value").then(function(snapshot) {
@@ -147,7 +155,8 @@ class WikiPage extends Component {
           });
         });
         that.setState({
-          room1s
+          room1s,
+          ready : that.state.ready + 1
         });
       });
       room2.once("value").then(function(snapshot) {
@@ -163,7 +172,8 @@ class WikiPage extends Component {
           });
         });
         that.setState({
-          room2s
+          room2s,
+          ready : that.state.ready + 1
         });
       });
       room3.once("value").then(function(snapshot) {
@@ -179,7 +189,8 @@ class WikiPage extends Component {
           });
         });
         that.setState({
-          room3s
+          room3s,
+          ready : that.state.ready + 1
         });
       });
     });
@@ -217,7 +228,7 @@ class WikiPage extends Component {
     });
   }
 
-  handleClick(e, question) {
+  handleClick(question) {
     var qid = question.qid
     if (this.state.comment_que === qid) {
       this.setState({
@@ -259,6 +270,17 @@ class WikiPage extends Component {
     }
   }
 
+  addTopic(topic_idx) {
+    var init = [false, false, false, false, false, false, false];
+    if (!this.state.add_topics[topic_idx]) {
+      init[topic_idx] = true;
+    }
+    this.setState({
+      add_topics: init
+    });
+
+  }
+
   showProfile(uid) {
     this.setState({
       displayUserInfo: !this.state.displayUserInfo,
@@ -286,37 +308,53 @@ class WikiPage extends Component {
       room2s,
       room3s,
       comments,
+      ready,
+      add_topics,
     } = this.state;
 
     var is_editor = (myinfo.admission_year === current);
     
+    if (ready < 7) {
+      return <WikiTemplate prev={this.state.prev} current={this.state.current} next={this.state.next} is_editor={is_editor}/>
+    }
+
     if (myid !== '') {
       var intro_questions = intros.map(function(que){
-        return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
+        return <div className="wiki-info-item">
+        <li onClick={(() => this.handleClick(que))}>{que.text}</li>
+        
+        <img className = 'agree' src={require('./images/agree.png')}/>
+        <div className = 'agreeNum'>3</div>
+        <div className = 'divide'>/</div>
+        <div className = 'disagreeNum'>3</div>
+        <img className = 'disagree' src={require('./images/disagree.png')}/>
+
+
+        </div>;
       }, this);
       
       var extra_questions = extras.map(function(que){
-        return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
+        return <div className="wiki-info-item"><li onClick={(() => this.handleClick(que))}>{que.text}</li></div>;
       }, this);
       
       var prog_questions = progs.map(function(que){
-        return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
+        return <div className="wiki-info-item"><li onClick={(() => this.handleClick(que))}>{que.text}</li></div>;
       }, this);
 
       var wait_questions = waits.map(function(que){
-        return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
+        return <div className="wiki-info-item"><li onClick={(() => this.handleClick(que))}>{que.text}</li></div>;
       }, this);
       
       var room1_questions = room1s.map(function(que){
-        return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
+        return <div className="wiki-info-item"><li onClick={(() => this.handleClick(que))}>{que.text}</li></div>;
       }, this);
       
       var room2_questions = room2s.map(function(que){
-        return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
+        return <div className="wiki-info-item"><li onClick={(() => this.handleClick(que))}>{que.text}</li></div>;
       }, this);
       
       var room3_questions = room3s.map(function(que){
-        return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
+        return <div className="wiki-info-item"><li onClick={(() => this.handleClick(que))}>{que.text}</li></div>;
       }, this);
     }
 
@@ -353,7 +391,7 @@ class WikiPage extends Component {
               <div className = 'wiki-reply-tri'>
               </div>
             </div>
-            <div className = 'wiki-reply-box'> 
+            <div className = 'wiki-reply-input-box'> 
               <div className = 'wiki-reply-add'>
                 <input className = 'wiki-reply-input' type = 'text'></input>
                 <button className = 'wiki-reply-addbutton'  type="submit">
@@ -371,12 +409,9 @@ class WikiPage extends Component {
                 <button className = 'wiki-comment-addbutton'  type="submit">
                   <div>ADD</div>
                 </button>
-              
               </div>
             </div>
             </div>
-
-
         </div>;
       }, this);
     }
@@ -428,26 +463,38 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Self Introduction</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(0))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
                           { intro_questions }
                           </ul>
                         </div>
+                        { add_topics[0] && <div className = 'wiki-info-add'>
+                          <input className = 'wiki-info-inputbox'type = 'text'></input>
+                          <button className = 'wiki-info-submit' type="submit">
+                            <div>ADD</div>
+                          </button>
+                        </div> }
                       </ul>
                     </div>
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Extracurricular</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(1))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
                             { extra_questions }
                           </ul>
                         </div>
+                        { add_topics[1] && <div className = 'wiki-info-add'>
+                          <input className = 'wiki-info-inputbox'type = 'text'></input>
+                          <button className = 'wiki-info-submit' type="submit">
+                            <div>ADD</div>
+                          </button>
+                        </div> }
                       </ul>
                     </div>
                   </div>
@@ -460,71 +507,95 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Programming Test</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(2))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
                             { prog_questions }
                           </ul>
                         </div>
-                        <div className = 'wiki-info-add'>
+                        { add_topics[2] && <div className = 'wiki-info-add'>
                           <input className = 'wiki-info-inputbox'type = 'text'></input>
                           <button className = 'wiki-info-submit' type="submit">
                             <div>ADD</div>
                           </button>
-                        </div>
+                        </div> }
                       </ul>
                     </div>
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Waiting Room</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(3))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
                             { wait_questions }
                           </ul>
                         </div>
+                        { add_topics[3] && <div className = 'wiki-info-add'>
+                          <input className = 'wiki-info-inputbox'type = 'text'></input>
+                          <button className = 'wiki-info-submit' type="submit">
+                            <div>ADD</div>
+                          </button>
+                        </div> }
                       </ul>
                     </div>
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Room 1</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(4))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
                             { room1_questions }
                           </ul>
                         </div>
+                        { add_topics[4] && <div className = 'wiki-info-add'>
+                          <input className = 'wiki-info-inputbox'type = 'text'></input>
+                          <button className = 'wiki-info-submit' type="submit">
+                            <div>ADD</div>
+                          </button>
+                        </div> }
                       </ul>
                     </div>
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Room 2</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(5))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
                             { room2_questions }
                           </ul>
                         </div>
+                        { add_topics[5] && <div className = 'wiki-info-add'>
+                          <input className = 'wiki-info-inputbox'type = 'text'></input>
+                          <button className = 'wiki-info-submit' type="submit">
+                            <div>ADD</div>
+                          </button>
+                        </div> }
                       </ul>
                     </div>
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Room 3</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(6))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
                             { room3_questions }
                           </ul>
                         </div>
+                        { add_topics[6] && <div className = 'wiki-info-add'>
+                          <input className = 'wiki-info-inputbox'type = 'text'></input>
+                          <button className = 'wiki-info-submit' type="submit">
+                            <div>ADD</div>
+                          </button>
+                        </div> }
                       </ul>
                     </div>
                   </div>
