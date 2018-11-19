@@ -411,7 +411,10 @@ class WikiPage extends Component {
                     </div>
                     <div className = 'wiki-info-subtitle'>
                       <ul>
-                        <li>Self Introduction</li>
+                        <div className = 'wiki-info-subtitle-editor'>
+                          <li>Self Introduction</li>
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
+                        </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
                           { intro_questions }
@@ -423,7 +426,7 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Extracurricular</li>
-                          <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> 
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
@@ -440,7 +443,10 @@ class WikiPage extends Component {
                     </div>
                     <div className = 'wiki-info-subtitle'>
                       <ul>
-                        <li>Programming Test</li>
+                        <div className = 'wiki-info-subtitle-editor'>
+                          <li>Programming Test</li>
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
+                        </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
                             { prog_questions }
@@ -450,7 +456,10 @@ class WikiPage extends Component {
                     </div>
                     <div className = 'wiki-info-subtitle'>
                       <ul>
-                        <li>Waiting room</li>
+                        <div className = 'wiki-info-subtitle-editor'>
+                          <li>Waiting Room</li>
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
+                        </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
                             { wait_questions }
@@ -460,7 +469,10 @@ class WikiPage extends Component {
                     </div>
                     <div className = 'wiki-info-subtitle'>
                       <ul>
-                        <li>Room 1</li>
+                        <div className = 'wiki-info-subtitle-editor'>
+                          <li>Room 1</li>
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
+                        </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
                             { room1_questions }
@@ -470,7 +482,10 @@ class WikiPage extends Component {
                     </div>
                     <div className = 'wiki-info-subtitle'>
                       <ul>
-                        <li>Room 2</li>
+                        <div className = 'wiki-info-subtitle-editor'>
+                          <li>Room 2</li>
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
+                        </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
                             { room2_questions }
@@ -480,7 +495,10 @@ class WikiPage extends Component {
                     </div>
                     <div className = 'wiki-info-subtitle'>
                       <ul>
-                        <li>Room 3</li>
+                        <div className = 'wiki-info-subtitle-editor'>
+                          <li>Room 3</li>
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
+                        </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
                             { room3_questions }
