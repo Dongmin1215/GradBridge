@@ -378,7 +378,7 @@ class WikiPage extends Component {
               <div className = 'wiki-reply-tri'>
               </div>
             </div>
-            <div className = 'wiki-reply-box'> 
+            <div className = 'wiki-reply-input-box'> 
               <div className = 'wiki-reply-add'>
                 <input className = 'wiki-reply-input' type = 'text'></input>
                 <button className = 'wiki-reply-addbutton'  type="submit">
