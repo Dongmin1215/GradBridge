@@ -6,6 +6,7 @@ import './App.css';
 import { firebase, db } from '../firebase';
 import SignOutButton from './SignOut';
 import UserInfo from './UserInfo';
+import WikiTemplate from './WikiTemplate';
 
 const INITIAL_STATE = {
   myid: '',
@@ -24,6 +25,7 @@ const INITIAL_STATE = {
   comments : [],
   currentUser: null,
   displayUserInfo: false,
+  ready : 0,
 };
 
 class WikiPage extends Component {
@@ -43,6 +45,7 @@ class WikiPage extends Component {
   }
 
   changeState(){
+    this.setState({ ready: 0 });
     const intros = []
     const extras = []
     const progs = []
@@ -83,7 +86,8 @@ class WikiPage extends Component {
           });
         });
         that.setState({
-          intros
+          intros,
+          ready : that.state.ready + 1
         });
       });
       extracurricular.once("value").then(function(snapshot) {
@@ -99,7 +103,8 @@ class WikiPage extends Component {
           });
         });
         that.setState({
-          extras
+          extras,
+          ready : that.state.ready + 1
         });
       });
       programming.once("value").then(function(snapshot) {
@@ -115,7 +120,8 @@ class WikiPage extends Component {
           });
         });
         that.setState({
-          progs
+          progs,
+          ready : that.state.ready + 1
         });
       });
       waiting.once("value").then(function(snapshot) {
@@ -131,7 +137,8 @@ class WikiPage extends Component {
           });
         });
         that.setState({
-          waits
+          waits,
+          ready : that.state.ready + 1
         });
       });
       room1.once("value").then(function(snapshot) {
@@ -147,7 +154,8 @@ class WikiPage extends Component {
           });
         });
         that.setState({
-          room1s
+          room1s,
+          ready : that.state.ready + 1
         });
       });
       room2.once("value").then(function(snapshot) {
@@ -163,7 +171,8 @@ class WikiPage extends Component {
           });
         });
         that.setState({
-          room2s
+          room2s,
+          ready : that.state.ready + 1
         });
       });
       room3.once("value").then(function(snapshot) {
@@ -179,7 +188,8 @@ class WikiPage extends Component {
           });
         });
         that.setState({
-          room3s
+          room3s,
+          ready : that.state.ready + 1
         });
       });
     });
@@ -286,10 +296,15 @@ class WikiPage extends Component {
       room2s,
       room3s,
       comments,
+      ready,
     } = this.state;
 
     var is_editor = (myinfo.admission_year === current);
     
+    if (ready < 7) {
+      return <WikiTemplate prev={this.state.prev} current={this.state.current} next={this.state.next} is_editor={is_editor}/>
+    }
+
     if (myid !== '') {
       var intro_questions = intros.map(function(que){
         return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
@@ -371,12 +386,9 @@ class WikiPage extends Component {
                 <button className = 'wiki-comment-addbutton'  type="submit">
                   <div>ADD</div>
                 </button>
-              
               </div>
             </div>
             </div>
-
-
         </div>;
       }, this);
     }
