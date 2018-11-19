@@ -26,7 +26,8 @@ const INITIAL_STATE = {
   currentUser: null,
   displayUserInfo: false,
   ready : 0,
-  add_topics: [false, false, false, false, false, false, false],
+  topic_input: [false, false, false, false, false, false, false],
+  new_topic : "",
 };
 
 class WikiPage extends Component {
@@ -244,11 +245,12 @@ class WikiPage extends Component {
 
   clickAdd(topic_idx) {
     var init = [false, false, false, false, false, false, false];
-    if (!this.state.add_topics[topic_idx]) {
+    if (!this.state.topic_input[topic_idx]) {
       init[topic_idx] = true;
     }
     this.setState({
-      add_topics: init
+      topic_input : init,
+      new_topic : ""
     });
 
   }
@@ -331,8 +333,16 @@ class WikiPage extends Component {
       </div>;
   }
 
-  addTopic(event) {
-    alert(event);
+  addTopic(path) {
+    var text = this.state.new_topic;
+    if (text === '' || text.length < 5) {
+      alert("Please type in a proper topic/question to talk about");
+      return;
+    }
+    var qid = 4;
+    var full_path = `${this.state.current}/${path}/${qid}`;
+    db.addQuestion(full_path, text, this.state.myid);
+    this.changeState();
   }
 
   render() {
@@ -349,7 +359,7 @@ class WikiPage extends Component {
       room3s,
       comments,
       ready,
-      add_topics,
+      topic_input,
     } = this.state;
 
     var is_editor = (myinfo.admission_year === current);
@@ -442,6 +452,9 @@ class WikiPage extends Component {
               </div>
             </div>
             </div>
+            <div class="footer">
+              <button class="new-comment-add-btn">Add a new comment</button> 
+            </div>
         </div>;
       }, this);
     }
@@ -500,9 +513,9 @@ class WikiPage extends Component {
                           { intro_questions }
                           </ul>
                         </div>
-                        { add_topics[0] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text'></input>
-                          <button className = 'wiki-info-submit' type="submit" onSubmit={((event) => this.addTopic(event))}>
+                        { topic_input[0] && <div className = 'wiki-info-add'>
+                          <input className = 'wiki-info-inputbox'type = 'text' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Document/Introduction"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
@@ -519,7 +532,7 @@ class WikiPage extends Component {
                             { extra_questions }
                           </ul>
                         </div>
-                        { add_topics[1] && <div className = 'wiki-info-add'>
+                        { topic_input[1] && <div className = 'wiki-info-add'>
                           <input className = 'wiki-info-inputbox'type = 'text'></input>
                           <button className = 'wiki-info-submit' type="submit">
                             <div className = 'wiki-submit-text'>ADD</div>
@@ -544,7 +557,7 @@ class WikiPage extends Component {
                             { prog_questions }
                           </ul>
                         </div>
-                        { add_topics[2] && <div className = 'wiki-info-add'>
+                        { topic_input[2] && <div className = 'wiki-info-add'>
                           <input className = 'wiki-info-inputbox'type = 'text'></input>
                           <button className = 'wiki-info-submit' type="submit">
                             <div className = 'wiki-submit-text'>ADD</div>
@@ -563,7 +576,7 @@ class WikiPage extends Component {
                             { wait_questions }
                           </ul>
                         </div>
-                        { add_topics[3] && <div className = 'wiki-info-add'>
+                        { topic_input[3] && <div className = 'wiki-info-add'>
                           <input className = 'wiki-info-inputbox'type = 'text'></input>
                           <button className = 'wiki-info-submit' type="submit">
                             <div className = 'wiki-submit-text'>ADD</div>
@@ -582,7 +595,7 @@ class WikiPage extends Component {
                             { room1_questions }
                           </ul>
                         </div>
-                        { add_topics[4] && <div className = 'wiki-info-add'>
+                        { topic_input[4] && <div className = 'wiki-info-add'>
                           <input className = 'wiki-info-inputbox'type = 'text'></input>
                           <button className = 'wiki-info-submit' type="submit">
                             <div className = 'wiki-submit-text'>ADD</div>
@@ -601,7 +614,7 @@ class WikiPage extends Component {
                             { room2_questions }
                           </ul>
                         </div>
-                        { add_topics[5] && <div className = 'wiki-info-add'>
+                        { topic_input[5] && <div className = 'wiki-info-add'>
                           <input className = 'wiki-info-inputbox'type = 'text'></input>
                           <button className = 'wiki-info-submit' type="submit">
                             <div className = 'wiki-submit-text'>ADD</div>
@@ -620,7 +633,7 @@ class WikiPage extends Component {
                             { room3_questions }
                           </ul>
                         </div>
-                        { add_topics[6] && <div className = 'wiki-info-add'>
+                        { topic_input[6] && <div className = 'wiki-info-add'>
                           <input className = 'wiki-info-inputbox'type = 'text'></input>
                           <button className = 'wiki-info-submit' type="submit">
                            <div className = 'wiki-submit-text'>ADD</div>
@@ -676,10 +689,6 @@ class WikiPage extends Component {
                            user={this.state.user}
                            />
                       : comment_list }
-                  </div>
-
-                  <div class="footer">
-                    <button class="new-comment-add-btn">Add a new comment</button> 
                   </div>
                 </div>
               </div>
