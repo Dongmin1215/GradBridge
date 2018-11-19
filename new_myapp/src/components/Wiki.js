@@ -355,7 +355,7 @@ class WikiPage extends Component {
 
           <div className="wiki-main">
             <div className='wiki-main-row'>
-              <div className = "wiki-info-col">
+              <div className = "wiki-info-col" style = {{width: this.state.comment_width}}>
                 <div className = 'wiki-info-wrapper'>
                 
                   <div className = 'wiki-info-doc'>
