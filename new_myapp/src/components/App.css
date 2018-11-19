@@ -593,8 +593,11 @@ h1{
   margin-top: 15px;
 }
 
+.user-pic:hover{
+  cursor: pointer;
+}
+
 .wiki-reply-wrapper{
-  overflow-y: scroll;
   height: 100px;
   padding-bottom: 10px;
   margin-bottom: 10px;
