@@ -394,8 +394,8 @@ class WikiPage extends Component {
             <div className = 'wiki-reply-input-box'> 
               <div className = 'wiki-reply-add'>
                 <input className = 'wiki-reply-input' type = 'text'></input>
-                <button className = 'wiki-reply-addbutton'  type="submit">
-                  <div>ADD</div>
+                <button className = 'wiki-reply-addbutton' type="submit">
+                  <div className = 'wiki-submit-text'>ADD</div>
                 </button>
               </div>
             </div>
@@ -406,8 +406,8 @@ class WikiPage extends Component {
             <div className = 'wiki-comment-user-box'>
               <div className = 'wiki-comment-addbox'>
                 <input className = 'wiki-comment-input' type = 'text'></input>
-                <button className = 'wiki-comment-addbutton'  type="submit">
-                  <div>ADD</div>
+                <button className = 'wiki-comment-addbutton' type="submit">
+                  <div className = 'wiki-submit-text'>ADD</div>
                 </button>
               </div>
             </div>
@@ -473,7 +473,7 @@ class WikiPage extends Component {
                         { add_topics[0] && <div className = 'wiki-info-add'>
                           <input className = 'wiki-info-inputbox'type = 'text'></input>
                           <button className = 'wiki-info-submit' type="submit">
-                            <div>ADD</div>
+                            <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
                       </ul>
@@ -492,7 +492,7 @@ class WikiPage extends Component {
                         { add_topics[1] && <div className = 'wiki-info-add'>
                           <input className = 'wiki-info-inputbox'type = 'text'></input>
                           <button className = 'wiki-info-submit' type="submit">
-                            <div>ADD</div>
+                            <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
                       </ul>
@@ -517,7 +517,7 @@ class WikiPage extends Component {
                         { add_topics[2] && <div className = 'wiki-info-add'>
                           <input className = 'wiki-info-inputbox'type = 'text'></input>
                           <button className = 'wiki-info-submit' type="submit">
-                            <div>ADD</div>
+                            <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
                       </ul>
@@ -536,7 +536,7 @@ class WikiPage extends Component {
                         { add_topics[3] && <div className = 'wiki-info-add'>
                           <input className = 'wiki-info-inputbox'type = 'text'></input>
                           <button className = 'wiki-info-submit' type="submit">
-                            <div>ADD</div>
+                            <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
                       </ul>
@@ -555,7 +555,7 @@ class WikiPage extends Component {
                         { add_topics[4] && <div className = 'wiki-info-add'>
                           <input className = 'wiki-info-inputbox'type = 'text'></input>
                           <button className = 'wiki-info-submit' type="submit">
-                            <div>ADD</div>
+                            <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
                       </ul>
@@ -574,7 +574,7 @@ class WikiPage extends Component {
                         { add_topics[5] && <div className = 'wiki-info-add'>
                           <input className = 'wiki-info-inputbox'type = 'text'></input>
                           <button className = 'wiki-info-submit' type="submit">
-                            <div>ADD</div>
+                            <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
                       </ul>
@@ -593,7 +593,7 @@ class WikiPage extends Component {
                         { add_topics[6] && <div className = 'wiki-info-add'>
                           <input className = 'wiki-info-inputbox'type = 'text'></input>
                           <button className = 'wiki-info-submit' type="submit">
-                            <div>ADD</div>
+                           <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
                       </ul>
@@ -647,16 +647,16 @@ class WikiPage extends Component {
                            />
                       : comment_list }
                   </div>
-                  <div class = 'footer-wrapper'>
-                    <div class="footer">
-                    
-                    </div>
+
+                  <div class="footer">
+                    <button class="new-comment-add-btn">Add a new comment</button> 
                   </div>
                 </div>
               </div>
             </div>
           </div>
       </div>
+      
     );
   }
 }

@@ -5,8 +5,7 @@ import { auth } from '../firebase';
 const SignOutButton = () =>
   <div id="wiki-signin-text"
     type="button"
-    onClick={auth.doSignOut}
-  >
+    onClick={auth.doSignOut}>
     Sign Out
   </div>
 
