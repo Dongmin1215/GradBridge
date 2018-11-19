@@ -706,13 +706,48 @@ h1{
   width: 40px;
 }
 
-
-
 .footer {
   position:fixed;
   right:30px;
   bottom:85px;
   margin:0;
   padding:0;
+}
 
+.profile-background{
+  width: 80%;
+  height: 70%;
+  margin: auto;
+  margin-top: 10%;
+  background-color:rgb(238,238,238);
+  border-radius: 10px;
+}
+
+.profile-closeBtn{
+  width: 20px;
+  float: right;
+  cursor: pointer;
+  margin-right: 7px;
+  margin-top: 7px;
+}
+
+.profile-user-info{
+  margin: auto;
+  margin-top: 50px;
+}
+
+.profile-user-pic{
+  margin-left: 10px;
+  width: 30px;
+}
+
+.profile-user-field{
+  margin-left: 10px;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 2px;
+}
+
+.profile-user-text{
+  margin-left: 10px;
 }

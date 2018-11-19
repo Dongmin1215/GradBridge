@@ -326,7 +326,7 @@ class WikiPage extends Component {
           <div className = 'wiki-comment-user-box'>
             <div className = 'wiki-comment-user-row'>
               <div className = 'wiki-comment-user-col-left'>
-                <img className = 'user-pic' src={require('./images/user.png')}/>
+                <img className = 'user-pic' src={require('./images/user.png')} onClick={((e) =>this.showProfile(com.uid))}/>
                 <img className = 'wiki-comment-user-replyimg-wrap' src={require('./images/chat.png')}/>
               </div>
               <div className = 'wiki-comment-user-col-right'>
@@ -557,7 +557,7 @@ class WikiPage extends Component {
                   </div>
                   <div class = 'footer-wrapper'>
                     <div class="footer">
-                    <img className = 'comment-add-img' src={require('./images/plus.png')}/> 
+                    
                     </div>
                   </div>
                 </div>
