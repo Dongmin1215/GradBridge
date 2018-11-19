@@ -68,129 +68,101 @@ class WikiPage extends Component {
       }
       var myid = authUser.uid;
       var myself = db.getUser(myid);
+      this.setState({ myid });
       myself.once("value").then(function(snapshot) {
         var myinfo = snapshot.val();
-        that.setState({ myinfo })
-      });
-      this.setState({ myid });
-      
-      introduction.once("value").then(function(snapshot) {
-        snapshot.forEach(function(child) {
-          const qid = child.key;
-          const {text, uid, visibility, vote} = child.val();
-          intros.push({
-            qid,
-            text,
-            uid,
-            visibility,
-            vote
+        var is_editor = (myinfo.admission_year === that.state.current)
+        that.setState({ myinfo });
+        introduction.once("value").then(function(snapshot) {
+          snapshot.forEach(function(child) {
+            const qid = child.key;
+            const {text, uid, visibility, vote,} = child.val();
+            if (visibility || is_editor) {
+              intros.push({qid, text, uid, visibility, vote,});
+            }
+          });
+          that.setState({
+            intros,
+            ready : that.state.ready + 1
           });
         });
-        that.setState({
-          intros,
-          ready : that.state.ready + 1
-        });
-      });
-      extracurricular.once("value").then(function(snapshot) {
-        snapshot.forEach(function(child) {
-          const qid = child.key;
-          const {text, uid, visibility, vote} = child.val();
-          extras.push({
-            qid,
-            text,
-            uid,
-            visibility,
-            vote
+        extracurricular.once("value").then(function(snapshot) {
+          snapshot.forEach(function(child) {
+            const qid = child.key;
+            const {text, uid, visibility, vote,} = child.val();
+            if (visibility || is_editor) {
+              extras.push({qid, text, uid, visibility, vote,});
+            }
+          });
+          that.setState({
+            extras,
+            ready : that.state.ready + 1
           });
         });
-        that.setState({
-          extras,
-          ready : that.state.ready + 1
-        });
-      });
-      programming.once("value").then(function(snapshot) {
-        snapshot.forEach(function(child) {
-          const qid = child.key;
-          const {text, uid, visibility, vote} = child.val();
-          progs.push({
-            qid,
-            text,
-            uid,
-            visibility,
-            vote
+        programming.once("value").then(function(snapshot) {
+          snapshot.forEach(function(child) {
+            const qid = child.key;
+            const {text, uid, visibility, vote,} = child.val();
+            if (visibility || is_editor) {
+              progs.push({qid, text, uid, visibility, vote,});
+            }
+          });
+          that.setState({
+            progs,
+            ready : that.state.ready + 1
           });
         });
-        that.setState({
-          progs,
-          ready : that.state.ready + 1
-        });
-      });
-      waiting.once("value").then(function(snapshot) {
-        snapshot.forEach(function(child) {
-          const qid = child.key;
-          const {text, uid, visibility, vote} = child.val();
-          waits.push({
-            qid,
-            text,
-            uid,
-            visibility,
-            vote
+        waiting.once("value").then(function(snapshot) {
+          snapshot.forEach(function(child) {
+            const qid = child.key;
+            const {text, uid, visibility, vote,} = child.val();
+            if (visibility || is_editor) {
+              waits.push({qid, text, uid, visibility, vote,});
+            }
+          });
+          that.setState({
+            waits,
+            ready : that.state.ready + 1
           });
         });
-        that.setState({
-          waits,
-          ready : that.state.ready + 1
-        });
-      });
-      room1.once("value").then(function(snapshot) {
-        snapshot.forEach(function(child) {
-          const qid = child.key;
-          const {text, uid, visibility, vote} = child.val();
-          room1s.push({
-            qid,
-            text,
-            uid,
-            visibility,
-            vote
+        room1.once("value").then(function(snapshot) {
+          snapshot.forEach(function(child) {
+            const qid = child.key;
+            const {text, uid, visibility, vote,} = child.val();
+            if (visibility || is_editor) {
+              room1s.push({qid, text, uid, visibility, vote,});
+            }
+          });
+          that.setState({
+            room1s,
+            ready : that.state.ready + 1
           });
         });
-        that.setState({
-          room1s,
-          ready : that.state.ready + 1
-        });
-      });
-      room2.once("value").then(function(snapshot) {
-        snapshot.forEach(function(child) {
-          const qid = child.key;
-          const {text, uid, visibility, vote} = child.val();
-          room2s.push({
-            qid,
-            text,
-            uid,
-            visibility,
-            vote
+        room2.once("value").then(function(snapshot) {
+          snapshot.forEach(function(child) {
+            const qid = child.key;
+            const {text, uid, visibility, vote,} = child.val();
+            if (visibility || is_editor) {
+              room2s.push({qid, text, uid, visibility, vote,});
+            }
+          });
+          that.setState({
+            room2s,
+            ready : that.state.ready + 1
           });
         });
-        that.setState({
-          room2s,
-          ready : that.state.ready + 1
-        });
-      });
-      room3.once("value").then(function(snapshot) {
-        snapshot.forEach(function(child) {
-          const qid = child.key;
-          const {text, uid, visibility, vote} = child.val();
-          room3s.push({
-            qid,
-            text,
-            uid,
-            visibility,
-            vote
+        room3.once("value").then(function(snapshot) {
+          snapshot.forEach(function(child) {
+            const qid = child.key;
+            const {text, uid, visibility, vote,} = child.val();
+            if (visibility || is_editor) {
+              room3s.push({qid, text, uid, visibility, vote,});
+            }
           });
-        });
-        that.setState({
-          room3s,
-          ready : that.state.ready + 1
+          that.setState({
+            room3s,
+            ready : that.state.ready + 1
+          });
         });
       });
     });
@@ -270,7 +242,7 @@ class WikiPage extends Component {
     }
   }
 
-  addTopic(topic_idx) {
+  clickAdd(topic_idx) {
     var init = [false, false, false, false, false, false, false];
     if (!this.state.add_topics[topic_idx]) {
       init[topic_idx] = true;
@@ -293,6 +265,69 @@ class WikiPage extends Component {
       displayUserInfo: null,
       uid: null,
     })
+  }
+
+  vote(fa, qid_path) {
+    var that = this;
+    var full_path = `${this.state.current}/${qid_path}`
+    var question = db.getQuestion(full_path);
+    question.once("value").then(function(snapshot) {
+      var qinfo = snapshot.val();
+      if (qinfo.vote[2] === '5') {
+        alert("This topic has already been deleted.")
+        this.changeState();
+        return;
+      }
+      if (qinfo.vote[0] === '5') {
+        alert("This topic has already been added.");
+        this.changeState();
+        return;
+      }
+      if (qinfo.votefor.includes(that.state.myid)) {
+        alert("You have already voted for this topic!");
+        return;
+      }
+      if (qinfo.voteagainst.includes(that.state.myid)) {
+        alert("You have already voted against this topic!");
+        return;
+      }
+      if (fa === 'f') {
+        var newvote = (parseInt(qinfo.vote[0])+1).toString() + qinfo.vote.substr(1,3);
+        var newvotefor = qinfo.votefor + " " + that.state.myid;
+        var visib = qinfo.vote[0] === '4';
+        db.doVote(full_path, newvote, newvotefor, qinfo.voteagainst, qinfo.text, qinfo.uid, visib);
+      }
+      else {
+        if (qinfo.vote[2] === '4') {
+          db.removeQuestion(full_path);
+          that.changeState();
+          return;
+        }
+        var newvote = qinfo.vote.substr(0,2) + (parseInt(qinfo.vote[2])+1).toString();
+        var newvoteagainst = qinfo.voteagainst + " " + that.state.myid;
+        db.doVote(full_path, newvote, qinfo.votefor, newvoteagainst, qinfo.text, qinfo.uid, qinfo.visibility);
+      }
+      that.changeState();
+    })
+  }
+
+  parseQuestions(que, path, is_editor) {
+    return <div className="wiki-info-item">
+      <li onClick={(() => this.handleClick(que))}>{que.text}</li>
+      { is_editor && !que.visibility && 
+      <div className = 'vote-info'>
+        <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`${path}/${que.qid}`))}/>
+        <div className = 'agreeNum'>{que.vote[0]}</div>
+        <div className = 'divide'>/</div>
+        <div className = 'disagreeNum'>{que.vote[2]}</div>
+        <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`${path}/${que.qid}`))}/> 
+      </div>
+      }
+      </div>;
+  }
+
+  addTopic(event) {
+    alert(event);
   }
 
   render() {
@@ -320,41 +355,31 @@ class WikiPage extends Component {
 
     if (myid !== '') {
       var intro_questions = intros.map(function(que){
-        return <div className="wiki-info-item">
-        <li onClick={(() => this.handleClick(que))}>{que.text}</li>
-        
-        <img className = 'agree' src={require('./images/agree.png')}/>
-        <div className = 'agreeNum'>3</div>
-        <div className = 'divide'>/</div>
-        <div className = 'disagreeNum'>3</div>
-        <img className = 'disagree' src={require('./images/disagree.png')}/>
-
-
-        </div>;
+        return this.parseQuestions(que, 'Document/Introduction', is_editor);
       }, this);
       
       var extra_questions = extras.map(function(que){
-        return <div className="wiki-info-item"><li onClick={(() => this.handleClick(que))}>{que.text}</li></div>;
+        return this.parseQuestions(que, 'Document/Extracurricular', is_editor);
       }, this);
       
       var prog_questions = progs.map(function(que){
-        return <div className="wiki-info-item"><li onClick={(() => this.handleClick(que))}>{que.text}</li></div>;
+        return this.parseQuestions(que, 'Interview/Programming', is_editor);
       }, this);
 
       var wait_questions = waits.map(function(que){
-        return <div className="wiki-info-item"><li onClick={(() => this.handleClick(que))}>{que.text}</li></div>;
+        return this.parseQuestions(que, 'Interview/Waiting', is_editor);
       }, this);
       
       var room1_questions = room1s.map(function(que){
-        return <div className="wiki-info-item"><li onClick={(() => this.handleClick(que))}>{que.text}</li></div>;
+        return this.parseQuestions(que, 'Interview/Room1', is_editor);
       }, this);
       
       var room2_questions = room2s.map(function(que){
-        return <div className="wiki-info-item"><li onClick={(() => this.handleClick(que))}>{que.text}</li></div>;
+        return this.parseQuestions(que, 'Interview/Room2', is_editor);
       }, this);
       
       var room3_questions = room3s.map(function(que){
-        return <div className="wiki-info-item"><li onClick={(() => this.handleClick(que))}>{que.text}</li></div>;
+        return this.parseQuestions(que, 'Interview/Room3', is_editor);
       }, this);
     }
 
@@ -463,7 +488,7 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Self Introduction</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(0))}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(0))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
@@ -472,7 +497,7 @@ class WikiPage extends Component {
                         </div>
                         { add_topics[0] && <div className = 'wiki-info-add'>
                           <input className = 'wiki-info-inputbox'type = 'text'></input>
-                          <button className = 'wiki-info-submit' type="submit">
+                          <button className = 'wiki-info-submit' type="submit" onSubmit={((event) => this.addTopic(event))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
@@ -482,7 +507,7 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Extracurricular</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(1))}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(1))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
@@ -507,7 +532,7 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Programming Test</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(2))}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(2))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
@@ -526,7 +551,7 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Waiting Room</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(3))}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(3))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
@@ -545,7 +570,7 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Room 1</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(4))}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(4))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
@@ -564,7 +589,7 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Room 2</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(5))}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(5))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
@@ -583,7 +608,7 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>Room 3</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.addTopic(6))}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(6))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
