@@ -19,6 +19,8 @@ const INITIAL_STATE = {
   room3s : [],
   comment_que : 'none',
   comments : [],
+  showProfile : false,
+  currentUser: null
 };
 
 class WikiPage extends Component {
@@ -29,6 +31,7 @@ class WikiPage extends Component {
     this.changeState = this.changeState.bind(this);
     this.changeNext = this.changeNext.bind(this);
     this.changePrev = this.changePrev.bind(this);
+    this.showProfile = this.showProfile.bind(this);
   }
 
   componentDidMount(){
@@ -197,6 +200,14 @@ class WikiPage extends Component {
     });
   }
 
+  showProfile(uid) {
+    var user = db.getUser(uid);
+    this.setState({
+      showProfile: true,
+      currentUser: user,
+    });
+  }
+
   handleClick(e, question) {
     var qid = question.qid
     if (this.state.comment_que === qid) {
@@ -279,33 +290,40 @@ class WikiPage extends Component {
       return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
     }, this);
 
+    if (this.state.currentUser != 'none') {
+      var profile = 
+        <div>
+          {this.state.currentUser}
+        </div>
+    };
+
     if (this.state.comment_que != 'none') {
       var comment_list = comments.map(function(com){
-        return <div className = 'wiki-comment-and-reply'>
-          <div className = 'wiki-comment-user-box'>
-            <div className = 'wiki-comment-user-row'>
-              <div className = 'wiki-comment-user-col-left' onClick={this.showProfile(com.uid)}>
-                <img className = 'user-pic' src={require('./images/user.png')}/>
-              </div>
-              <div className = 'wiki-comment-user-col-right'>
-                <div className = 'wiki-comment-user-context'>
-                {com.text}
+        return 
+          <div className = 'wiki-comment-and-reply'>
+            <div className = 'wiki-comment-user-box'>
+              <div className = 'wiki-comment-user-row'>
+                <div className = 'wiki-comment-user-col-left' onClick={this.showProfile(com.uid)}>
+                  <img className = 'user-pic' src={require('./images/user.png')}/>
+                </div>
+                <div className = 'wiki-comment-user-col-right'>
+                  <div className = 'wiki-comment-user-context'>
+                  {com.text}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className='wiki-reply-wrapper'>
-            <div className = 'wiki-reply-tri-wrapper'>
-              <div className = 'wiki-reply-tri'>
+            <div className='wiki-reply-wrapper'>
+              <div className = 'wiki-reply-tri-wrapper'>
+                <div className = 'wiki-reply-tri'>
+                </div>
+              </div>
+              <div className = 'wiki-reply-box'>
+                <div className = 'wiki-reply-context'>
+                </div>
               </div>
             </div>
-            <div className = 'wiki-reply-box'>
-              <div className = 'wiki-reply-context'>
-              How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?
-              </div>
-            </div>
-          </div>
-        </div>;
+          </div>;
       }, this);
     }
 
@@ -481,7 +499,9 @@ class WikiPage extends Component {
                   </div>
 
                   <div className = 'wiki-comment-user'>
-                    { comment_list }
+                    { this.state.showProfile 
+                      ? profile 
+                      : comment_list }
                   </div>
                 </div>
               </div>
