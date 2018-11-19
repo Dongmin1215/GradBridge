@@ -340,9 +340,13 @@ class WikiPage extends Component {
       alert("Please type in a proper topic/question to talk about");
       return;
     }
-    db.getQid().once("value").then(function(snapshot) {
-      var qid = snapshot.val();
-      db.incQid(qid+1);
+    db.getQid(this.state.current).once("value").then(function(snapshot) {
+      var base = snapshot.val();
+      var qid = 0;
+      if (base) {
+        qid = base.qid;
+      }
+      db.incQid(that.state.current, qid+1);
       var full_path = `${that.state.current}/${path}/${qid}`;
       db.addQuestion(full_path, text, that.state.myid);
       that.clickAdd(-1);

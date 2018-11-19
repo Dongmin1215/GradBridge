@@ -73,8 +73,8 @@ db.ref(`pages/${path}`).set({
 	voteagainst : '',
 });
 
-export const getQid = () =>
-db.ref('base_qid');
+export const getQid = (semester) =>
+db.ref(`base_values/${semester}`);
 
-export const incQid = (v) =>
-db.ref('/').update({ base_qid: v });
+export const incQid = (semester, v) =>
+db.ref(`base_values/${semester}`).update({ qid: v });
