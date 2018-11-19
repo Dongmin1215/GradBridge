@@ -32,6 +32,8 @@ class WikiPage extends Component {
     this.changeState = this.changeState.bind(this);
     this.changeNext = this.changeNext.bind(this);
     this.changePrev = this.changePrev.bind(this);
+    this.showProfile = this.showProfile.bind(this);
+    this.closeProfile = this.closeProfile.bind(this);
   }
 
   componentDidMount(){
@@ -242,10 +244,18 @@ class WikiPage extends Component {
     }
   }
 
-  showDialog = () => {
+  showProfile(uid) {
     this.setState({
-      displayUserInfo: !this.state.displayUserInfo
+      displayUserInfo: !this.state.displayUserInfo,
+      uid: uid,
     });
+  }
+
+  closeProfile() {
+    this.setState({
+      displayUserInfo: null,
+      uid: null,
+    })
   }
 
   render() {
@@ -288,37 +298,35 @@ class WikiPage extends Component {
       return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
     }, this);
 
-    if (this.state.comment_que != 'none') {
-      var comment_list = comments.map(function(com){
+        if (this.state.comment_que != 'none') {
+       var comment_list = comments.map(function(com){
         return <div className = 'wiki-comment-and-reply'>
           <div className = 'wiki-comment-user-box'>
             <div className = 'wiki-comment-user-row'>
               <div className = 'wiki-comment-user-col-left'>
-                <img className = 'user-pic' src={require('./images/user.png')} onClick={this.showDialog}/>
-                <UserInfo show={this.state.isOpen}
-                  onClose={this.showDialog}>
-                  Here's some content for the modal
-                </UserInfo>
+                <img className = 'user-pic' src={require('./images/user.png')} onClick={((e) =>this.showProfile(com.uid))}/>
               </div>
               <div className = 'wiki-comment-user-col-right'>
                 <div className = 'wiki-comment-user-context'>
-                {com.text}
-                </div>
-              </div>
-            </div>
-            <div className='wiki-reply-wrapper'>
-              <div className = 'wiki-reply-tri-wrapper'>
-                <div className = 'wiki-reply-tri'>
-                </div>
-              </div>
-              <div className = 'wiki-reply-box'>
-                <div className = 'wiki-reply-context'>
-                </div>
-              </div>
-            </div>
-          </div>;
-      }, this);
-    }
+                 {com.text}
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div className='wiki-reply-wrapper'>
+             <div className = 'wiki-reply-tri-wrapper'>
+               <div className = 'wiki-reply-tri'>
+               </div>
+             </div>
+             <div className = 'wiki-reply-box'>
+               <div className = 'wiki-reply-context'>
+               How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?
+               </div>
+             </div>
+           </div>
+         </div>;
+       }, this);
+     }
 
     return (
       <div className='wiki'>
@@ -492,7 +500,12 @@ class WikiPage extends Component {
                   </div>
 
                   <div className = 'wiki-comment-user'>
-                    { comment_list }
+                    { this.state.displayUserInfo 
+                      ? <UserInfo show={this.state.displayUserInfo}
+                           onClose={this.closeProfile} 
+                           uid={this.state.uid}
+                           />
+                      : comment_list }
                   </div>
                 </div>
               </div>

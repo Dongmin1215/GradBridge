@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import './App.css';
 
 export default class UserInfo extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+
     render() {
         // Render nothing if the "show" prop is false
         if(!this.props.show) {
@@ -33,8 +37,7 @@ export default class UserInfo extends React.Component {
         return (
           <div className="backdrop" style={{backdropStyle}}>
             <div className="modal" style={{modalStyle}}>
-              {this.props.children}
-    
+                {this.props.uid}
               <div className="footer">
                 <button onClick={this.props.onClose}>
                   Close
