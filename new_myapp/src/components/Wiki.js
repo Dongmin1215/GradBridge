@@ -256,16 +256,21 @@ class WikiPage extends Component {
   }
 
   showProfile(uid) {
-    this.setState({
-      displayUserInfo: !this.state.displayUserInfo,
-      uid: uid,
-    });
+    var that = this;
+    var user = db.getUser(uid);
+    user.once("value").then(function(snapshot) {
+      var myinfo = snapshot.val();
+      that.setState({
+        displayUserInfo: !that.state.displayUserInfo,
+        user: myinfo,
+      });
+    })
   }
 
   closeProfile() {
     this.setState({
-      displayUserInfo: null,
-      uid: null,
+      displayUserInfo: false,
+      user: null,
     })
   }
 
@@ -686,7 +691,7 @@ class WikiPage extends Component {
                     { this.state.displayUserInfo 
                       ? <UserInfo show={this.state.displayUserInfo}
                            onClose={this.closeProfile} 
-                           uid={this.state.uid}
+                           user={this.state.user}
                            />
                       : comment_list }
                   </div>
