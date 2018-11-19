@@ -188,7 +188,7 @@ class WikiPage extends Component {
   changeNext() {
     if (this.state.next.endsWith("Fall")) {
       var next = Number(this.state.next.slice(0,2));
-      next = String(next + 1) + " Fpring"; 
+      next = String(next + 1) + " Spring"; 
     } else {
       var next = this.state.next.replace("Spring", "Fall");
     }
