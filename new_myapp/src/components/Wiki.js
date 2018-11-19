@@ -5,6 +5,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import './App.css';
 import { db } from '../firebase';
 import SignOutButton from './SignOut';
+import UserInfo from './UserInfo';
 
 const INITIAL_STATE = {
   current : '19 spring',
@@ -19,9 +20,11 @@ const INITIAL_STATE = {
   room3s : [],
   comment_que : 'none',
   comments : [],
-  showProfile : false,
-  currentUser: null
+  currentUser: null,
+  displayUserInfo: false,
 };
+
+let userinfo = null;
 
 class WikiPage extends Component {
   constructor(props) {
@@ -31,7 +34,6 @@ class WikiPage extends Component {
     this.changeState = this.changeState.bind(this);
     this.changeNext = this.changeNext.bind(this);
     this.changePrev = this.changePrev.bind(this);
-    this.showProfile = this.showProfile.bind(this);
   }
 
   componentDidMount(){
@@ -200,14 +202,6 @@ class WikiPage extends Component {
     });
   }
 
-  showProfile(uid) {
-    var user = db.getUser(uid);
-    this.setState({
-      showProfile: true,
-      currentUser: user,
-    });
-  }
-
   handleClick(e, question) {
     var qid = question.qid
     if (this.state.comment_que === qid) {
@@ -250,6 +244,12 @@ class WikiPage extends Component {
     }
   }
 
+  showDialog = () => {
+    this.setState({
+      displayUserInfo: !this.state.displayUserInfo
+    });
+  }
+
   render() {
     const {
       intros,
@@ -290,20 +290,12 @@ class WikiPage extends Component {
       return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
     }, this);
 
-    if (this.state.currentUser != 'none') {
-      var profile = 
-        <div>
-          {this.state.currentUser}
-        </div>
-    };
-
     if (this.state.comment_que != 'none') {
       var comment_list = comments.map(function(com){
-        return 
-          <div className = 'wiki-comment-and-reply'>
+        return <div className = 'wiki-comment-and-reply'>
             <div className = 'wiki-comment-user-box'>
               <div className = 'wiki-comment-user-row'>
-                <div className = 'wiki-comment-user-col-left' onClick={this.showProfile(com.uid)}>
+                <div className = 'wiki-comment-user-col-left'>
                   <img className = 'user-pic' src={require('./images/user.png')}/>
                 </div>
                 <div className = 'wiki-comment-user-col-right'>
@@ -364,7 +356,7 @@ class WikiPage extends Component {
 
           <div className="wiki-main">
             <div className='wiki-main-row'>
-              <div className = "wiki-info-col">
+              <div className = "wiki-info-col" style = {{width: this.state.comment_width}}>
                 <div className = 'wiki-info-wrapper'>
                 
                   <div className = 'wiki-info-doc'>
@@ -499,9 +491,7 @@ class WikiPage extends Component {
                   </div>
 
                   <div className = 'wiki-comment-user'>
-                    { this.state.showProfile 
-                      ? profile 
-                      : comment_list }
+                    { comment_list }
                   </div>
                 </div>
               </div>
