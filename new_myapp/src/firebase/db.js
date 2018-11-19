@@ -48,3 +48,6 @@ db.ref(`pages/${semester}/Interview/Room3`);
 
 export const getComments = (qid) =>
 db.ref(`questions/${qid}`);
+
+export const getUser = (uid) =>
+db.ref(`users/${uid}`);

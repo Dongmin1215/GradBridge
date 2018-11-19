@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import * as routes from '../constants/routes';
 import 'font-awesome/css/font-awesome.min.css';
 import './App.css';
-import { db } from '../firebase';
+import { firebase, db } from '../firebase';
 import SignOutButton from './SignOut';
+import UserInfo from './UserInfo';
 
 const INITIAL_STATE = {
+  myid: '',
   current : '19 spring',
   prev: '18 fall',
   next: '19 fall',
@@ -19,6 +21,8 @@ const INITIAL_STATE = {
   room3s : [],
   comment_que : 'none',
   comments : [],
+  currentUser: null,
+  displayUserInfo: false,
 };
 
 class WikiPage extends Component {
@@ -29,6 +33,8 @@ class WikiPage extends Component {
     this.changeState = this.changeState.bind(this);
     this.changeNext = this.changeNext.bind(this);
     this.changePrev = this.changePrev.bind(this);
+    this.showProfile = this.showProfile.bind(this);
+    this.closeProfile = this.closeProfile.bind(this);
   }
 
   componentDidMount(){
@@ -36,8 +42,6 @@ class WikiPage extends Component {
   }
 
   changeState(){
-    console.log("changestate");
-    console.log(this.state.current);
     const intros = []
     const extras = []
     const progs = []
@@ -53,116 +57,120 @@ class WikiPage extends Component {
     var room2 = db.getRoom2(this.state.current);
     var room3 = db.getRoom3(this.state.current);
     var that = this;
-    introduction.once("value").then(function(snapshot) {
-      snapshot.forEach(function(child) {
-        const qid = child.key;
-        const {text, uid, visibility, vote} = child.val();
-        intros.push({
-          qid,
-          text,
-          uid,
-          visibility,
-          vote
+    firebase.auth.onAuthStateChanged(authUser => {
+      var myid = authUser.uid
+      this.setState({ myid });
+      introduction.once("value").then(function(snapshot) {
+        snapshot.forEach(function(child) {
+          const qid = child.key;
+          const {text, uid, visibility, vote} = child.val();
+          intros.push({
+            qid,
+            text,
+            uid,
+            visibility,
+            vote
+          });
+        });
+        that.setState({
+          intros
         });
       });
-      that.setState({
-        intros
-      });
-    });
-    extracurricular.once("value").then(function(snapshot) {
-      snapshot.forEach(function(child) {
-        const qid = child.key;
-        const {text, uid, visibility, vote} = child.val();
-        extras.push({
-          qid,
-          text,
-          uid,
-          visibility,
-          vote
+      extracurricular.once("value").then(function(snapshot) {
+        snapshot.forEach(function(child) {
+          const qid = child.key;
+          const {text, uid, visibility, vote} = child.val();
+          extras.push({
+            qid,
+            text,
+            uid,
+            visibility,
+            vote
+          });
+        });
+        that.setState({
+          extras
         });
       });
-      that.setState({
-        extras
-      });
-    });
-    programming.once("value").then(function(snapshot) {
-      snapshot.forEach(function(child) {
-        const qid = child.key;
-        const {text, uid, visibility, vote} = child.val();
-        progs.push({
-          qid,
-          text,
-          uid,
-          visibility,
-          vote
+      programming.once("value").then(function(snapshot) {
+        snapshot.forEach(function(child) {
+          const qid = child.key;
+          const {text, uid, visibility, vote} = child.val();
+          progs.push({
+            qid,
+            text,
+            uid,
+            visibility,
+            vote
+          });
+        });
+        that.setState({
+          progs
         });
       });
-      that.setState({
-        progs
-      });
-    });
-    waiting.once("value").then(function(snapshot) {
-      snapshot.forEach(function(child) {
-        const qid = child.key;
-        const {text, uid, visibility, vote} = child.val();
-        waits.push({
-          qid,
-          text,
-          uid,
-          visibility,
-          vote
+      waiting.once("value").then(function(snapshot) {
+        snapshot.forEach(function(child) {
+          const qid = child.key;
+          const {text, uid, visibility, vote} = child.val();
+          waits.push({
+            qid,
+            text,
+            uid,
+            visibility,
+            vote
+          });
+        });
+        that.setState({
+          waits
         });
       });
-      that.setState({
-        waits
-      });
-    });
-    room1.once("value").then(function(snapshot) {
-      snapshot.forEach(function(child) {
-        const qid = child.key;
-        const {text, uid, visibility, vote} = child.val();
-        room1s.push({
-          qid,
-          text,
-          uid,
-          visibility,
-          vote
+      room1.once("value").then(function(snapshot) {
+        snapshot.forEach(function(child) {
+          const qid = child.key;
+          const {text, uid, visibility, vote} = child.val();
+          room1s.push({
+            qid,
+            text,
+            uid,
+            visibility,
+            vote
+          });
+        });
+        that.setState({
+          room1s
         });
       });
-      that.setState({
-        room1s
-      });
-    });
-    room2.once("value").then(function(snapshot) {
-      snapshot.forEach(function(child) {
-        const qid = child.key;
-        const {text, uid, visibility, vote} = child.val();
-        room2s.push({
-          qid,
-          text,
-          uid,
-          visibility,
-          vote
+      room2.once("value").then(function(snapshot) {
+        snapshot.forEach(function(child) {
+          const qid = child.key;
+          const {text, uid, visibility, vote} = child.val();
+          room2s.push({
+            qid,
+            text,
+            uid,
+            visibility,
+            vote
+          });
+        });
+        that.setState({
+          room2s
         });
       });
-      that.setState({
-        room2s
-      });
-    });
-    room3.once("value").then(function(snapshot) {
-      snapshot.forEach(function(child) {
-        const qid = child.key;
-        const {text, uid, visibility, vote} = child.val();
-        room3s.push({
-          qid,
-          text,
-          uid,
-          visibility,
-          vote
+      room3.once("value").then(function(snapshot) {
+        snapshot.forEach(function(child) {
+          const qid = child.key;
+          const {text, uid, visibility, vote} = child.val();
+          room3s.push({
+            qid,
+            text,
+            uid,
+            visibility,
+            vote
+          });
         });
-      });
-      that.setState({
-        room3s
+        that.setState({
+          room3s
+        });
       });
     });
   }
@@ -241,8 +249,23 @@ class WikiPage extends Component {
     }
   }
 
+  showProfile(uid) {
+    this.setState({
+      displayUserInfo: !this.state.displayUserInfo,
+      uid: uid,
+    });
+  }
+
+  closeProfile() {
+    this.setState({
+      displayUserInfo: null,
+      uid: null,
+    })
+  }
+
   render() {
     const {
+      myid,
       intros,
       extras,
       progs,
@@ -253,33 +276,35 @@ class WikiPage extends Component {
       comments,
     } = this.state;
     
-    var intro_questions = intros.map(function(que){
-      return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
-    }, this);
-    
-    var extra_questions = extras.map(function(que){
-      return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
-    }, this);
-    
-    var prog_questions = progs.map(function(que){
-      return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
-    }, this);
+    if (myid !== '') {
+      var intro_questions = intros.map(function(que){
+        return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
+      }, this);
+      
+      var extra_questions = extras.map(function(que){
+        return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
+      }, this);
+      
+      var prog_questions = progs.map(function(que){
+        return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
+      }, this);
 
-    var wait_questions = waits.map(function(que){
-      return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
-    }, this);
-    
-    var room1_questions = room1s.map(function(que){
-      return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
-    }, this);
-    
-    var room2_questions = room2s.map(function(que){
-      return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
-    }, this);
-    
-    var room3_questions = room3s.map(function(que){
-      return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
-    }, this);
+      var wait_questions = waits.map(function(que){
+        return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
+      }, this);
+      
+      var room1_questions = room1s.map(function(que){
+        return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
+      }, this);
+      
+      var room2_questions = room2s.map(function(que){
+        return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
+      }, this);
+      
+      var room3_questions = room3s.map(function(que){
+        return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
+      }, this);
+    }
 
     if (this.state.comment_que != 'none') {
       var comment_list = comments.map(function(com){
@@ -287,6 +312,7 @@ class WikiPage extends Component {
           <div className = 'wiki-comment-user-box'>
             <div className = 'wiki-comment-user-row'>
               <div className = 'wiki-comment-user-col-left'>
+
                 <img className = 'user-pic' src={require('./images/user.png')}/>
                 <img className = 'wiki-comment-user-replyimg-wrap' src={require('./images/chat.png')}/>
               </div>
@@ -339,6 +365,31 @@ class WikiPage extends Component {
       }, this);
     }
 
+                <img className = 'user-pic' src={require('./images/user.png')} onClick={((e) =>this.showProfile(com.uid))}/>
+              </div>
+              <div className = 'wiki-comment-user-col-right'>
+                <div className = 'wiki-comment-user-context'>
+                 {com.text}
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div className='wiki-reply-wrapper'>
+             <div className = 'wiki-reply-tri-wrapper'>
+               <div className = 'wiki-reply-tri'>
+               </div>
+             </div>
+             <div className = 'wiki-reply-box'>
+               <div className = 'wiki-reply-context'>
+               How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?
+               </div>
+             </div>
+           </div>
+         </div>;
+       }, this);
+     }
+
+
     return (
       <div className='wiki'>
           <div className = "top">
@@ -348,7 +399,6 @@ class WikiPage extends Component {
                 </Link>
             </div>
           </div>
-
           <div className="wiki-navbar-row">
             <div className='wiki-navbar-left'>
               <div className='wiki-navbar-text'>Dept: Computer Science</div>
@@ -377,7 +427,7 @@ class WikiPage extends Component {
 
           <div className="wiki-main">
             <div className='wiki-main-row'>
-              <div className = "wiki-info-col">
+              <div className = "wiki-info-col" style = {{width: this.state.comment_width}}>
                 <div className = 'wiki-info-wrapper'>
                 
                   <div className = 'wiki-info-doc'>
@@ -521,12 +571,14 @@ class WikiPage extends Component {
 
 
                   <div className = 'wiki-comment-user'>
-                    { comment_list }
- 
-                    
-                    
-                  
+                    { this.state.displayUserInfo 
+                      ? <UserInfo show={this.state.displayUserInfo}
+                           onClose={this.closeProfile} 
+                           uid={this.state.uid}
+                           />
+                      : comment_list }
                   </div>
+
 
                   <div class = 'footer-wrapper'>
                     <div class="footer">
@@ -534,8 +586,8 @@ class WikiPage extends Component {
                     </div>
                   </div>
 
+
                 </div>
-              
               </div>
             </div>
           </div>
