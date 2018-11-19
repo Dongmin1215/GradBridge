@@ -311,6 +311,21 @@ class WikiPage extends Component {
     })
   }
 
+  parseQuestions(que, path, is_editor) {
+    return <div className="wiki-info-item">
+      <li onClick={(() => this.handleClick(que))}>{que.text}</li>
+      { is_editor && !que.visibility && 
+      <div className = 'vote-info'>
+        <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`${path}/${que.qid}`))}/>
+        <div className = 'agreeNum'>{que.vote[0]}</div>
+        <div className = 'divide'>/</div>
+        <div className = 'disagreeNum'>{que.vote[2]}</div>
+        <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`${path}/${que.qid}`))}/> 
+      </div>
+      }
+      </div>;
+  }
+
   render() {
     const {
       myid,
@@ -336,108 +351,31 @@ class WikiPage extends Component {
 
     if (myid !== '') {
       var intro_questions = intros.map(function(que){
-        return <div className="wiki-info-item">
-        <li onClick={(() => this.handleClick(que))}>{que.text}</li>
-        { is_editor && !que.visibility && 
-        <div className = 'vote-info'>
-          <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`Document/Introduction/${que.qid}`))}/>
-          <div className = 'agreeNum'>{que.vote[0]}</div>
-          <div className = 'divide'>/</div>
-          <div className = 'disagreeNum'>{que.vote[2]}</div>
-          <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`Document/Introduction/${que.qid}`))}/> 
-        </div>
-        }
-        </div>;
+        return this.parseQuestions(que, 'Document/Introduction', is_editor);
       }, this);
       
       var extra_questions = extras.map(function(que){
-        return <div className="wiki-info-item">
-        <li onClick={(() => this.handleClick(que))}>{que.text}</li>
-        { is_editor && !que.visibility && 
-        <div className = 'vote-info'>
-          <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`Document/Extracurricular/${que.qid}`))}/>
-          <div className = 'agreeNum'>{que.vote[0]}</div>
-          <div className = 'divide'>/</div>
-          <div className = 'disagreeNum'>{que.vote[2]}</div>
-          <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`Document/Extracurricular/${que.qid}`))}/> 
-        </div>
-        }
-        </div>;
+        return this.parseQuestions(que, 'Document/Extracurricular', is_editor);
       }, this);
       
       var prog_questions = progs.map(function(que){
-        return <div className="wiki-info-item">
-        <li onClick={(() => this.handleClick(que))}>{que.text}</li>
-        { is_editor && !que.visibility && 
-        <div className = 'vote-info'>
-          <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`Interview/Programming/${que.qid}`))}/>
-          <div className = 'agreeNum'>{que.vote[0]}</div>
-          <div className = 'divide'>/</div>
-          <div className = 'disagreeNum'>{que.vote[2]}</div>
-          <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`Interview/Programming/${que.qid}`))}/> 
-        </div>
-        }
-        </div>;
+        return this.parseQuestions(que, 'Interview/Programming', is_editor);
       }, this);
 
       var wait_questions = waits.map(function(que){
-        return <div className="wiki-info-item">
-        <li onClick={(() => this.handleClick(que))}>{que.text}</li>
-        { is_editor && !que.visibility && 
-        <div className = 'vote-info'>
-          <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`Interview/Waiting/${que.qid}`))}/>
-          <div className = 'agreeNum'>{que.vote[0]}</div>
-          <div className = 'divide'>/</div>
-          <div className = 'disagreeNum'>{que.vote[2]}</div>
-          <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`Interview/Waiting/${que.qid}`))}/> 
-        </div>
-        }
-        </div>;
+        return this.parseQuestions(que, 'Interview/Waiting', is_editor);
       }, this);
       
       var room1_questions = room1s.map(function(que){
-        return <div className="wiki-info-item">
-        <li onClick={(() => this.handleClick(que))}>{que.text}</li>
-        { is_editor && !que.visibility && 
-        <div className = 'vote-info'>
-          <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`Interview/Room1/${que.qid}`))}/>
-          <div className = 'agreeNum'>{que.vote[0]}</div>
-          <div className = 'divide'>/</div>
-          <div className = 'disagreeNum'>{que.vote[2]}</div>
-          <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`Interview/Room1/${que.qid}`))}/> 
-        </div>
-        }
-        </div>;
+        return this.parseQuestions(que, 'Interview/Room1', is_editor);
       }, this);
       
       var room2_questions = room2s.map(function(que){
-        return <div className="wiki-info-item">
-        <li onClick={(() => this.handleClick(que))}>{que.text}</li>
-        { is_editor && !que.visibility && 
-        <div className = 'vote-info'>
-          <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`Interview/Room2/${que.qid}`))}/>
-          <div className = 'agreeNum'>{que.vote[0]}</div>
-          <div className = 'divide'>/</div>
-          <div className = 'disagreeNum'>{que.vote[2]}</div>
-          <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`Interview/Room2/${que.qid}`))}/> 
-        </div>
-        }
-        </div>;
+        return this.parseQuestions(que, 'Interview/Room2', is_editor);
       }, this);
       
       var room3_questions = room3s.map(function(que){
-        return <div className="wiki-info-item">
-        <li onClick={(() => this.handleClick(que))}>{que.text}</li>
-        { is_editor && !que.visibility && 
-        <div className = 'vote-info'>
-          <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`Interview/Room3/${que.qid}`))}/>
-          <div className = 'agreeNum'>{que.vote[0]}</div>
-          <div className = 'divide'>/</div>
-          <div className = 'disagreeNum'>{que.vote[2]}</div>
-          <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`Interview/Room3/${que.qid}`))}/> 
-        </div>
-        }
-        </div>;
+        return this.parseQuestions(que, 'Interview/Room3', is_editor);
       }, this);
     }
 
