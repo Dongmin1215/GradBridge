@@ -552,13 +552,17 @@ h1{
 
 .wiki-comment-user{
   height: 92%;
-  display: block;
+  display: contents;
 }
 
 .wiki-comment-user-box{
-  margin : 15px;
+
   background: rgb(204, 218,245);
-  height: 120px;
+  height: 110px;
+  margin-top:15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom:8px;
 }
 
 
@@ -571,13 +575,13 @@ h1{
 .wiki-comment-user-col-left{
   float: left;
   width: 12%;
-  height:-webkit-fill-available;
+  height:100%;
 }
 
 .wiki-comment-user-col-right{
   float: right;
   width: 88%;
-  height:-webkit-fill-available;
+  height: 100px;
   font-size: x-large;
   padding-left: 8px;
   padding-top: 10px;
@@ -587,6 +591,21 @@ h1{
 
 .wiki-comment-user-context{
   font-size: 18px;
+}
+
+.wiki-info-subtitle-editor{
+  width: fit-content;
+  display: -webkit-inline-box;
+  
+}
+
+.wiki-info-subtitle-addimg{
+  padding-left: 8px;
+  margin-top: 8px;
+}
+
+.wiki-info-subtitle-addimg:hover{
+  cursor: pointer;
 }
 
 .user-pic{
@@ -621,6 +640,20 @@ h1{
 
 }
 
+
+.wiki-comment-user-replyimg-wrap{
+
+  width: 33px;
+  margin-left: 10px;
+  margin-bottom:10px;
+  margin-top:10px;
+}
+
+.wiki-comment-user-replyimg-wrap:hover{
+  cursor: pointer;
+
+}
+
 .wiki-reply-context{
   font-size: larger;
   overflow-y: scroll;
@@ -641,3 +674,37 @@ h1{
   float: right;
 }
 
+.wiki-reply-input{
+  width:80%;
+  height:-webkit-fill-available;
+}
+
+.wiki-reply-addbutton{
+  margin-left: 15px;
+  height:-webkit-fill-available;
+  width: 50px;
+  background: rgb(188, 219, 177);
+}
+
+.wiki-comment-add{
+  position: fixed;
+  background: red;
+  height: 40px;
+}
+
+.comment-add-img{
+  margin-left: 20px;
+  margin-top: 15px;
+  width: 40px;
+}
+
+
+
+.footer {
+  position:fixed;
+  right:30px;
+  bottom:85px;
+  margin:0;
+  padding:0;
+
+}

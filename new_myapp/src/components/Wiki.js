@@ -312,6 +312,59 @@ class WikiPage extends Component {
           <div className = 'wiki-comment-user-box'>
             <div className = 'wiki-comment-user-row'>
               <div className = 'wiki-comment-user-col-left'>
+
+                <img className = 'user-pic' src={require('./images/user.png')}/>
+                <img className = 'wiki-comment-user-replyimg-wrap' src={require('./images/chat.png')}/>
+              </div>
+              <div className = 'wiki-comment-user-col-right'>
+                <div className = 'wiki-comment-user-context'>
+                {com.text}
+                </div>
+                
+              </div>
+            </div>
+
+           
+          </div>
+
+          <div className='wiki-reply-wrapper'>
+            <div className = 'wiki-reply-tri-wrapper'>
+              <div className = 'wiki-reply-tri'>
+              </div>
+            </div>
+            <div className = 'wiki-reply-box'>
+              <div className = 'wiki-reply-context'>
+              How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?
+              </div>
+            </div>
+          </div>
+          <div className='wiki-reply-wrapper'>
+            <div className = 'wiki-reply-tri-wrapper'>
+              <div className = 'wiki-reply-tri'>
+              </div>
+            </div>
+            <div className = 'wiki-reply-box'>
+              
+              <div className = 'wiki-reply-add'>
+                <input className = 'wiki-reply-input' type = 'text'></input>
+                <button className = 'wiki-reply-addbutton'  type="submit">
+                  <div>ADD</div>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          
+
+
+          
+
+
+
+        </div>;
+      }, this);
+    }
+
                 <img className = 'user-pic' src={require('./images/user.png')} onClick={((e) =>this.showProfile(com.uid))}/>
               </div>
               <div className = 'wiki-comment-user-col-right'>
@@ -335,6 +388,7 @@ class WikiPage extends Component {
          </div>;
        }, this);
      }
+
 
     return (
       <div className='wiki'>
@@ -394,12 +448,16 @@ class WikiPage extends Component {
 
                     <div className = 'wiki-info-subtitle'>
                       <ul>
-                        <li>Extracurricular</li>
+                        <div className = 'wiki-info-subtitle-editor'>
+                          <li>Extracurricular</li>
+                          <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> 
+                        </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
                             { extra_questions }
                           </ul>
                         </div>
+                          
                       </ul>
                     </div>
                   </div>
@@ -507,6 +565,11 @@ class WikiPage extends Component {
                     </div>
                   </div>
 
+
+                  
+
+
+
                   <div className = 'wiki-comment-user'>
                     { this.state.displayUserInfo 
                       ? <UserInfo show={this.state.displayUserInfo}
@@ -515,6 +578,15 @@ class WikiPage extends Component {
                            />
                       : comment_list }
                   </div>
+
+
+                  <div class = 'footer-wrapper'>
+                    <div class="footer">
+                    <img className = 'comment-add-img' src={require('./images/plus.png')}/> 
+                    </div>
+                  </div>
+
+
                 </div>
               </div>
             </div>
