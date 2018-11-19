@@ -193,10 +193,10 @@ class SignUpEditorForm extends Component {
                         <select className = "sign-up-selection"
                             onChange={event => this.setState(byPropKey('admission_year', event.target.value))}>
                         <option value="" disabled selected>-------------</option>
-                        <option value="19s">2019 Spring</option>
-                        <option value="18f">2018 Fall</option>
-                        <option value="18s">2018 Spring</option>
-                        <option value="17f">2017 Fall</option>
+                        <option value="19 Spring">2019 Spring</option>
+                        <option value="18 Fall">2018 Fall</option>
+                        <option value="18 Spring">2018 Spring</option>
+                        <option value="17 Fall">2017 Fall</option>
                         <option value="etc">Before</option>
                         </select>
                     </div>

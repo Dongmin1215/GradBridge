@@ -170,13 +170,13 @@ class SignUpVisitorForm extends Component {
                             <select className = "sign-up-selection"
                             onChange={event => this.setState(byPropKey('expected_grad', event.target.value))}>
                             <option value="" disabled selected>final semester</option>
-                            <option value="19f">2019 Fall</option>
-                            <option value="20s">2020 Spring</option>
-                            <option value="20f">2020 Fall</option>
-                            <option value="21s">2021 Spring</option>
-                            <option value="21f">2021 Fall</option>
-                            <option value="22s">2022 Spring</option>
-                            <option value="22f">2022 Fall</option>
+                            <option value="19 Fall">2019 Fall</option>
+                            <option value="20 Spring">2020 Spring</option>
+                            <option value="20 Fall">2020 Fall</option>
+                            <option value="21 Spring">2021 Spring</option>
+                            <option value="21 Fall">2021 Fall</option>
+                            <option value="22 Spring">2022 Spring</option>
+                            <option value="22 Fall">2022 Fall</option>
                             <option value="etc">After</option>
                             </select>
                         </div>

@@ -9,9 +9,10 @@ import UserInfo from './UserInfo';
 
 const INITIAL_STATE = {
   myid: '',
-  current : '19 spring',
-  prev: '18 fall',
-  next: '19 fall',
+  myinfo: {},
+  current : '19 Spring',
+  prev: '18 Fall',
+  next: '19 Fall',
   intros : [],
   extras : [],
   progs : [],
@@ -58,8 +59,17 @@ class WikiPage extends Component {
     var room3 = db.getRoom3(this.state.current);
     var that = this;
     firebase.auth.onAuthStateChanged(authUser => {
-      var myid = authUser.uid
+      if (!authUser) {
+        alert("You must log in!");
+      }
+      var myid = authUser.uid;
+      var myself = db.getUser(myid);
+      myself.once("value").then(function(snapshot) {
+        var myinfo = snapshot.val();
+        that.setState({ myinfo })
+      });
       this.setState({ myid });
+      
       introduction.once("value").then(function(snapshot) {
         snapshot.forEach(function(child) {
           const qid = child.key;
@@ -176,11 +186,11 @@ class WikiPage extends Component {
   }
 
   changeNext() {
-    if (this.state.next.endsWith("fall")) {
+    if (this.state.next.endsWith("Fall")) {
       var next = Number(this.state.next.slice(0,2));
-      next = String(next + 1) + " spring"; 
+      next = String(next + 1) + " Fpring"; 
     } else {
-      var next = this.state.next.replace("spring", "fall");
+      var next = this.state.next.replace("Spring", "Fall");
     }
     this.setState({
       prev: this.state.current,
@@ -192,11 +202,11 @@ class WikiPage extends Component {
   }
 
   changePrev() {
-    if (this.state.prev.endsWith("spring")) {
+    if (this.state.prev.endsWith("Spring")) {
       var prev = Number(this.state.prev.slice(0,2));
-      prev = String(prev - 1) + " fall"; 
+      prev = String(prev - 1) + " Fall"; 
     } else {
-      var prev = this.state.prev.replace("fall", "spring");
+      var prev = this.state.prev.replace("Fall", "Spring");
     }
     this.setState({
       prev: prev,
@@ -266,6 +276,8 @@ class WikiPage extends Component {
   render() {
     const {
       myid,
+      myinfo,
+      current,
       intros,
       extras,
       progs,
@@ -275,6 +287,8 @@ class WikiPage extends Component {
       room3s,
       comments,
     } = this.state;
+
+    var is_editor = (myinfo.admission_year === current);
     
     if (myid !== '') {
       var intro_questions = intros.map(function(que){
