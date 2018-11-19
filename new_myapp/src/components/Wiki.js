@@ -326,7 +326,6 @@ class WikiPage extends Component {
           <div className = 'wiki-comment-user-box'>
             <div className = 'wiki-comment-user-row'>
               <div className = 'wiki-comment-user-col-left'>
-
                 <img className = 'user-pic' src={require('./images/user.png')}/>
                 <img className = 'wiki-comment-user-replyimg-wrap' src={require('./images/chat.png')}/>
               </div>
@@ -334,11 +333,8 @@ class WikiPage extends Component {
                 <div className = 'wiki-comment-user-context'>
                 {com.text}
                 </div>
-                
               </div>
             </div>
-
-           
           </div>
 
           <div className='wiki-reply-wrapper'>
@@ -357,8 +353,7 @@ class WikiPage extends Component {
               <div className = 'wiki-reply-tri'>
               </div>
             </div>
-            <div className = 'wiki-reply-box'>
-              
+            <div className = 'wiki-reply-box'> 
               <div className = 'wiki-reply-add'>
                 <input className = 'wiki-reply-input' type = 'text'></input>
                 <button className = 'wiki-reply-addbutton'  type="submit">
@@ -367,42 +362,9 @@ class WikiPage extends Component {
               </div>
             </div>
           </div>
-
-          
-
-
-          
-
-
-
         </div>;
       }, this);
     }
-
-                <img className = 'user-pic' src={require('./images/user.png')} onClick={((e) =>this.showProfile(com.uid))}/>
-              </div>
-              <div className = 'wiki-comment-user-col-right'>
-                <div className = 'wiki-comment-user-context'>
-                 {com.text}
-                 </div>
-               </div>
-             </div>
-           </div>
-           <div className='wiki-reply-wrapper'>
-             <div className = 'wiki-reply-tri-wrapper'>
-               <div className = 'wiki-reply-tri'>
-               </div>
-             </div>
-             <div className = 'wiki-reply-box'>
-               <div className = 'wiki-reply-context'>
-               How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?
-               </div>
-             </div>
-           </div>
-         </div>;
-       }, this);
-     }
-
 
     return (
       <div className='wiki'>
@@ -443,12 +405,10 @@ class WikiPage extends Component {
             <div className='wiki-main-row'>
               <div className = "wiki-info-col" style = {{width: this.state.comment_width}}>
                 <div className = 'wiki-info-wrapper'>
-                
                   <div className = 'wiki-info-doc'>
                     <div className = 'wiki-info-title'>
                       Document Review
                     </div>
-                    
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <li>Self Introduction</li>
@@ -459,7 +419,6 @@ class WikiPage extends Component {
                         </div>
                       </ul>
                     </div>
-
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
@@ -471,14 +430,10 @@ class WikiPage extends Component {
                             { extra_questions }
                           </ul>
                         </div>
-                          
                       </ul>
                     </div>
                   </div>
-
                   <hr></hr>
-                  
-                  
                   <div className = 'wiki-info-interviews'>
                     <div className = 'wiki-info-title'>
                       Interview
@@ -533,11 +488,9 @@ class WikiPage extends Component {
                         </div>
                       </ul>
                     </div>
-
                   </div>
                 </div>
               </div>
-
               <div className='wiki-comment-col' style={{display:this.state.comment_display}}>
                 <div className='wiki-comment-wrapper'>
                   <div className = 'wiki-comment-filter'>
@@ -553,7 +506,6 @@ class WikiPage extends Component {
                             </select>
                           </div>
                       </div>
-
                       <div className ='wiki-comment-filter-col'>
                         <div className = 'wiki-comment-filter-wrapper'>
                           <select className = "wiki-comment-filter-select">
@@ -563,7 +515,6 @@ class WikiPage extends Component {
                           </select>
                         </div>
                       </div>
-
                       <div className ='wiki-comment-filter-col'>
                         <div className = 'wiki-comment-filter-wrapper'>
                           <select className = "wiki-comment-filter-select">
@@ -578,12 +529,6 @@ class WikiPage extends Component {
                       </div>
                     </div>
                   </div>
-
-
-                  
-
-
-
                   <div className = 'wiki-comment-user'>
                     { this.state.displayUserInfo 
                       ? <UserInfo show={this.state.displayUserInfo}
@@ -592,20 +537,15 @@ class WikiPage extends Component {
                            />
                       : comment_list }
                   </div>
-
-
                   <div class = 'footer-wrapper'>
                     <div class="footer">
                     <img className = 'comment-add-img' src={require('./images/plus.png')}/> 
                     </div>
                   </div>
-
-
                 </div>
               </div>
             </div>
           </div>
-
       </div>
     );
   }
