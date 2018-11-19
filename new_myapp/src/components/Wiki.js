@@ -254,31 +254,31 @@ class WikiPage extends Component {
     } = this.state;
     
     var intro_questions = intros.map(function(que){
-      return <li onClick={((e) => this.handleClick(e, que))}>{que.text}</li>;
+      return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
     }, this);
     
     var extra_questions = extras.map(function(que){
-      return <li onClick={((e) => this.handleClick(e, que))}>{que.text}</li>;
+      return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
     }, this);
     
     var prog_questions = progs.map(function(que){
-      return <li onClick={((e) => this.handleClick(e, que))}>{que.text}</li>;
+      return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
     }, this);
 
     var wait_questions = waits.map(function(que){
-      return <li onClick={((e) => this.handleClick(e, que))}>{que.text}</li>;
+      return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
     }, this);
     
     var room1_questions = room1s.map(function(que){
-      return <li onClick={((e) => this.handleClick(e, que))}>{que.text}</li>;
+      return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
     }, this);
     
     var room2_questions = room2s.map(function(que){
-      return <li onClick={((e) => this.handleClick(e, que))}>{que.text}</li>;
+      return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
     }, this);
     
     var room3_questions = room3s.map(function(que){
-      return <li onClick={((e) => this.handleClick(e, que))}>{que.text}</li>;
+      return <div className="wiki-info-item"><li onClick={((e) => this.handleClick(e, que))}>{que.text}</li></div>;
     }, this);
 
     if (this.state.comment_que != 'none') {

@@ -382,7 +382,7 @@ h1{
 
 .wiki-navbar-text{
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
+  font-size: 17px;
   text-align: center;
   line-height: 2;
   float: left;
@@ -494,8 +494,9 @@ h1{
 }
 
 
-.wiki-info-qid:hover{
+.wiki-info-item:hover{
   cursor: pointer;
+  background-color: antiquewhite;
 }
 
 
@@ -568,18 +569,18 @@ h1{
 
 .wiki-comment-user-col-left{
   float: left;
-  width: 10%;
+  width: 12%;
   height:-webkit-fill-available;
 }
 
 .wiki-comment-user-col-right{
   float: right;
-  width: 90%;
+  width: 88%;
   height:-webkit-fill-available;
   font-size: x-large;
-  padding-left: 10px;
+  padding-left: 8px;
   padding-top: 10px;
-  padding-right: 9px;
+  padding-right: 8px;
   overflow-y: scroll;
 }
 
@@ -588,9 +589,10 @@ h1{
 }
 
 .user-pic{
-  width: 35px;
-  margin-left: 5px;
-  margin-top: 15px;
+  width: 80%;
+  margin-left: 8px;
+  margin-right: 5px;
+  margin-top: 10px;
 }
 
 .user-pic:hover{
