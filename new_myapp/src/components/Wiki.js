@@ -320,7 +320,17 @@ class WikiPage extends Component {
 
     if (myid !== '') {
       var intro_questions = intros.map(function(que){
-        return <div className="wiki-info-item"><li onClick={(() => this.handleClick(que))}>{que.text}</li></div>;
+        return <div className="wiki-info-item">
+        <li onClick={(() => this.handleClick(que))}>{que.text}</li>
+        
+        <img className = 'agree' src={require('./images/agree.png')}/>
+        <div className = 'agreeNum'>3</div>
+        <div className = 'divide'>/</div>
+        <div className = 'disagreeNum'>3</div>
+        <img className = 'disagree' src={require('./images/disagree.png')}/>
+
+
+        </div>;
       }, this);
       
       var extra_questions = extras.map(function(que){
@@ -381,7 +391,7 @@ class WikiPage extends Component {
               <div className = 'wiki-reply-tri'>
               </div>
             </div>
-            <div className = 'wiki-reply-box'> 
+            <div className = 'wiki-reply-input-box'> 
               <div className = 'wiki-reply-add'>
                 <input className = 'wiki-reply-input' type = 'text'></input>
                 <button className = 'wiki-reply-addbutton'  type="submit">
