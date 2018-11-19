@@ -68,129 +68,101 @@ class WikiPage extends Component {
       }
       var myid = authUser.uid;
       var myself = db.getUser(myid);
+      this.setState({ myid });
       myself.once("value").then(function(snapshot) {
         var myinfo = snapshot.val();
-        that.setState({ myinfo })
-      });
-      this.setState({ myid });
-      
-      introduction.once("value").then(function(snapshot) {
-        snapshot.forEach(function(child) {
-          const qid = child.key;
-          const {text, uid, visibility, vote} = child.val();
-          intros.push({
-            qid,
-            text,
-            uid,
-            visibility,
-            vote
+        var is_editor = (myinfo.admission_year === that.state.current)
+        that.setState({ myinfo });
+        introduction.once("value").then(function(snapshot) {
+          snapshot.forEach(function(child) {
+            const qid = child.key;
+            const {text, uid, visibility, vote} = child.val();
+            if (visibility || is_editor) {
+              intros.push({qid, text, uid, visibility, vote});
+            }
+          });
+          that.setState({
+            intros,
+            ready : that.state.ready + 1
           });
         });
-        that.setState({
-          intros,
-          ready : that.state.ready + 1
-        });
-      });
-      extracurricular.once("value").then(function(snapshot) {
-        snapshot.forEach(function(child) {
-          const qid = child.key;
-          const {text, uid, visibility, vote} = child.val();
-          extras.push({
-            qid,
-            text,
-            uid,
-            visibility,
-            vote
+        extracurricular.once("value").then(function(snapshot) {
+          snapshot.forEach(function(child) {
+            const qid = child.key;
+            const {text, uid, visibility, vote} = child.val();
+            if (visibility || is_editor) {
+              extras.push({qid, text, uid, visibility, vote});
+            }
+          });
+          that.setState({
+            extras,
+            ready : that.state.ready + 1
           });
         });
-        that.setState({
-          extras,
-          ready : that.state.ready + 1
-        });
-      });
-      programming.once("value").then(function(snapshot) {
-        snapshot.forEach(function(child) {
-          const qid = child.key;
-          const {text, uid, visibility, vote} = child.val();
-          progs.push({
-            qid,
-            text,
-            uid,
-            visibility,
-            vote
+        programming.once("value").then(function(snapshot) {
+          snapshot.forEach(function(child) {
+            const qid = child.key;
+            const {text, uid, visibility, vote} = child.val();
+            if (visibility || is_editor) {
+              progs.push({qid, text, uid, visibility, vote});
+            }
+          });
+          that.setState({
+            progs,
+            ready : that.state.ready + 1
           });
         });
-        that.setState({
-          progs,
-          ready : that.state.ready + 1
-        });
-      });
-      waiting.once("value").then(function(snapshot) {
-        snapshot.forEach(function(child) {
-          const qid = child.key;
-          const {text, uid, visibility, vote} = child.val();
-          waits.push({
-            qid,
-            text,
-            uid,
-            visibility,
-            vote
+        waiting.once("value").then(function(snapshot) {
+          snapshot.forEach(function(child) {
+            const qid = child.key;
+            const {text, uid, visibility, vote} = child.val();
+            if (visibility || is_editor) {
+              waits.push({qid, text, uid, visibility, vote});
+            }
+          });
+          that.setState({
+            waits,
+            ready : that.state.ready + 1
           });
         });
-        that.setState({
-          waits,
-          ready : that.state.ready + 1
-        });
-      });
-      room1.once("value").then(function(snapshot) {
-        snapshot.forEach(function(child) {
-          const qid = child.key;
-          const {text, uid, visibility, vote} = child.val();
-          room1s.push({
-            qid,
-            text,
-            uid,
-            visibility,
-            vote
+        room1.once("value").then(function(snapshot) {
+          snapshot.forEach(function(child) {
+            const qid = child.key;
+            const {text, uid, visibility, vote} = child.val();
+            if (visibility || is_editor) {
+              room1s.push({qid, text, uid, visibility, vote});
+            }
+          });
+          that.setState({
+            room1s,
+            ready : that.state.ready + 1
           });
         });
-        that.setState({
-          room1s,
-          ready : that.state.ready + 1
-        });
-      });
-      room2.once("value").then(function(snapshot) {
-        snapshot.forEach(function(child) {
-          const qid = child.key;
-          const {text, uid, visibility, vote} = child.val();
-          room2s.push({
-            qid,
-            text,
-            uid,
-            visibility,
-            vote
+        room2.once("value").then(function(snapshot) {
+          snapshot.forEach(function(child) {
+            const qid = child.key;
+            const {text, uid, visibility, vote} = child.val();
+            if (visibility || is_editor) {
+              room2s.push({qid, text, uid, visibility, vote});
+            }
+          });
+          that.setState({
+            room2s,
+            ready : that.state.ready + 1
           });
         });
-        that.setState({
-          room2s,
-          ready : that.state.ready + 1
-        });
-      });
-      room3.once("value").then(function(snapshot) {
-        snapshot.forEach(function(child) {
-          const qid = child.key;
-          const {text, uid, visibility, vote} = child.val();
-          room3s.push({
-            qid,
-            text,
-            uid,
-            visibility,
-            vote
+        room3.once("value").then(function(snapshot) {
+          snapshot.forEach(function(child) {
+            const qid = child.key;
+            const {text, uid, visibility, vote} = child.val();
+            if (visibility || is_editor) {
+              room3s.push({qid, text, uid, visibility, vote});
+            }
           });
-        });
-        that.setState({
-          room3s,
-          ready : that.state.ready + 1
+          that.setState({
+            room3s,
+            ready : that.state.ready + 1
+          });
         });
       });
     });
@@ -328,7 +300,6 @@ class WikiPage extends Component {
         <div className = 'divide'>/</div>
         <div className = 'disagreeNum'>3</div>
         <img className = 'disagree' src={require('./images/disagree.png')}/>
-
 
         </div>;
       }, this);
