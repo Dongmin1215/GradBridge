@@ -24,8 +24,6 @@ const INITIAL_STATE = {
   displayUserInfo: false,
 };
 
-let userinfo = null;
-
 class WikiPage extends Component {
   constructor(props) {
     super(props);
@@ -293,15 +291,18 @@ class WikiPage extends Component {
     if (this.state.comment_que != 'none') {
       var comment_list = comments.map(function(com){
         return <div className = 'wiki-comment-and-reply'>
-            <div className = 'wiki-comment-user-box'>
-              <div className = 'wiki-comment-user-row'>
-                <div className = 'wiki-comment-user-col-left'>
-                  <img className = 'user-pic' src={require('./images/user.png')}/>
-                </div>
-                <div className = 'wiki-comment-user-col-right'>
-                  <div className = 'wiki-comment-user-context'>
-                  {com.text}
-                  </div>
+          <div className = 'wiki-comment-user-box'>
+            <div className = 'wiki-comment-user-row'>
+              <div className = 'wiki-comment-user-col-left'>
+                <img className = 'user-pic' src={require('./images/user.png')} onClick={this.showDialog}/>
+                <UserInfo show={this.state.isOpen}
+                  onClose={this.showDialog}>
+                  Here's some content for the modal
+                </UserInfo>
+              </div>
+              <div className = 'wiki-comment-user-col-right'>
+                <div className = 'wiki-comment-user-context'>
+                {com.text}
                 </div>
               </div>
             </div>
