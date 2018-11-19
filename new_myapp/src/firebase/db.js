@@ -3,30 +3,30 @@ import { db } from './firebase';
 // User API
 
 export const doCreateEditor = (id, email, admission_year, applied_dept, under_uni, under_major, gpa) =>
-  db.ref(`users/${id}`).set({
-  	    email,
-		admission_year,
-		applied_dept,
-		under_uni,
-		under_major,
-		gpa,
-  });
+db.ref(`users/${id}`).set({
+	email,
+	admission_year,
+	applied_dept,
+	under_uni,
+	under_major,
+	gpa,
+});
 
 export const doCreateVisitor = (id, email, admission_year, under_uni, under_major, expected_grad) =>
-  db.ref(`users/${id}`).set({
-		email,
-		admission_year,
-		under_uni,
-		under_major,
-		expected_grad,
-  });
+db.ref(`users/${id}`).set({
+	email,
+	admission_year,
+	under_uni,
+	under_major,
+	expected_grad,
+});
 
 export const onceGetUsers = () =>
-  db.ref('users').once('value');
+db.ref('users').once('value');
 
 
 export const getIntroduction = (semester) =>
-  db.ref(`pages/${semester}/Document/Introduction`);
+db.ref(`pages/${semester}/Document/Introduction`);
 
 export const getExtracurricular = (semester) =>
 db.ref(`pages/${semester}/Document/Extracurricular`);
@@ -46,8 +46,8 @@ db.ref(`pages/${semester}/Interview/Room2`);
 export const getRoom3 = (semester) =>
 db.ref(`pages/${semester}/Interview/Room3`);
 
-export const getComments = (qid) =>
-db.ref(`questions/${qid}`);
+export const getComments = (semester, qid) =>
+db.ref(`questions/${semester}/${qid}`);
 
 export const getUser = (uid) =>
 db.ref(`users/${uid}`);
@@ -58,7 +58,17 @@ db.ref(`pages/${qid_path}`);
 export const removeQuestion = (qid_path) =>
 db.ref(`pages/${qid_path}`).remove();
 
-export const doVote = (qid_path, vote, votefor, voteagainst, text, uid, visibility) =>
-  db.ref(`pages/${qid_path}`).set({
-		vote, votefor, voteagainst, text, uid, visibility
-	});
+export const doVote = (path, vote, votefor, voteagainst, text, uid, visibility) =>
+db.ref(`pages/${path}`).set({
+	vote, votefor, voteagainst, text, uid, visibility
+});
+
+export const addQuestion = (path, text, uid) =>
+db.ref(`pages/${path}`).set({
+	text,
+	uid,
+	visibility : false,
+	vote : '0-0',
+	votefor : '',
+	voteagainst : '',
+});

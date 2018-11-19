@@ -219,7 +219,7 @@ class WikiPage extends Component {
         comment_width: '65%',
       });
       const comments = []
-      var all_comment = db.getComments(qid);
+      var all_comment = db.getComments(this.state.current, qid);
       var that = this;
       all_comment.once("value").then(function(snapshot) {
         snapshot.forEach(function(child) {
