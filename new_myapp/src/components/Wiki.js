@@ -447,6 +447,9 @@ class WikiPage extends Component {
               </div>
             </div>
             </div>
+            <div class="footer">
+              <button class="new-comment-add-btn">Add a new comment</button> 
+            </div>
         </div>;
       }, this);
     }
@@ -681,10 +684,6 @@ class WikiPage extends Component {
                            uid={this.state.uid}
                            />
                       : comment_list }
-                  </div>
-
-                  <div class="footer">
-                    <button class="new-comment-add-btn">Add a new comment</button> 
                   </div>
                 </div>
               </div>
