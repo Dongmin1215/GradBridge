@@ -405,6 +405,14 @@ h1{
   margin-right: 10px;
 }
 
+.wiki-year:hover{
+  cursor: pointer;
+}
+
+.wiki-other-year:hover{
+  cursor: pointer;
+}
+
 .wiki-arrow{
   font-size: x-large;
   display: inline-block;
