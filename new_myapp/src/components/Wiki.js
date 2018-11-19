@@ -7,9 +7,9 @@ import { db } from '../firebase';
 import SignOutButton from './SignOut';
 
 const INITIAL_STATE = {
-  current : '19s',
-  prev: '18f',
-  next: '19f',
+  current : '19 spring',
+  prev: '18 fall',
+  next: '19 fall',
   intros : [],
   extras : [],
   progs : [],
@@ -168,11 +168,11 @@ class WikiPage extends Component {
   }
 
   changeNext() {
-    if (this.state.next.endsWith("f")) {
+    if (this.state.next.endsWith("fall")) {
       var next = Number(this.state.next.slice(0,2));
-      next = String(next + 1) + "s"; 
+      next = String(next + 1) + " spring"; 
     } else {
-      var next = this.state.next.replace("s", "f");
+      var next = this.state.next.replace("spring", "fall");
     }
     this.setState({
       prev: this.state.current,
@@ -184,11 +184,11 @@ class WikiPage extends Component {
   }
 
   changePrev() {
-    if (this.state.prev.endsWith("s")) {
+    if (this.state.prev.endsWith("spring")) {
       var prev = Number(this.state.prev.slice(0,2));
-      prev = String(prev - 1) + "f"; 
+      prev = String(prev - 1) + " fall"; 
     } else {
-      var prev = this.state.prev.replace("f", "s");
+      var prev = this.state.prev.replace("fall", "spring");
     }
     this.setState({
       prev: prev,
