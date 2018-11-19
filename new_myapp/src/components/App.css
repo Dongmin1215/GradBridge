@@ -405,6 +405,14 @@ h1{
   margin-right: 10px;
 }
 
+.wiki-year:hover{
+  cursor: pointer;
+}
+
+.wiki-other-year:hover{
+  cursor: pointer;
+}
+
 .wiki-arrow{
   font-size: x-large;
   display: inline-block;
@@ -679,6 +687,8 @@ h1{
   height:-webkit-fill-available;
 }
 
+
+
 .wiki-reply-addbutton{
   margin-left: 15px;
   height:-webkit-fill-available;
@@ -688,7 +698,7 @@ h1{
 
 .wiki-comment-add{
   position: fixed;
-  background: red;
+
   height: 40px;
 }
 
@@ -698,7 +708,11 @@ h1{
   width: 40px;
 }
 
+.wiki-comment-input{
+  width: 86%;
 
+  height: -webkit-fill-available;
+}
 
 .footer {
   position:fixed;
@@ -706,5 +720,72 @@ h1{
   bottom:85px;
   margin:0;
   padding:0;
+}
 
+.profile-background{
+  width: 80%;
+  height: 70%;
+  margin: auto;
+  margin-top: 10%;
+  background-color:rgb(238,238,238);
+  border-radius: 10px;
+}
+
+.profile-closeBtn{
+  width: 20px;
+  float: right;
+  cursor: pointer;
+  margin-right: 7px;
+  margin-top: 7px;
+}
+
+.profile-user-info{
+  margin: auto;
+  margin-top: 50px;
+}
+
+.profile-user-pic{
+  margin-left: 10px;
+  width: 30px;
+}
+
+.profile-user-field{
+  margin-left: 10px;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 2px;
+}
+
+.profile-user-text{
+  margin-left: 10px;
+}
+
+.wiki-comment-addbox{
+  background: rgb(204, 218,245);
+  height: -webkit-fill-available;
+  margin-right : 14.5px;
+
+  
+  padding:15px;
+  overflow-y: scroll;
+}
+
+.wiki-comment-addbutton{
+  margin-left: 8.5px;
+  height:-webkit-fill-available;
+  width: 50px;
+  background: rgb(163, 196, 254);
+}
+
+.wiki-info-add{
+
+}
+
+.wiki-info-inputbox{
+  width: 90%;
+  font-size: large;
+}
+
+.wiki-info-submit{
+  margin-left: 20px;
 }
