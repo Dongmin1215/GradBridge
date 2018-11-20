@@ -22,6 +22,23 @@ const INITIAL_STATE = {
   error: null,
 };
 
+var is_first = true;
+
+function change_bool() {
+  if (is_first) {
+    is_first= false;
+  }
+  return is_first;
+}
+
+function change_to_true(){
+  if (! is_first){
+    is_first = true;
+  }
+  return is_first;
+}
+
+
 class SignInForm extends Component {
   constructor(props) {
     super(props);
@@ -49,6 +66,12 @@ class SignInForm extends Component {
       });
 
     event.preventDefault();
+  }
+
+  click_change_bool(e){
+    if (! is_first){
+      is_first = true;
+    }
   }
 
   render() {
@@ -105,18 +128,28 @@ class SignInForm extends Component {
         
           <div className = "login-right">
             <button className = "login-button" disabled={isInvalid} type="submit">
-              <div id = "login-btn">Sign In</div>
+              <div id = "login-btn" onClick = {((e) => this.click_change_bool())}>Sign In</div>
             </button>
           </div>
         </div>
         
         <PasswordForgetLink />
         <SignUpLink />
+
         
-      </div>
-        { error && <div>{ alert(error.message) }</div>}
-        
+      </div> 
+        { is_first && error && <div>{ alert(error.message) }
+        {change_to_true()}
+      </div>}
+
+      
+     
+      {change_bool()}
+
       </form>
+      
+
+
     );
   }
 }
