@@ -5,8 +5,34 @@ import AuthUserContext from './AuthUserContext';
 import './App.css';
 import withAuthentication from './withAuthentication';
 
+var is_first = true
+
+function change_bool() {
+	if (is_first) {
+	  is_first= false;
+	}
+	return is_first;
+  }
+  
+  function change_to_true(){
+	if (! is_first){
+	  is_first = true;
+	}
+	return is_first;
+  }
+  
+function click_change_bool(e){
+	if (! is_first){
+	is_first = true;
+	}
+	
+	alert('NOOOOO');
+}
 const LandingPage = () =>
 	<div className="landing-Initial">	
+		<div>
+			{is_first ? alert('yest') : alert('no')}
+		</div>
 		<div className="landing-Title">
 			<Link to={routes.LANDING}>
 				<img id="logo" src={require('./images/logo.png')}/>
@@ -28,10 +54,13 @@ const LandingPage = () =>
 	  				: <LinkNonAuth />
 				}
     		</AuthUserContext.Consumer>
-			<img className="major" src ={require('./images/EE.png')}/>
-			<img className="major" src ={require('./images/ME.png')}/>
-			<img className="major" src ={require('./images/AE.png')}/>
+
+			<img className="major major-notCS" onClick = {((e) => click_change_bool())} src ={require('./images/EE.png')}/>
+			<img className="major major-notCS" onClick = {((e) => click_change_bool())} src ={require('./images/ME.png')}/>
+			<img className="major major-notCS" onClick = {((e) => click_change_bool())} src ={require('./images/AE.png')}/>
 		</div>
+
+		{change_bool()}
 	</div>
 
 const LinkAuth = () =>
