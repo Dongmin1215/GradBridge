@@ -4,7 +4,6 @@ import { SignUpLink } from './SignUp';
 import { PasswordForgetLink } from './PasswordForget';
 import { auth } from '../firebase';
 import { Link } from 'react-router-dom';
-import Popup from 'react-popup';
 import * as routes from '../constants/routes';
 import './App.css';
 
@@ -121,7 +120,7 @@ class SignInForm extends Component {
     );
   }
 }
-Popup.alert('Hello');
+
 export default withRouter(SignInPage);
 
 export {
