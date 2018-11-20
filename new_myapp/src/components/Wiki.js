@@ -36,6 +36,7 @@ const INITIAL_STATE = {
   gpa_option: "default",
   univ_option: "default",
   major_option: "default",
+  new_comment : "",
 };
 
 class WikiPage extends Component {
@@ -386,7 +387,7 @@ class WikiPage extends Component {
   parseQuestions(que, path, is_editor) {
     return <div className="wiki-info-item">
       
-      {is_editor &&  que.visibility &&
+      { (!is_editor || que.visibility) &&
        <li onClick={(() => this.handleClick(que))}>{que.text}</li>
       }
       { is_editor && !que.visibility && 
@@ -402,6 +403,31 @@ class WikiPage extends Component {
         </div>
       }
       </div>;
+  }
+
+  addComment() {
+    var that = this;
+    var text = this.state.new_comment;
+    var qid = this.state.comment_que;
+    var info = this.state.myinfo;
+    var sem = this.state.current
+    if (text === '' || text.length < 5) {
+      alert("Please type in a proper topic/question to talk about");
+      return;
+    }
+    db.getCid(sem, qid).once("value").then(function(snapshot) {
+      var base = snapshot.val();
+      var cid = 1;
+      if (base) {
+        cid = base.base_cid;
+      }
+      db.incCid(sem, qid, cid+1);
+      var full_path = `${sem}/${qid}/comments/${cid}`;
+      db.addComment(full_path, text, that.state.myid, info.gpa, info.under_uni === 'kaist', info.under_major);
+      that.closeComments();
+      that.setState({ togglecomment: false });
+      that.changeState();
+    })
   }
 
   addTopic(path) {
@@ -859,8 +885,8 @@ class WikiPage extends Component {
                   { this.state.togglecomment && 
                     <div className = 'wiki-comment-user-box'>
                       <div className = 'wiki-comment-addbox'>
-                        <input className = 'wiki-comment-input' type = 'text'></input>
-                        <button className = 'wiki-comment-addbutton' type="submit">
+                        <input className = 'wiki-comment-input' type = 'text' onChange={event => this.setState({ new_comment: event.target.value })}></input>
+                        <button className = 'wiki-comment-addbutton' type="submit" onClick={(() => this.addComment())}>
                           <div className = 'wiki-submit-text'>ADD</div>
                         </button>
                       </div>
