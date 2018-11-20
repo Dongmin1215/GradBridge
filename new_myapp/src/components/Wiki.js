@@ -694,9 +694,10 @@ class WikiPage extends Component {
                       </div>
                     </div>
                   </div>
+                  { !this.state.displayUserInfo && is_editor &&
                   <div id = 'wiki-comment-add-top'>
                     <button className="new-comment-add-btn">Add a new comment</button>  
-                  </div>
+                  </div> }
                   <div className = 'wiki-comment-user'>
                     { this.state.displayUserInfo 
                       ? <UserInfo show={this.state.displayUserInfo}
