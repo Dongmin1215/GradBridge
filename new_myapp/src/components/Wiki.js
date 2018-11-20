@@ -30,6 +30,8 @@ const INITIAL_STATE = {
   ready : 0,
   topic_input: [false, false, false, false, false, false, false],
   new_topic : "",
+  prevShow : true,
+  nextShow : true,
 };
 
 class WikiPage extends Component {
@@ -183,6 +185,11 @@ class WikiPage extends Component {
 
   changeNext() {
     if (this.state.next.startsWith("20")) {
+      this.setState({
+        nextShow : false,
+        prev: this.state.current,
+        current : this.state.next,
+      });
       return;
     }
     if (this.state.next.endsWith("Fall")) {
@@ -196,13 +203,19 @@ class WikiPage extends Component {
       prev: this.state.current,
       current : this.state.next,
       next: next,
+      prevShow : true,
     }, () => {
       this.changeState();
     });
   }
 
   changePrev() {
-    if (this.state.current.startsWith("17")) {
+    if (this.state.prev.startsWith("17")) {
+      this.setState({
+        prevShow : false,
+        current : this.state.prev,
+        next: this.state.current
+      });
       return;
     }
     if (this.state.prev.endsWith("Spring")) {
@@ -215,7 +228,8 @@ class WikiPage extends Component {
     this.setState({
       prev: prev,
       current : this.state.prev,
-      next: this.state.current
+      next: this.state.current,
+      nextShow : true
     }, () => {
       this.changeState();
     });
@@ -479,15 +493,15 @@ class WikiPage extends Component {
               <div className='wiki-navbar-text'>Dept: Computer Science</div>
             </div>
             <div className='wiki-navbar-middle'>
-              <div className='wiki-other-year' onClick={this.changePrev}>{this.state.prev}</div>
-              <div className= 'wiki-arrow'>
+              { this.state.prevShow && <div className='wiki-other-year' onClick={this.changePrev}>{this.state.prev}</div>}
+              { this.state.prevShow && <div className= 'wiki-arrow'>
                   <i className="fa fa-angle-double-left"></i>
-              </div>
+              </div>}
               <div className='wiki-year'>{this.state.current}</div>
-              <div className= 'wiki-arrow'>
+              { this.state.nextShow && <div className= 'wiki-arrow'>
                     <i className="fa fa-angle-double-right"></i>
-              </div>
-              <div className='wiki-other-year' onClick={this.changeNext}>{this.state.next}</div>
+              </div> }
+              { this.state.nextShow && <div className='wiki-other-year' onClick={this.changeNext}>{this.state.next}</div> }
             </div>
             <div className='wiki-navbar-right'>
               <div className='wiki-navbar-signin'>
