@@ -459,17 +459,8 @@ class WikiPage extends Component {
               </div>
             </div>
             </div>
-            <div class="footer">
-              <button class="new-comment-add-btn">Add a new comment</button> 
-            </div>
         </div>;
       }, this);
-    }
-    else {
-      console.log("here I am");
-      var comment_list = <div class="footer">
-      <button class="new-comment-add-btn">Add a new comment</button> 
-    </div>;
     }
 
     return (
@@ -694,6 +685,9 @@ class WikiPage extends Component {
                         </div>
                       </div>
                     </div>
+                  </div>
+                  <div id = 'wiki-comment-add-top'>
+                    <button className="new-comment-add-btn">Add a new comment</button>  
                   </div>
                   <div className = 'wiki-comment-user'>
                     { this.state.displayUserInfo 
