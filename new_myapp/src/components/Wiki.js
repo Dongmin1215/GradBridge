@@ -350,15 +350,21 @@ class WikiPage extends Component {
 
   parseQuestions(que, path, is_editor) {
     return <div className="wiki-info-item">
-      <li onClick={(() => this.handleClick(que))}>{que.text}</li>
+      
+      {is_editor &&  que.visibility &&
+       <li onClick={(() => this.handleClick(que))}>{que.text}</li>
+      }
       { is_editor && !que.visibility && 
-      <div className = 'vote-info'>
-        <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`${path}/${que.qid}`))}/>
-        <div className = 'agreeNum'>{que.vote[0]}</div>
-        <div className = 'divide'>/</div>
-        <div className = 'disagreeNum'>{que.vote[2]}</div>
-        <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`${path}/${que.qid}`))}/> 
-      </div>
+      <div className = 'wiki-info-que-wrapper'>
+        <li className = 'wiki-info-que'onClick={(() => this.handleClick(que))}>{que.text}</li>
+        <div className = 'vote-info'>
+          <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`${path}/${que.qid}`))}/>
+          <div className = 'agreeNum'>{que.vote[0]}</div>
+          <div className = 'divide'>/</div>
+          <div className = 'disagreeNum'>{que.vote[2]}</div>
+          <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`${path}/${que.qid}`))}/> 
+        </div>
+        </div>
       }
       </div>;
   }
