@@ -31,7 +31,6 @@ function click_change_bool(e){
 const LandingPage = () =>
 	<div className="landing-Initial">	
 		<div>
-			{is_first ? alert('yest') : alert('no')}
 		</div>
 		<div className="landing-Title">
 			<Link to={routes.LANDING}>
