@@ -6,8 +6,8 @@ import './App.css';
 import withAuthentication from './withAuthentication';
 
 const LandingPage = () =>
-	<div className="Initial">	
-		<div className="Title">
+	<div className="landing-Initial">	
+		<div className="landing-Title">
 			<Link to={routes.LANDING}>
 				<img id="logo" src={require('./images/logo.png')}/>
 			</Link>
