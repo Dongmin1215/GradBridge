@@ -423,6 +423,8 @@ class WikiPage extends Component {
 
     if (this.state.comment_que != 'none') {
       var comment_list = comments.map(function(com){
+        console.log(com.text)
+
         return <div className = 'wiki-comment-and-reply'>
           <div className = 'wiki-comment-user-box'>
             <div className = 'wiki-comment-user-row'>
@@ -438,7 +440,7 @@ class WikiPage extends Component {
             </div>
           </div>
 
-          <RepliesList />
+          <RepliesList reps={com.replies}/>
           <ReplyAdd />
 
           <div className = 'wiki-comment-wrapper'>
