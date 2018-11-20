@@ -442,7 +442,6 @@ class WikiPage extends Component {
           <ReplyAdd />
 
           <div className = 'wiki-comment-wrapper'>
-          
             <div className = 'wiki-comment-user-box'>
               <div className = 'wiki-comment-addbox'>
                 <input className = 'wiki-comment-input' type = 'text'></input>
@@ -457,6 +456,12 @@ class WikiPage extends Component {
             </div>
         </div>;
       }, this);
+    }
+    else {
+      console.log("here I am");
+      var comment_list = <div class="footer">
+      <button class="new-comment-add-btn">Add a new comment</button> 
+    </div>;
     }
 
     return (
