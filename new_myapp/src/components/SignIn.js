@@ -114,8 +114,8 @@ class SignInForm extends Component {
         <SignUpLink />
         
       </div>
-
-        { error && <p>{error.message}</p> }
+        { error && <div>{ alert(error.message) }</div>}
+        
       </form>
     );
   }
