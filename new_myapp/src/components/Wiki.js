@@ -456,17 +456,6 @@ class WikiPage extends Component {
 
           <RepliesList reps={com.replies}/>
           { this.state.addreplycid === com.uid ? <ReplyAdd /> : null }
-
-          <div className = 'wiki-comment-wrapper'>
-            <div className = 'wiki-comment-user-box'>
-              <div className = 'wiki-comment-addbox'>
-                <input className = 'wiki-comment-input' type = 'text'></input>
-                <button className = 'wiki-comment-addbutton' type="submit">
-                  <div className = 'wiki-submit-text'>ADD</div>
-                </button>
-              </div>
-            </div>
-          </div>
         </div>;
       }, this);
     }
@@ -696,15 +685,25 @@ class WikiPage extends Component {
                   </div>
                   { !this.state.displayUserInfo && is_editor &&
                   <div id = 'wiki-comment-add-top'>
-                    <button className="new-comment-add-btn">Add a new comment</button>  
+                    <button className="new-comment-add-btn" onClick={((e) =>this.setState(p => ({togglecomment: !p.togglecomment})))}>Add a new comment</button>  
                   </div> }
+                  { this.state.togglecomment && 
+                    <div className = 'wiki-comment-user-box'>
+                      <div className = 'wiki-comment-addbox'>
+                        <input className = 'wiki-comment-input' type = 'text'></input>
+                        <button className = 'wiki-comment-addbutton' type="submit">
+                          <div className = 'wiki-submit-text'>ADD</div>
+                        </button>
+                      </div>
+                    </div>}
                   <div className = 'wiki-comment-user'>
                     { this.state.displayUserInfo 
                       ? <UserInfo show={this.state.displayUserInfo}
                            onClose={this.closeProfile} 
                            user={this.state.user}
                            />
-                      : comment_list }
+                      :
+                      comment_list }
                   </div>
                 </div>
               </div>
