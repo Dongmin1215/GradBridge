@@ -847,7 +847,7 @@ class WikiPage extends Component {
                       <div className ='wiki-comment-filter-col'>
                         <div className = 'wiki-comment-filter-wrapper'>
                             <select className = "wiki-comment-filter-select" value={this.state.univ_option} onChange={this.changeUnivOption}>
-                              <option value="default">under. univeristy</option>
+                              <option value="default">Univeristy</option>
                               <option value="true">KAIST</option>
                               <option value="false">Others</option>
                             </select>
@@ -856,7 +856,7 @@ class WikiPage extends Component {
                       <div className ='wiki-comment-filter-col'>
                         <div className = 'wiki-comment-filter-wrapper'>
                           <select className = "wiki-comment-filter-select" value={this.state.major_option} onChange={this.changeMajorOption}>
-                            <option value="default">under. major</option>
+                            <option value="default">Major</option>
                             <option value="cs">CS</option>
                             <option value="ee">EE</option>
                             <option value="me">ME</option>
