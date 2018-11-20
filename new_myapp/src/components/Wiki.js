@@ -354,7 +354,7 @@ class WikiPage extends Component {
     }
     db.getQid(this.state.current).once("value").then(function(snapshot) {
       var base = snapshot.val();
-      var qid = 0;
+      var qid = 1;
       if (base) {
         qid = base.qid;
       }
