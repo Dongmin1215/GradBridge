@@ -29,7 +29,8 @@ const INITIAL_STATE = {
   displayUserInfo: false,
   ready : 0,
   topic_input: [false, false, false, false, false, false, false],
-  new_topic : "",
+  new_topic : '',
+  addreplycid : '',
 };
 
 class WikiPage extends Component {
@@ -287,6 +288,15 @@ class WikiPage extends Component {
     })
   }
 
+  toggleReply(uid) {
+    if (this.state.addreplycid === uid) {
+      this.setState({ addreplycid: '' });
+    }
+    else {
+      this.setState({ addreplycid: uid });
+    }
+  }
+
   closeProfile() {
     this.setState({
       displayUserInfo: false,
@@ -429,14 +439,12 @@ class WikiPage extends Component {
 
     if (this.state.comment_que != 'none') {
       var comment_list = comments.map(function(com){
-        console.log(com.text)
-
         return <div className = 'wiki-comment-and-reply'>
           <div className = 'wiki-comment-user-box'>
             <div className = 'wiki-comment-user-row'>
               <div className = 'wiki-comment-user-col-left'>
                 <img className = 'user-pic' src={require('./images/user.png')} onClick={((e) =>this.showProfile(com.uid))}/>
-                <img className = 'reply-btn' src={require('./images/reply.png')}/>
+                <img className = 'reply-btn' src={require('./images/reply.png')} onClick={((e) =>this.toggleReply(com.uid))}/>
               </div>
               <div className = 'wiki-comment-user-col-right'>
                 <div className = 'wiki-comment-user-context'>
@@ -447,7 +455,7 @@ class WikiPage extends Component {
           </div>
 
           <RepliesList reps={com.replies}/>
-          <ReplyAdd />
+          { this.state.addreplycid === com.uid ? <ReplyAdd /> : null }
 
           <div className = 'wiki-comment-wrapper'>
             <div className = 'wiki-comment-user-box'>
@@ -458,7 +466,10 @@ class WikiPage extends Component {
                 </button>
               </div>
             </div>
-            </div>
+          </div>
+          <div class="footer">
+            <button class="new-comment-add-btn">Add a new comment</button> 
+          </div>
         </div>;
       }, this);
     }
