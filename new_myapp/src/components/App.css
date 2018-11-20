@@ -92,6 +92,10 @@ h1{
   cursor: pointer;
 }
 
+.major-notCS:hover{
+  cursor: pointer;
+}
+
 .sign-up-page{
   background: rgb(217, 210, 232);
   height: -webkit-fill-available;
