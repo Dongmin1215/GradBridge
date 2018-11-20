@@ -26,7 +26,7 @@ function click_change_bool(e){
 	is_first = true;
 	}
 	
-	alert('It is on progress. Please use CS department');
+	alert('This department is on progress. Please use CS department');
 }
 const LandingPage = () =>
 	<div className="landing-Initial">	
