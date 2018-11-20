@@ -166,6 +166,7 @@ h1{
   border-radius: 15px;
   display: block;
   float: right;
+  border: none
 }
 
 #login-btn{
@@ -438,6 +439,7 @@ h1{
   width: 80px;
   background: rgb(177, 167,210);
   border-radius: 15px;
+  border: none
 }
 
 .wiki-signin:hover{
@@ -704,6 +706,7 @@ h1{
 .wiki-reply-input{
   width:80%;
   height:-webkit-fill-available;
+  border: none;
 }
 
 .wiki-reply-add{
@@ -715,6 +718,7 @@ h1{
   height:-webkit-fill-available;
   width: 50px;
   background: rgb(188, 219, 177);
+  border: none;
 }
 
 .wiki-comment-add{
@@ -731,6 +735,7 @@ h1{
 .wiki-comment-input{
   width: 86%;
   height: -webkit-fill-available;
+  border: none;
 }
 
 .footer {
@@ -748,6 +753,7 @@ h1{
   color: white;
   border-radius: 10px;
   font-size: 18px;
+  border: none;
 }
 
 .new-comment-add-btn:hover{
@@ -767,6 +773,7 @@ h1{
   height:-webkit-fill-available;
   width: 50px;
   background: rgb(163, 196, 254);
+  border: none;
 }
 
 .wiki-info-inputbox{
@@ -789,6 +796,11 @@ h1{
   cursor: pointer;
   margin-right: 7px;
   margin-top: 7px;
+  border: none;
+}
+
+.profile-close-row{
+  height: 30px;
 }
 
 .profile-user-info{
