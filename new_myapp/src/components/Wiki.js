@@ -32,6 +32,7 @@ const INITIAL_STATE = {
   new_topic : "",
   prevShow : true,
   nextShow : true,
+  addreplycid : '',
 };
 
 class WikiPage extends Component {
@@ -301,6 +302,15 @@ class WikiPage extends Component {
     })
   }
 
+  toggleReply(uid) {
+    if (this.state.addreplycid === uid) {
+      this.setState({ addreplycid: '' });
+    }
+    else {
+      this.setState({ addreplycid: uid });
+    }
+  }
+
   closeProfile() {
     this.setState({
       displayUserInfo: false,
@@ -354,15 +364,21 @@ class WikiPage extends Component {
 
   parseQuestions(que, path, is_editor) {
     return <div className="wiki-info-item">
-      <li onClick={(() => this.handleClick(que))}>{que.text}</li>
+      
+      {is_editor &&  que.visibility &&
+       <li onClick={(() => this.handleClick(que))}>{que.text}</li>
+      }
       { is_editor && !que.visibility && 
-      <div className = 'vote-info'>
-        <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`${path}/${que.qid}`))}/>
-        <div className = 'agreeNum'>{que.vote[0]}</div>
-        <div className = 'divide'>/</div>
-        <div className = 'disagreeNum'>{que.vote[2]}</div>
-        <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`${path}/${que.qid}`))}/> 
-      </div>
+      <div className = 'wiki-info-que-wrapper'>
+        <li className = 'wiki-info-que'onClick={(() => this.handleClick(que))}>{que.text}</li>
+        <div className = 'vote-info'>
+          <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`${path}/${que.qid}`))}/>
+          <div className = 'agreeNum'>{que.vote[0]}</div>
+          <div className = 'divide'>/</div>
+          <div className = 'disagreeNum'>{que.vote[2]}</div>
+          <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`${path}/${que.qid}`))}/> 
+        </div>
+        </div>
       }
       </div>;
   }
@@ -448,7 +464,7 @@ class WikiPage extends Component {
             <div className = 'wiki-comment-user-row'>
               <div className = 'wiki-comment-user-col-left'>
                 <img className = 'user-pic' src={require('./images/user.png')} onClick={((e) =>this.showProfile(com.uid))}/>
-                <img className = 'reply-btn' src={require('./images/reply.png')}/>
+                <img className = 'reply-btn' src={require('./images/reply.png')} onClick={((e) =>this.toggleReply(com.uid))}/>
               </div>
               <div className = 'wiki-comment-user-col-right'>
                 <div className = 'wiki-comment-user-context'>
@@ -458,11 +474,10 @@ class WikiPage extends Component {
             </div>
           </div>
 
-          <RepliesList />
-          <ReplyAdd />
+          <RepliesList reps={com.replies}/>
+          { this.state.addreplycid === com.uid ? <ReplyAdd /> : null }
 
           <div className = 'wiki-comment-wrapper'>
-          
             <div className = 'wiki-comment-user-box'>
               <div className = 'wiki-comment-addbox'>
                 <input className = 'wiki-comment-input' type = 'text'></input>
@@ -471,10 +486,7 @@ class WikiPage extends Component {
                 </button>
               </div>
             </div>
-            </div>
-            <div class="footer">
-              <button class="new-comment-add-btn">Add a new comment</button> 
-            </div>
+          </div>
         </div>;
       }, this);
     }
@@ -702,6 +714,10 @@ class WikiPage extends Component {
                       </div>
                     </div>
                   </div>
+                  { !this.state.displayUserInfo && is_editor &&
+                  <div id = 'wiki-comment-add-top'>
+                    <button className="new-comment-add-btn">Add a new comment</button>  
+                  </div> }
                   <div className = 'wiki-comment-user'>
                     { this.state.displayUserInfo 
                       ? <UserInfo show={this.state.displayUserInfo}

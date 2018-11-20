@@ -8,8 +8,12 @@ export default class RepliesList extends React.Component {
     super(props);
   }
 
-  render() {  
-    return (
+  render() {
+    if (!this.props.reps) {
+      return null;
+    }
+    var all_replies = this.props.reps.map(function(rep){
+      return (
         <div className='wiki-reply-wrapper'>
           <div className = 'wiki-reply-tri-wrapper'>
             <div className = 'wiki-reply-tri'>
@@ -17,13 +21,16 @@ export default class RepliesList extends React.Component {
           </div>
           <div className = 'wiki-reply-box'>
             <div className = 'wiki-reply-context'>
-            How did you implement page table in the pintos project
+            {rep}
             </div>
           </div>
         </div>
-      );
-    }
+      )
+    }, this);
+    return all_replies;
   }
+}
 
-  RepliesList.propTypes = {
-  };
+RepliesList.propTypes = {
+  reps: PropTypes.array
+};

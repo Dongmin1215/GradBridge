@@ -8,7 +8,8 @@ export default class RepliesList extends React.Component {
     super(props);
   }
 
-  render() {  
+  render() {
+    
     return (
       <div className='wiki-reply-wrapper'>
         <div className = 'wiki-reply-tri-wrapper'>
@@ -24,9 +25,10 @@ export default class RepliesList extends React.Component {
           </div>
         </div>
       </div>
-      );
-    }
+    );
   }
+}
 
-  RepliesList.propTypes = {
-  };
+RepliesList.propTypes = {
+  show: PropTypes.bool
+};
