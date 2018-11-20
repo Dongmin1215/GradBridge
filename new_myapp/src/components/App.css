@@ -512,6 +512,14 @@ h1{
 }
 .wiki-info-item{
   display: -webkit-box;
+
+}
+
+.wiki-info-que-wrapper{
+  display: contents;
+}
+.wiki-info-que{
+  color: rgb(130, 11, 210);
 }
 
 .wiki-info-item>li:hover{
