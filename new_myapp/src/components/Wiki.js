@@ -473,6 +473,12 @@ class WikiPage extends Component {
         </div>;
       }, this);
     }
+    else {
+      console.log("here I am");
+      var comment_list = <div class="footer">
+      <button class="new-comment-add-btn">Add a new comment</button> 
+    </div>;
+    }
 
     return (
       <div className='wiki'>
