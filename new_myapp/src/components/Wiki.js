@@ -346,12 +346,12 @@ class WikiPage extends Component {
     var question = db.getQuestion(full_path);
     question.once("value").then(function(snapshot) {
       var qinfo = snapshot.val();
-      if (qinfo.vote[2] === '5') {
+      if (qinfo.vote[2] === '3') {
         alert("This topic has already been deleted.")
         this.changeState();
         return;
       }
-      if (qinfo.vote[0] === '5') {
+      if (qinfo.vote[0] === '3') {
         alert("This topic has already been added.");
         this.changeState();
         return;
@@ -367,11 +367,11 @@ class WikiPage extends Component {
       if (fa === 'f') {
         var newvote = (parseInt(qinfo.vote[0])+1).toString() + qinfo.vote.substr(1,3);
         var newvotefor = qinfo.votefor + " " + that.state.myid;
-        var visib = qinfo.vote[0] === '4';
+        var visib = qinfo.vote[0] === '2';
         db.doVote(full_path, newvote, newvotefor, qinfo.voteagainst, visib);
       }
       else {
-        if (qinfo.vote[2] === '4') {
+        if (qinfo.vote[2] === '2') {
           db.removeQuestion(full_path);
           that.changeState();
           return;
