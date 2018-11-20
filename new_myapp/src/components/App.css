@@ -3,6 +3,13 @@
   height: -webkit-fill-available;
 }
 
+.landing-Initial{
+  background: rgb(217, 210, 232);
+  height: -webkit-fill-available;
+  display:grid;
+
+}
+
 .Title {
   font-size: 60px;
   height: 90px;
@@ -12,6 +19,18 @@
   width:fit-content;
   margin-right: auto;
   margin-left: auto;
+}
+
+.landing-Title{
+  font-size: 60px;
+  height: 90px;
+  color:black;
+  text-align: center;
+  display:contents;
+  width:fit-content;
+  margin-right: auto;
+  margin-left: auto;
+
 }
 h1{
   display: block;
