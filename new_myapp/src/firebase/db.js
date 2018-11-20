@@ -94,3 +94,12 @@ db.ref(`comments/${semester}/${qid}`);
 
 export const incCid = (semester, qid, v) =>
 db.ref(`comments/${semester}/${qid}`).update({ base_cid: v });
+
+export const addReply = (path, text) =>
+db.ref(`comments/${path}`).set({ text });
+
+export const getRid = (semester, qid, cid) =>
+db.ref(`comments/${semester}/${qid}/comments/${cid}`);
+
+export const incRid = (semester, qid, cid, v) =>
+db.ref(`comments/${semester}/${qid}/comments/${cid}`).update({ base_rid: v });

@@ -21,7 +21,7 @@ export default class RepliesList extends React.Component {
           </div>
           <div className = 'wiki-reply-box'>
             <div className = 'wiki-reply-context'>
-            {rep}
+            {rep.text}
             </div>
           </div>
         </div>

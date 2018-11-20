@@ -32,7 +32,7 @@ const INITIAL_STATE = {
   new_topic : "",
   prevShow : true,
   nextShow : true,
-  addreplycid : '',
+  addreplycid : "",
   new_comment : "",
 };
 
@@ -450,7 +450,7 @@ class WikiPage extends Component {
     var is_editor = (myinfo.admission_year === current);
     
     if (ready < 7) {
-      return <WikiTemplate prev={this.state.prev} current={this.state.current} next={this.state.next} is_editor={is_editor}/>
+      return <WikiTemplate prev={this.state.prev} current={current} next={this.state.next} is_editor={is_editor}/>
     }
 
     if (myid !== '') {
@@ -490,7 +490,7 @@ class WikiPage extends Component {
             <div className = 'wiki-comment-user-row'>
               <div className = 'wiki-comment-user-col-left'>
                 <img className = 'user-pic' src={require('./images/user.png')} onClick={((e) =>this.showProfile(com.uid))}/>
-                <img className = 'reply-btn' src={require('./images/reply.png')} onClick={((e) =>this.toggleReply(com.uid))}/>
+                <img className = 'reply-btn' src={require('./images/reply.png')} onClick={((e) =>this.toggleReply(com.cid))}/>
               </div>
               <div className = 'wiki-comment-user-col-right'>
                 <div className = 'wiki-comment-user-context'>
@@ -501,7 +501,7 @@ class WikiPage extends Component {
           </div>
 
           <RepliesList reps={com.replies}/>
-          { this.state.addreplycid === com.uid ? <ReplyAdd /> : null }
+          { this.state.addreplycid === com.cid ? <ReplyAdd cid={com.cid} qid={this.state.comment_que} sem={current}/> : null }
         </div>;
       }, this);
     }
@@ -524,7 +524,7 @@ class WikiPage extends Component {
               { this.state.prevShow && <div className= 'wiki-arrow'>
                   <i className="fa fa-angle-double-left"></i>
               </div>}
-              <div className='wiki-year'>{this.state.current}</div>
+              <div className='wiki-year'>{current}</div>
               { this.state.nextShow && <div className= 'wiki-arrow'>
                     <i className="fa fa-angle-double-right"></i>
               </div> }
