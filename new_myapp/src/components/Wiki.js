@@ -274,7 +274,7 @@ class WikiPage extends Component {
             }
           }
           if (that.state.univ_option != "default") {
-            if (that.state.univ_option != kaist) {
+            if (that.state.univ_option != kaist.toString()) {
               return;
             }
           }
