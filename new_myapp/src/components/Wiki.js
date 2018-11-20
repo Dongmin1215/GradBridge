@@ -29,7 +29,9 @@ const INITIAL_STATE = {
   displayUserInfo: false,
   ready : 0,
   topic_input: [false, false, false, false, false, false, false],
-  new_topic : '',
+  new_topic : "",
+  prevShow : true,
+  nextShow : true,
   addreplycid : '',
 };
 
@@ -184,6 +186,11 @@ class WikiPage extends Component {
 
   changeNext() {
     if (this.state.next.startsWith("20")) {
+      this.setState({
+        nextShow : false,
+        prev: this.state.current,
+        current : this.state.next,
+      });
       return;
     }
     if (this.state.next.endsWith("Fall")) {
@@ -197,13 +204,19 @@ class WikiPage extends Component {
       prev: this.state.current,
       current : this.state.next,
       next: next,
+      prevShow : true,
     }, () => {
       this.changeState();
     });
   }
 
   changePrev() {
-    if (this.state.current.startsWith("17")) {
+    if (this.state.prev.startsWith("17")) {
+      this.setState({
+        prevShow : false,
+        current : this.state.prev,
+        next: this.state.current
+      });
       return;
     }
     if (this.state.prev.endsWith("Spring")) {
@@ -216,7 +229,8 @@ class WikiPage extends Component {
     this.setState({
       prev: prev,
       current : this.state.prev,
-      next: this.state.current
+      next: this.state.current,
+      nextShow : true
     }, () => {
       this.changeState();
     });
@@ -350,15 +364,21 @@ class WikiPage extends Component {
 
   parseQuestions(que, path, is_editor) {
     return <div className="wiki-info-item">
-      <li onClick={(() => this.handleClick(que))}>{que.text}</li>
+      
+      {is_editor &&  que.visibility &&
+       <li onClick={(() => this.handleClick(que))}>{que.text}</li>
+      }
       { is_editor && !que.visibility && 
-      <div className = 'vote-info'>
-        <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`${path}/${que.qid}`))}/>
-        <div className = 'agreeNum'>{que.vote[0]}</div>
-        <div className = 'divide'>/</div>
-        <div className = 'disagreeNum'>{que.vote[2]}</div>
-        <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`${path}/${que.qid}`))}/> 
-      </div>
+      <div className = 'wiki-info-que-wrapper'>
+        <li className = 'wiki-info-que'onClick={(() => this.handleClick(que))}>{que.text}</li>
+        <div className = 'vote-info'>
+          <img className = 'agree' src={require('./images/agree.png')} onClick={(() => this.vote('f',`${path}/${que.qid}`))}/>
+          <div className = 'agreeNum'>{que.vote[0]}</div>
+          <div className = 'divide'>/</div>
+          <div className = 'disagreeNum'>{que.vote[2]}</div>
+          <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`${path}/${que.qid}`))}/> 
+        </div>
+        </div>
       }
       </div>;
   }
@@ -474,15 +494,15 @@ class WikiPage extends Component {
               <div className='wiki-navbar-text'>Dept: Computer Science</div>
             </div>
             <div className='wiki-navbar-middle'>
-              <div className='wiki-other-year' onClick={this.changePrev}>{this.state.prev}</div>
-              <div className= 'wiki-arrow'>
+              { this.state.prevShow && <div className='wiki-other-year' onClick={this.changePrev}>{this.state.prev}</div>}
+              { this.state.prevShow && <div className= 'wiki-arrow'>
                   <i className="fa fa-angle-double-left"></i>
-              </div>
+              </div>}
               <div className='wiki-year'>{this.state.current}</div>
-              <div className= 'wiki-arrow'>
+              { this.state.nextShow && <div className= 'wiki-arrow'>
                     <i className="fa fa-angle-double-right"></i>
-              </div>
-              <div className='wiki-other-year' onClick={this.changeNext}>{this.state.next}</div>
+              </div> }
+              { this.state.nextShow && <div className='wiki-other-year' onClick={this.changeNext}>{this.state.next}</div> }
             </div>
             <div className='wiki-navbar-right'>
               <div className='wiki-navbar-signin'>
