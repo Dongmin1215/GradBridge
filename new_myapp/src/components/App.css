@@ -1,10 +1,11 @@
 .Initial {
   background: rgb(217, 210, 232);
   height: -webkit-fill-available;
-
 }
+
 .Title {
   font-size: 60px;
+  height: 90px;
   color:black;
   text-align: center;
   display:-webkit-box;
@@ -31,7 +32,7 @@ h1{
 #top-logo{
   width:20%;
   margin: auto;
-  padding-top: 25px;
+  padding-top: 15px;
 }
 
 .TeamName{
