@@ -748,6 +748,7 @@ h1{
   color: white;
   border-radius: 10px;
   font-size: 18px;
+  border: none;
 }
 
 .new-comment-add-btn:hover{
@@ -789,6 +790,10 @@ h1{
   cursor: pointer;
   margin-right: 7px;
   margin-top: 7px;
+}
+
+.profile-close-row{
+  height: 30px;
 }
 
 .profile-user-info{
