@@ -120,7 +120,7 @@ class SignInForm extends Component {
     );
   }
 }
-Popup.alert('Hello');
+
 export default withRouter(SignInPage);
 
 export {
