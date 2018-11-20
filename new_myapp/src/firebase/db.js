@@ -78,3 +78,19 @@ db.ref(`base_values/${semester}`);
 
 export const incQid = (semester, v) =>
 db.ref(`base_values/${semester}`).update({ qid: v });
+
+export const addComment = (path, text, uid, gpa, kaist, major) =>
+db.ref(`comments/${path}`).set({
+	text,
+	uid,
+	gpa,
+	kaist,
+	major,
+	base_rid : 1,
+});
+
+export const getCid = (semester, qid) =>
+db.ref(`comments/${semester}/${qid}`);
+
+export const incCid = (semester, qid, v) =>
+db.ref(`comments/${semester}/${qid}`).update({ base_cid: v });

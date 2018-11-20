@@ -33,6 +33,7 @@ const INITIAL_STATE = {
   prevShow : true,
   nextShow : true,
   addreplycid : '',
+  new_comment : "",
 };
 
 class WikiPage extends Component {
@@ -384,24 +385,28 @@ class WikiPage extends Component {
   }
 
   addComment() {
-    // var that = this;
-    // var text = this.state.new_topic;
-    // if (text === '' || text.length < 5) {
-    //   alert("Please type in a proper topic/question to talk about");
-    //   return;
-    // }
-    // db.getQid(this.state.current).once("value").then(function(snapshot) {
-    //   var base = snapshot.val();
-    //   var qid = 1;
-    //   if (base) {
-    //     qid = base.qid;
-    //   }
-    //   db.incQid(that.state.current, qid+1);
-    //   var full_path = `${that.state.current}/${path}/${qid}`;
-    //   db.addQuestion(full_path, text, that.state.myid);
-    //   that.clickAdd(-1);
-    //   that.changeState();
-    // })
+    var that = this;
+    var text = this.state.new_comment;
+    var qid = this.state.comment_que;
+    var info = this.state.myinfo;
+    var sem = this.state.current
+    if (text === '' || text.length < 5) {
+      alert("Please type in a proper topic/question to talk about");
+      return;
+    }
+    db.getCid(sem, qid).once("value").then(function(snapshot) {
+      var base = snapshot.val();
+      var cid = 1;
+      if (base) {
+        cid = base.base_cid;
+      }
+      db.incCid(sem, qid, cid+1);
+      var full_path = `${sem}/${qid}/comments/${cid}`;
+      db.addComment(full_path, text, that.state.myid, info.gpa, info.under_uni === 'kaist', info.under_major);
+      that.closeComments();
+      that.setState({ togglecomment: false });
+      that.changeState();
+    })
   }
 
   addTopic(path) {
