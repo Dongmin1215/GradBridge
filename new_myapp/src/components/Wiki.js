@@ -33,6 +33,9 @@ const INITIAL_STATE = {
   prevShow : true,
   nextShow : true,
   addreplycid : '',
+  gpa_option: "default",
+  univ_option: "default",
+  major_option: "default",
 };
 
 class WikiPage extends Component {
@@ -45,6 +48,9 @@ class WikiPage extends Component {
     this.changePrev = this.changePrev.bind(this);
     this.showProfile = this.showProfile.bind(this);
     this.closeProfile = this.closeProfile.bind(this);
+    this.changeGpaOption = this.changeGpaOption.bind(this);
+    this.changeUnivOption = this.changeUnivOption.bind(this);
+    this.changeMajorOption = this.changeMajorOption.bind(this);
   }
 
   componentDidMount(){
@@ -261,6 +267,21 @@ class WikiPage extends Component {
         snapshot.forEach(function(child) {
           const cid = child.key;
           const {gpa, kaist, major, replies, text, uid} = child.val();
+          if (that.state.gpa_option != "default") {
+            if (that.state.gpa_option != gpa) {
+              return;
+            }
+          }
+          if (that.state.univ_option != "default") {
+            if (that.state.univ_option != kaist) {
+              return;
+            }
+          }
+          if (that.state.major_option != "default") {
+            if (that.state.major_option != major) {
+              return;
+            }
+          }
           comments.push({
             cid,
             text,
@@ -404,6 +425,132 @@ class WikiPage extends Component {
     })
   }
 
+  changeGpaOption(e) {
+    var that = this;
+    this.setState({gpa_option: e.target.value}, 
+      () => {
+        const comments = []
+        var all_comment = db.getComments(that.state.current, that.state.comment_que);
+        all_comment.once("value").then(function(snapshot) {
+          snapshot.forEach(function(child) {
+            const cid = child.key;
+            const {gpa, kaist, major, replies, text, uid} = child.val();
+            if (that.state.gpa_option != "default") {
+              if (that.state.gpa_option != gpa) {
+                return;
+              }
+            }
+            if (that.state.univ_option != "default") {
+              if (that.state.univ_option != kaist.toString()) {
+                return;
+              }
+            }
+            if (that.state.major_option != "default") {
+              if (that.state.major_option != major) {
+                return;
+              }
+            }
+            comments.push({
+              cid,
+              text,
+              uid,
+              gpa,
+              kaist,
+              major,
+              replies,
+            });
+          });
+          that.setState({
+            comments
+          });
+        });
+      });
+  }
+
+  changeMajorOption(e) {
+    var that = this;
+    this.setState({major_option: e.target.value},
+      () => {
+        const comments = []
+        var all_comment = db.getComments(that.state.current, that.state.comment_que);
+        all_comment.once("value").then(function(snapshot) {
+          snapshot.forEach(function(child) {
+            const cid = child.key;
+            const {gpa, kaist, major, replies, text, uid} = child.val();
+            if (that.state.gpa_option != "default") {
+              if (that.state.gpa_option != gpa) {
+                return;
+              }
+            }
+            if (that.state.univ_option != "default") {
+              if (that.state.univ_option != kaist.toString()) {
+                return;
+              }
+            }
+            if (that.state.major_option != "default") {
+              if (that.state.major_option != major) {
+                return;
+              }
+            }
+            comments.push({
+              cid,
+              text,
+              uid,
+              gpa,
+              kaist,
+              major,
+              replies,
+            });
+          });
+          that.setState({
+            comments
+          });
+        });
+      });
+  }
+
+  changeUnivOption(e) {
+  var that = this;
+    this.setState({univ_option: e.target.value},
+      () => {
+      const comments = []
+      var all_comment = db.getComments(that.state.current, that.state.comment_que);
+      all_comment.once("value").then(function(snapshot) {
+        snapshot.forEach(function(child) {
+          const cid = child.key;
+          const {gpa, kaist, major, replies, text, uid} = child.val();
+          if (that.state.gpa_option != "default") {
+            if (that.state.gpa_option != gpa) {
+              return;
+            }
+          }
+          if (that.state.univ_option != "default") {
+            if (that.state.univ_option != kaist.toString()) {
+              return;
+            }
+          }
+          if (that.state.major_option != "default") {
+            if (that.state.major_option != major) {
+              return;
+            }
+          }
+          comments.push({
+            cid,
+            text,
+            uid,
+            gpa,
+            kaist,
+            major,
+            replies,
+          });
+        });
+        that.setState({
+          comments
+        });
+      });
+    });
+  }
+ 
   render() {
     const {
       myid,
@@ -673,31 +820,33 @@ class WikiPage extends Component {
 
                       <div className ='wiki-comment-filter-col'>
                         <div className = 'wiki-comment-filter-wrapper'>
-                            <select className = "wiki-comment-filter-select">
-                              <option>under. univeristy</option>
-                              <option>KAIST</option>
-                              <option>Others</option>
+                            <select className = "wiki-comment-filter-select" value={this.state.univ_option} onChange={this.changeUnivOption}>
+                              <option value="default">under. univeristy</option>
+                              <option value="true">KAIST</option>
+                              <option value="false">Others</option>
                             </select>
                           </div>
                       </div>
                       <div className ='wiki-comment-filter-col'>
                         <div className = 'wiki-comment-filter-wrapper'>
-                          <select className = "wiki-comment-filter-select">
-                            <option>under. major</option>
-                            <option>CS</option>
-                            <option>Others</option>
+                          <select className = "wiki-comment-filter-select" value={this.state.major_option} onChange={this.changeMajorOption}>
+                            <option value="default">under. major</option>
+                            <option value="cs">CS</option>
+                            <option value="ee">EE</option>
+                            <option value="me">ME</option>
+                            <option value="ae">AE</option>
                           </select>
                         </div>
                       </div>
                       <div className ='wiki-comment-filter-col'>
                         <div className = 'wiki-comment-filter-wrapper'>
-                          <select className = "wiki-comment-filter-select">
-                            <option>GPA</option>
-                            <option>0.0 ~ 2.5</option>
-                            <option>2.5 ~ 3.0</option>
-                            <option>3.0 ~ 3.5</option>
-                            <option>3.5 ~ 4.0</option>
-                            <option>4.0 ~ 4.3</option>
+                          <select className = "wiki-comment-filter-select" value={this.state.gpa_option} onChange={this.changeGpaOption}>
+                            <option value="default">GPA</option>
+                            <option value="0.0">0.0 ~ 2.5</option>
+                            <option value="2.5">2.5 ~ 3.0</option>
+                            <option value="3.0">3.0 ~ 3.5</option>
+                            <option value="3.5">3.5 ~ 4.0</option>
+                            <option value="4.0">4.0 ~ 4.3</option>
                           </select>
                         </div>
                       </div>
