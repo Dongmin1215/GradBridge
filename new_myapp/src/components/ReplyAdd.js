@@ -24,9 +24,9 @@ export default class RepliesList extends React.Component {
           </div>
         </div>
       </div>
-      );
-    }
+    );
   }
+}
 
-  RepliesList.propTypes = {
-  };
+RepliesList.propTypes = {
+};
