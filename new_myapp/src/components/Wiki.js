@@ -365,7 +365,7 @@ class WikiPage extends Component {
   parseQuestions(que, path, is_editor) {
     return <div className="wiki-info-item">
       
-      {is_editor &&  que.visibility &&
+      { (!is_editor || que.visibility) &&
        <li onClick={(() => this.handleClick(que))}>{que.text}</li>
       }
       { is_editor && !que.visibility && 
@@ -381,6 +381,27 @@ class WikiPage extends Component {
         </div>
       }
       </div>;
+  }
+
+  addComment() {
+    // var that = this;
+    // var text = this.state.new_topic;
+    // if (text === '' || text.length < 5) {
+    //   alert("Please type in a proper topic/question to talk about");
+    //   return;
+    // }
+    // db.getQid(this.state.current).once("value").then(function(snapshot) {
+    //   var base = snapshot.val();
+    //   var qid = 1;
+    //   if (base) {
+    //     qid = base.qid;
+    //   }
+    //   db.incQid(that.state.current, qid+1);
+    //   var full_path = `${that.state.current}/${path}/${qid}`;
+    //   db.addQuestion(full_path, text, that.state.myid);
+    //   that.clickAdd(-1);
+    //   that.changeState();
+    // })
   }
 
   addTopic(path) {
@@ -710,8 +731,8 @@ class WikiPage extends Component {
                   { this.state.togglecomment && 
                     <div className = 'wiki-comment-user-box'>
                       <div className = 'wiki-comment-addbox'>
-                        <input className = 'wiki-comment-input' type = 'text'></input>
-                        <button className = 'wiki-comment-addbutton' type="submit">
+                        <input className = 'wiki-comment-input' type = 'text' onChange={event => this.setState({ new_comment: event.target.value })}></input>
+                        <button className = 'wiki-comment-addbutton' type="submit" onClick={(() => this.addComment())}>
                           <div className = 'wiki-submit-text'>ADD</div>
                         </button>
                       </div>
