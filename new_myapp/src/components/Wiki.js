@@ -7,6 +7,8 @@ import { firebase, db } from '../firebase';
 import SignOutButton from './SignOut';
 import UserInfo from './UserInfo';
 import WikiTemplate from './WikiTemplate';
+import RepliesList from './RepliesList';
+import ReplyAdd from './ReplyAdd';
 
 const INITIAL_STATE = {
   myid: '',
@@ -436,31 +438,8 @@ class WikiPage extends Component {
             </div>
           </div>
 
-          <div className='wiki-reply-wrapper'>
-            <div className = 'wiki-reply-tri-wrapper'>
-              <div className = 'wiki-reply-tri'>
-              </div>
-            </div>
-            <div className = 'wiki-reply-box'>
-              <div className = 'wiki-reply-context'>
-              How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?How did you implement page table in the pintos project?
-              </div>
-            </div>
-          </div>
-          <div className='wiki-reply-wrapper'>
-            <div className = 'wiki-reply-tri-wrapper'>
-              <div className = 'wiki-reply-tri'>
-              </div>
-            </div>
-            <div className = 'wiki-reply-input-box'> 
-              <div className = 'wiki-reply-add'>
-                <input className = 'wiki-reply-input' type = 'text'></input>
-                <button className = 'wiki-reply-addbutton' type="submit">
-                  <div className = 'wiki-submit-text'>ADD</div>
-                </button>
-              </div>
-            </div>
-          </div>
+          <RepliesList />
+          <ReplyAdd />
 
           <div className = 'wiki-comment-wrapper'>
           
