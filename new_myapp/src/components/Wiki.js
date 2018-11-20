@@ -46,6 +46,16 @@ class WikiPage extends Component {
     this.changeState();
   }
 
+  closeComments(){
+    this.setState({
+      comment_que : 'none',
+      comment_width : '100%',
+      comment_display : 'none',
+      topic_input: [false, false, false, false, false, false, false],
+      new_topic : "",
+    })
+  }
+
   changeState(){
     this.setState({ ready: 0 });
     const intros = []
@@ -176,6 +186,7 @@ class WikiPage extends Component {
     } else {
       var next = this.state.next.replace("Spring", "Fall");
     }
+    this.closeComments();
     this.setState({
       prev: this.state.current,
       current : this.state.next,
@@ -192,6 +203,7 @@ class WikiPage extends Component {
     } else {
       var prev = this.state.prev.replace("Fall", "Spring");
     }
+    this.closeComments();
     this.setState({
       prev: prev,
       current : this.state.prev,
@@ -245,7 +257,7 @@ class WikiPage extends Component {
 
   clickAdd(topic_idx) {
     var init = [false, false, false, false, false, false, false];
-    if (!this.state.topic_input[topic_idx]) {
+    if (topic_idx !== -1 && !this.state.topic_input[topic_idx]) {
       init[topic_idx] = true;
     }
     this.setState({
@@ -302,7 +314,7 @@ class WikiPage extends Component {
         var newvote = (parseInt(qinfo.vote[0])+1).toString() + qinfo.vote.substr(1,3);
         var newvotefor = qinfo.votefor + " " + that.state.myid;
         var visib = qinfo.vote[0] === '4';
-        db.doVote(full_path, newvote, newvotefor, qinfo.voteagainst, qinfo.text, qinfo.uid, visib);
+        db.doVote(full_path, newvote, newvotefor, qinfo.voteagainst, visib);
       }
       else {
         if (qinfo.vote[2] === '4') {
@@ -312,7 +324,7 @@ class WikiPage extends Component {
         }
         var newvote = qinfo.vote.substr(0,2) + (parseInt(qinfo.vote[2])+1).toString();
         var newvoteagainst = qinfo.voteagainst + " " + that.state.myid;
-        db.doVote(full_path, newvote, qinfo.votefor, newvoteagainst, qinfo.text, qinfo.uid, qinfo.visibility);
+        db.doVote(full_path, newvote, qinfo.votefor, newvoteagainst, qinfo.visibility);
       }
       that.changeState();
     })
@@ -334,15 +346,24 @@ class WikiPage extends Component {
   }
 
   addTopic(path) {
+    var that = this;
     var text = this.state.new_topic;
     if (text === '' || text.length < 5) {
       alert("Please type in a proper topic/question to talk about");
       return;
     }
-    var qid = 4;
-    var full_path = `${this.state.current}/${path}/${qid}`;
-    db.addQuestion(full_path, text, this.state.myid);
-    this.changeState();
+    db.getQid(this.state.current).once("value").then(function(snapshot) {
+      var base = snapshot.val();
+      var qid = 0;
+      if (base) {
+        qid = base.qid;
+      }
+      db.incQid(that.state.current, qid+1);
+      var full_path = `${that.state.current}/${path}/${qid}`;
+      db.addQuestion(full_path, text, that.state.myid);
+      that.clickAdd(-1);
+      that.changeState();
+    })
   }
 
   render() {
@@ -533,8 +554,8 @@ class WikiPage extends Component {
                           </ul>
                         </div>
                         { topic_input[1] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text'></input>
-                          <button className = 'wiki-info-submit' type="submit">
+                          <input className = 'wiki-info-inputbox'type = 'text' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Document/Extracurricular"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
@@ -558,8 +579,8 @@ class WikiPage extends Component {
                           </ul>
                         </div>
                         { topic_input[2] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text'></input>
-                          <button className = 'wiki-info-submit' type="submit">
+                          <input className = 'wiki-info-inputbox'type = 'text' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Programming"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
@@ -577,8 +598,8 @@ class WikiPage extends Component {
                           </ul>
                         </div>
                         { topic_input[3] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text'></input>
-                          <button className = 'wiki-info-submit' type="submit">
+                          <input className = 'wiki-info-inputbox'type = 'text' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Waiting"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
@@ -596,8 +617,8 @@ class WikiPage extends Component {
                           </ul>
                         </div>
                         { topic_input[4] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text'></input>
-                          <button className = 'wiki-info-submit' type="submit">
+                          <input className = 'wiki-info-inputbox'type = 'text' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Room1"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
@@ -615,8 +636,8 @@ class WikiPage extends Component {
                           </ul>
                         </div>
                         { topic_input[5] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text'></input>
-                          <button className = 'wiki-info-submit' type="submit">
+                          <input className = 'wiki-info-inputbox'type = 'text' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Room2"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
@@ -634,8 +655,8 @@ class WikiPage extends Component {
                           </ul>
                         </div>
                         { topic_input[6] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text'></input>
-                          <button className = 'wiki-info-submit' type="submit">
+                          <input className = 'wiki-info-inputbox'type = 'text' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Room3"))}>
                            <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
