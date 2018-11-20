@@ -180,6 +180,9 @@ class WikiPage extends Component {
   }
 
   changeNext() {
+    if (this.state.next.startsWith("20")) {
+      return;
+    }
     if (this.state.next.endsWith("Fall")) {
       var next = Number(this.state.next.slice(0,2));
       next = String(next + 1) + " Spring"; 
@@ -197,6 +200,9 @@ class WikiPage extends Component {
   }
 
   changePrev() {
+    if (this.state.current.startsWith("17")) {
+      return;
+    }
     if (this.state.prev.endsWith("Spring")) {
       var prev = Number(this.state.prev.slice(0,2));
       prev = String(prev - 1) + " Fall"; 
