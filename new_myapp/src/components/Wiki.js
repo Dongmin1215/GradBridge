@@ -467,9 +467,6 @@ class WikiPage extends Component {
               </div>
             </div>
           </div>
-          <div class="footer">
-            <button class="new-comment-add-btn">Add a new comment</button> 
-          </div>
         </div>;
       }, this);
     }
