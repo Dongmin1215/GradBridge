@@ -522,6 +522,12 @@ h1{
   color: rgb(130, 11, 210);
 }
 
+.wiki-info-que:hover{
+  cursor: pointer;
+  width: fit-content;
+  background-color: antiquewhite;
+
+}
 .wiki-info-item>li:hover{
   cursor: pointer;
   width: fit-content;
