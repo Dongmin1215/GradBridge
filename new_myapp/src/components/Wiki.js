@@ -729,9 +729,11 @@ class WikiPage extends Component {
                   <div className = "wiki-user-info-text">
                     {myinfo.email}
                   </div>
+                  <Link to = {routes.RANKING}>
                   <div className = "wiki-user-info-text">
                     Points: {myinfo.points} pts
                   </div>
+                  </Link>
                 </div>
             </div>
           </div>

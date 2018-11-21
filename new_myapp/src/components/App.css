@@ -82,12 +82,12 @@ h1{
 
 .wiki-user-info{
   width: 40%;
-  margin-top: 40px;
+  margin-top: 45px;
   padding-right: 35px;
 }
 
 .wiki-user-info-text{
-  font-size: 16px;
+  font-size: 18px;
   text-align: right;
   margin-left: 10px;
 }
@@ -1008,4 +1008,64 @@ h1{
 
 .vote-info{
   display: contents;
+}
+
+.ranking{
+  height:100vh;
+  background: rgb(217, 210, 232);
+}
+
+.ranking-info{
+  margin-top: 80px;
+}
+
+.ranking-title{
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.ranking-description{
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-size: 28px;
+  text-align: center;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.bold{
+  font-weight: 500;
+}
+
+.ranking-users{
+  margin: auto;
+}
+
+table {
+  margin: auto;
+  width: 25%;
+  border: 1px solid #444444;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 25px;
+}
+
+td{
+  border: 1px solid #444444;
+}
+
+.crown-img{
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 50px;
+}
+
+.ranking-goback{
+  margin-top: 50px;
+  margin-bottom: 40px;
+  font-size: 23px;
+  text-align: center;
+  font-weight: 300;
+  line-height: 1.4;
 }
