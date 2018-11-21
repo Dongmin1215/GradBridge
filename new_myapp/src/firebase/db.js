@@ -112,3 +112,6 @@ db.ref(`comments/${semester}/${qid}/comments/${cid}`).update({ base_rid: v });
 
 export const reportComment = (semester, qid, cid) =>
 db.ref(`comments/${semester}/${qid}/comments/${cid}`).update({ reported: true });
+
+export const getRankers = () =>
+db.ref('users').orderByChild("points").limitToLast(5);

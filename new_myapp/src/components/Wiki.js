@@ -609,6 +609,11 @@ class WikiPage extends Component {
   }
  
   reportComment(comment) {
+    db.getRankers().once("value").then(function(snapshot) {
+      snapshot.forEach(function(child) {
+        console.log(child.val());
+      })
+    });
     if (window.confirm("Do you want to report this comment to the admin?\nIf the admin accepts, the writer of this comment will lose 150pts.\nIf the admin decides this is a false report you may lose 20pts.")) {
       db.reportComment(this.state.current,this.state.comment_que,comment.cid);
       alert("You have reported this comment to the admin.");
