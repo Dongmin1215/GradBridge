@@ -10,6 +10,7 @@ db.ref(`users/${id}`).set({
 	under_uni,
 	under_major,
 	gpa,
+	points: 0,
 });
 
 export const doCreateVisitor = (id, email, admission_year, under_uni, under_major, expected_grad) =>
@@ -24,6 +25,11 @@ db.ref(`users/${id}`).set({
 export const onceGetUsers = () =>
 db.ref('users').once('value');
 
+export const updatePoints = (id, points) =>
+db.ref(`users/${id}`).update({ points });
+
+export const getPoints = (id) =>
+db.ref(`users/${id}/points`);
 
 export const getIntroduction = (semester) =>
 db.ref(`pages/${semester}/Document/Introduction`);
