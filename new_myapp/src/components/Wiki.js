@@ -608,6 +608,13 @@ class WikiPage extends Component {
     });
   }
  
+  reportComment(comment) {
+    if (window.confirm("Do you want to report this comment to the admin?\nIf the admin confirms the writer of this comment will lose 150pts.\nIf the admin decides this is a false report you may lose 20pts.")) {
+      db.reportComment(this.state.current,this.state.comment_que,comment.cid);
+      alert("You have reported this comment to the admin.");
+    }
+  }
+
   render() {
     const {
       myid,
@@ -669,7 +676,7 @@ class WikiPage extends Component {
               <div className = 'wiki-comment-user-col-left'>
                 <img className = 'user-pic' src={require('./images/user.png')} onClick={((e) =>this.showProfile(com.uid))}/>
                 <div className = 'reply-icons'>
-                  <img className = 'reply-alarm' src={require('./images/alarm.png')}/>
+                  <img className = 'reply-alarm' src={require('./images/alarm.png')} onClick={((e) =>this.reportComment(com))}/>
                   <img className = 'reply-btn' src={require('./images/reply.png')} onClick={((e) =>this.toggleReply(com.cid))}/>
                 </div>
               </div>
