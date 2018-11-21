@@ -32,6 +32,18 @@
   margin-left: auto;
 
 }
+
+.wiki-title {
+  font-size: 60px;
+  height: 90px;
+  color:black;
+  text-align: center;
+  display:flex;
+  width:100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 h1{
   display: block;
   font-size: 1.5em;
@@ -49,9 +61,35 @@ h1{
 }
 
 #top-logo{
-  width:20%;
+  width: 20%;
   margin: auto;
   padding-top: 15px;
+}
+
+#wiki-top-logo{
+  width: 30%;
+  margin: auto;
+  padding-top: 15px;
+}
+
+.wiki-void{
+  width: 40%;
+}
+
+.wiki-middle-top{
+  width: auto;
+}
+
+.wiki-user-info{
+  width: 40%;
+  margin-top: 40px;
+  padding-right: 35px;
+}
+
+.wiki-user-info-text{
+  font-size: 16px;
+  text-align: right;
+  margin-left: 10px;
 }
 
 .points{

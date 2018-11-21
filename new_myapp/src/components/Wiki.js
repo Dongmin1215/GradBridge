@@ -705,14 +705,22 @@ class WikiPage extends Component {
     return (
       <div className='wiki'>
           <div className = "top">
-            <div className="Title">
-              
-                <Link to={routes.LANDING}>
-                  <img id="top-logo" src={require('./images/logo.png')}/>
-                  
-                </Link>
-                
-              
+            <div className = "wiki-title">
+                <div className = "wiki-void">
+                </div>
+                <div className = "wiki-middle-top">
+                  <Link to = {routes.LANDING}>
+                    <img id = "wiki-top-logo" src={require('./images/logo.png')}/>
+                  </Link>
+                </div>
+                <div className = "wiki-user-info">
+                  <div className = "wiki-user-info-text">
+                    lyne96@kaist.ac.kr
+                  </div>
+                  <div className = "wiki-user-info-text">
+                    Points: 30 pts
+                  </div>
+                </div>
             </div>
           </div>
           <div className="wiki-navbar-row">
