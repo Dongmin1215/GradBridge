@@ -625,7 +625,6 @@ h1{
   margin-bottom: 10px;
 }
 
-
 .wiki-comment-user-row::after{
   content: "";
   display: table;
@@ -648,11 +647,23 @@ h1{
   overflow-y: scroll;
 }
 
+.reply-icons{
+  margin-top: 35px;
+  margin-left: 5px;
+  width: 60px;
+}
+
+.reply-alarm{
+  width: 25px;
+  margin-right: 5px;
+}
+
+.reply-alarm:hover{
+  cursor: pointer;
+}
+
 .reply-btn{
-  margin-top: 20px;
-  margin-left: 10px;
-  width: 30px;
-  border: black;
+  width: 23px;
 }
 
 .reply-btn:hover{
@@ -690,23 +701,12 @@ h1{
   cursor: pointer;
 }
 
-.reply-alarm{
-  width: 17px;
-  margin-left: 6px;
-  margin-bottom: 10px;
-}
-
-.reply-alarm:hover{
-  cursor: pointer;
-}
-
 .wiki-reply-wrapper{
   height: 100px;
   padding-bottom: 10px;
   margin-bottom: 5px;
   margin-right: 12px;
 }
-
 
 .wiki-reply-box{
   background: rgb(220, 233, 213);

@@ -660,8 +660,10 @@ class WikiPage extends Component {
             <div className = 'wiki-comment-user-row'>
               <div className = 'wiki-comment-user-col-left'>
                 <img className = 'user-pic' src={require('./images/user.png')} onClick={((e) =>this.showProfile(com.uid))}/>
-                <img className = 'reply-alarm' src={require('./images/alarm.png')}/>
-                <img className = 'reply-btn' src={require('./images/reply.png')} onClick={((e) =>this.toggleReply(com.cid))}/>
+                <div className = 'reply-icons'>
+                  <img className = 'reply-alarm' src={require('./images/alarm.png')}/>
+                  <img className = 'reply-btn' src={require('./images/reply.png')} onClick={((e) =>this.toggleReply(com.cid))}/>
+                </div>
               </div>
               <div className = 'wiki-comment-user-col-right'>
                 <div className = 'wiki-comment-user-context'>
