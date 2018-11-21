@@ -8,7 +8,6 @@ import SignOutButton from './SignOut';
 import UserInfo from './UserInfo';
 import WikiTemplate from './WikiTemplate';
 import RepliesList from './RepliesList';
-import ReplyAdd from './ReplyAdd';
 
 const INITIAL_STATE = {
   myid: '',
@@ -37,6 +36,7 @@ const INITIAL_STATE = {
   univ_option: "default",
   major_option: "default",
   new_comment : "",
+  new_reply : "",
 };
 
 class WikiPage extends Component {
@@ -325,7 +325,7 @@ class WikiPage extends Component {
   }
 
   toggleReply(uid) {
-    if (this.state.addreplycid === uid) {
+    if (this.state.addreplycid === uid || uid == -1) {
       this.setState({ addreplycid: '' });
     }
     else {
@@ -403,6 +403,29 @@ class WikiPage extends Component {
         </div>
       }
       </div>;
+  }
+
+  addReply(cid, qid, sem) {
+    var that = this;
+    var text = this.state.new_reply;
+    if (text === '' || text.length < 5) {
+      alert("Please type in a proper topic/question to talk about");
+      return;
+    }
+    db.getRid(sem, qid, cid).once("value").then(function(snapshot) {
+      var base = snapshot.val();
+      var rid = 1;
+      if (base) {
+        rid = base.base_rid;
+      }
+      db.incRid(sem, qid, cid, rid+1);
+      var full_path = `${sem}/${qid}/comments/${cid}/replies/${rid}`;
+      db.addReply(full_path, text);
+      that.closeComments();
+      that.setState({ togglecomment: false });
+      that.toggleReply(-1);
+      that.changeState();
+    })
   }
 
   addComment() {
@@ -648,7 +671,22 @@ class WikiPage extends Component {
           </div>
 
           <RepliesList reps={com.replies}/>
-          { this.state.addreplycid === com.cid ? <ReplyAdd cid={com.cid} qid={this.state.comment_que} sem={current}/> : null }
+          { this.state.addreplycid === com.cid ? 
+          <div className='wiki-reply-wrapper'>
+            <div className = 'wiki-reply-tri-wrapper'>
+              <div className = 'wiki-reply-tri'>
+              </div>
+            </div>
+            <div className = 'wiki-reply-input-box'> 
+              <div className = 'wiki-reply-add'>
+                <input className = 'wiki-reply-input' type = 'text' onChange={e => this.setState({ new_reply: e.target.value })}></input>
+                <button className = 'wiki-reply-addbutton' type="submit" onClick={(() => this.addReply(com.cid, this.state.comment_que, current))}>
+                  <div className = 'wiki-submit-text'>ADD</div>
+                </button>
+              </div>
+            </div>
+          </div>
+          : null }
         </div>;
       }, this);
     }
