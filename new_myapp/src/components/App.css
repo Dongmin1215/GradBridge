@@ -54,6 +54,12 @@ h1{
   padding-top: 15px;
 }
 
+.points{
+  background: red;
+  height: 90px;
+  display: table-column;
+}
+
 .TeamName{
   text-align: center;
 }
@@ -681,6 +687,16 @@ h1{
 }
 
 .user-pic:hover{
+  cursor: pointer;
+}
+
+.reply-alarm{
+  width: 17px;
+  margin-left: 6px;
+  margin-bottom: 10px;
+}
+
+.reply-alarm:hover{
   cursor: pointer;
 }
 
