@@ -25,6 +25,9 @@ db.ref(`users/${id}`).set({
 export const onceGetUsers = () =>
 db.ref('users').once('value');
 
+export const getUser = (uid) =>
+db.ref(`users/${uid}`);
+
 export const updatePoints = (id, points) =>
 db.ref(`users/${id}`).update({ points });
 
@@ -54,9 +57,6 @@ db.ref(`pages/${semester}/Interview/Room3`);
 
 export const getComments = (semester, qid) =>
 db.ref(`comments/${semester}/${qid}/comments`);
-
-export const getUser = (uid) =>
-db.ref(`users/${uid}`);
 
 export const getQuestion = (qid_path) =>
 db.ref(`pages/${qid_path}`);
@@ -109,3 +109,6 @@ db.ref(`comments/${semester}/${qid}/comments/${cid}`);
 
 export const incRid = (semester, qid, cid, v) =>
 db.ref(`comments/${semester}/${qid}/comments/${cid}`).update({ base_rid: v });
+
+export const reportComment = (semester, qid, cid) =>
+db.ref(`comments/${semester}/${qid}/comments/${cid}`).update({ reported: true });

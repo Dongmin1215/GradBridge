@@ -63,14 +63,10 @@ export default class UserInfo extends React.Component {
                 <div className = "profile-user-text">{under_major}</div>
                 <div className = "profile-user-field">GPA</div>
                 <div className = "profile-user-text">{gpa}</div>
+                <div className = "profile-user-field">Points</div>
+                <div className = "profile-user-text">{this.props.user.points} pts</div>
             </div>
           </div>
         );
       }
   }
-
-  UserInfo.propTypes = {
-    onClose: PropTypes.func.isRequired,
-    show: PropTypes.bool,
-    children: PropTypes.node
-  };
