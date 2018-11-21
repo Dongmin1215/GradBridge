@@ -635,7 +635,7 @@ class WikiPage extends Component {
     var is_editor = (myinfo.admission_year === current);
     
     if (ready < 7) {
-      return <WikiTemplate prev={this.state.prev} current={current} next={this.state.next} is_editor={is_editor}/>
+      return <WikiTemplate prev={this.state.prev} current={current} next={this.state.next} is_editor={is_editor} points={myinfo.points} email={myinfo.email}/>
     }
 
     if (myid !== '') {
@@ -722,10 +722,10 @@ class WikiPage extends Component {
                 </div>
                 <div className = "wiki-user-info">
                   <div className = "wiki-user-info-text">
-                    lyne96@kaist.ac.kr
+                    {myinfo.email}
                   </div>
                   <div className = "wiki-user-info-text">
-                    Points: 30 pts
+                    Points: {myinfo.points} pts
                   </div>
                 </div>
             </div>

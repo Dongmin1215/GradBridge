@@ -12,9 +12,21 @@ export default class WikiTemplate extends React.Component {
   render() {  
     return (
       <div className='wiki'>
-        <div className = "top">
-            <div className="Title">
-              <img id="top-logo" src={require('./images/logo.png')}/>
+          <div className = "top">
+            <div className = "wiki-title">
+                <div className = "wiki-void">
+                </div>
+                <div className = "wiki-middle-top">
+                  <img id = "wiki-top-logo" src={require('./images/logo.png')}/>
+                </div>
+                <div className = "wiki-user-info">
+                  <div className = "wiki-user-info-text">
+                    {this.props.email == null ? "yourEmail@email.com" : this.props.email}
+                  </div>
+                  <div className = "wiki-user-info-text">
+                    Points: {this.props.points == null ? "00" : this.props.points} pts
+                  </div>
+                </div>
             </div>
           </div>
           <div className="wiki-navbar-row">
@@ -153,5 +165,7 @@ export default class WikiTemplate extends React.Component {
     prev: PropTypes.string,
     current: PropTypes.string,
     next: PropTypes.string,
-    is_editor: PropTypes.bool
+    is_editor: PropTypes.bool,
+    email: PropTypes.string,
+    points: PropTypes.number
   };
