@@ -668,6 +668,7 @@ class WikiPage extends Component {
             <div className = 'wiki-comment-user-row'>
               <div className = 'wiki-comment-user-col-left'>
                 <img className = 'user-pic' src={require('./images/user.png')} onClick={((e) =>this.showProfile(com.uid))}/>
+                <img className = 'reply-alarm' src={require('./images/alarm.png')}/>
                 <img className = 'reply-btn' src={require('./images/reply.png')} onClick={((e) =>this.toggleReply(com.cid))}/>
               </div>
               <div className = 'wiki-comment-user-col-right'>
@@ -703,9 +704,13 @@ class WikiPage extends Component {
       <div className='wiki'>
           <div className = "top">
             <div className="Title">
+              
                 <Link to={routes.LANDING}>
-              <img id="top-logo" src={require('./images/logo.png')}/>
+                  <img id="top-logo" src={require('./images/logo.png')}/>
+                  
                 </Link>
+                
+              
             </div>
           </div>
           <div className="wiki-navbar-row">
