@@ -367,8 +367,9 @@ class WikiPage extends Component {
       if (fa === 'f') {
         var newvote = (parseInt(qinfo.vote[0])+1).toString() + qinfo.vote.substr(1,3);
         var newvotefor = qinfo.votefor + " " + that.state.myid;
+        var visib = false;
         if (qinfo.vote[0] === '2') {
-          var visib = true;
+          visib = true;
           db.getPoints(qinfo.uid).once("value").then(function(snapshot) {
             var points = snapshot.val();
             db.updatePoints(qinfo.uid, points+20);
@@ -609,11 +610,6 @@ class WikiPage extends Component {
   }
  
   reportComment(comment) {
-    db.getRankers().once("value").then(function(snapshot) {
-      snapshot.forEach(function(child) {
-        console.log(child.val());
-      })
-    });
     if (window.confirm("Do you want to report this comment to the admin?\nIf the admin accepts, the writer of this comment will lose 150pts.\nIf the admin decides this is a false report you may lose 20pts.")) {
       db.reportComment(this.state.current,this.state.comment_que,comment.cid);
       alert("You have reported this comment to the admin.");
