@@ -250,6 +250,10 @@ class WikiPage extends Component {
         comment_que: 'none',
         comment_display: 'none',
         comment_width: '100%',
+        togglecomment: false,
+        gpa_option: 'default',
+        univ_option: 'default',
+        major_option: 'default',
       });
       this.setState({
         comments: []
@@ -260,6 +264,7 @@ class WikiPage extends Component {
         comment_que: qid,
         comment_display: '-webkit-box',
         comment_width: '65%',
+        togglecomment: false,
       });
       const comments = []
       var all_comment = db.getComments(this.state.current, qid);
@@ -937,7 +942,17 @@ class WikiPage extends Component {
                             <option value="cs">CS</option>
                             <option value="ee">EE</option>
                             <option value="me">ME</option>
+                            <option value="cbe">CBE</option>
+                            <option value="bs">BS</option>
+                            <option value="ch">CH</option>
+                            <option value="ms">MS</option>
+                            <option value="py">PH</option>
                             <option value="ae">AE</option>
+                            <option value="bb">BB</option>
+                            <option value="cee">CEE</option>
+                            <option value="id">ID</option>
+                            <option value="ie">IE</option>
+                            <option value="nqe">NQE</option>
                           </select>
                         </div>
                       </div>

@@ -157,7 +157,18 @@ class SignUpVisitorForm extends Component {
                             <option value="cs">Computer Science</option>
                             <option value="ee">Electrical Engineering</option>
                             <option value="me">Mechanical Engineering</option>
+                            <option value="cbe">Chemical and Biomolecular Engineering</option>
+                            <option value="bs">Biological Sciences</option>
+                            <option value="ch">Chemistry</option>
+                            <option value="ms">Mathematical Sciences</option>
+                            <option value="ph">Physics</option>
                             <option value="ae">Aerospace Engineering</option>
+                            <option value="bb">Bio and Brain Engineering</option>
+                            <option value="cee">Civil and Environmental Engineering</option>
+                            <option value="id">Industrial Design</option>
+                            <option value="ie">Industrial Engineering</option>
+                            <option value="nqe">Nuclear and Quantum Engineering</option>
+                            <option value="ot">Other</option>
                         </select>
                         </div>
                     </div>
