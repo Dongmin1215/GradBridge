@@ -341,6 +341,12 @@ class WikiPage extends Component {
   }
 
   vote(fa, qid_path) {
+    var va = "Do you want to vote against this topic?\nOnce it reaches 3 votes it will be removed and not get confirmed as a proper topic.";
+    var vf = "Do you want to vote for this topic?\nOnce it reaches 3 votes it will be confirmed as a proper topic that everyone can see.";
+    var vote_confirm = (fa == "f" ? vf : va);
+    if (!window.confirm(vote_confirm)) {
+      return;
+    }
     var that = this;
     var full_path = `${this.state.current}/${qid_path}`
     var question = db.getQuestion(full_path);
