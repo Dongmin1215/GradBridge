@@ -10,6 +10,14 @@
 
 }
 
+@media (max-width: 767px){
+  .landing-Initial{
+    background: rgb(217, 210, 232);
+    display:grid;
+    height: fit-content;
+  }
+}
+
 .Title {
   font-size: 60px;
   height: 90px;
