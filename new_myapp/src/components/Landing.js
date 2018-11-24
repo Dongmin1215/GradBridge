@@ -56,7 +56,7 @@ const LandingPage = () =>
 
 			<img className="major major-notCS" onClick = {((e) => click_change_bool())} src ={require('./images/EE.png')}/>
 			<img className="major major-notCS" onClick = {((e) => click_change_bool())} src ={require('./images/ME.png')}/>
-			<img className="major major-notCS" onClick = {((e) => click_change_bool())} src ={require('./images/AE.png')}/>
+			<img className="major major-notCS" onClick = {((e) => click_change_bool())} src ={require('./images/cbe.png')}/>
 		</div>
 
 		{change_bool()}
