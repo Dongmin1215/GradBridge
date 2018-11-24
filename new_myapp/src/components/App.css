@@ -68,6 +68,14 @@ h1{
   padding-top:50px;
 }
 
+@media (max-width : 767px){
+  #logo{
+    width:70%;
+    margin: auto;
+    padding-top:50px;
+  }
+}
+
 #top-logo{
   width: 20%;
   margin: auto;
