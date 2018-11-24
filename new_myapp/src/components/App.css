@@ -99,6 +99,15 @@ h1{
   padding-top: 15px;
 }
 
+@media (max-width: 767px){
+  #wiki-top-logo{
+    width: 100%;
+    margin: auto;
+    padding-top: 30px;
+  }
+}
+
+
 .wiki-void{
   width: 40%;
 }
@@ -111,6 +120,14 @@ h1{
   width: 40%;
   margin-top: 45px;
   padding-right: 35px;
+}
+
+@media (max-width: 767px){
+  .wiki-user-info{
+    width: inherit;
+    margin-top: 45px;
+    padding-right: 35px;
+  }
 }
 
 .wiki-user-info-text{
@@ -609,6 +626,15 @@ h1{
   background: rgb(217, 210, 232);
 }
 
+@media (max-width: 767px){
+  .wiki{
+    height:100vh;
+
+    background: rgb(217, 210, 232);
+  }
+  
+}
+
 .wiki-navbar-row{
   background:rgb(217, 210, 232);
   content: "";
@@ -629,6 +655,16 @@ h1{
   text-align: center;
 }
 
+@media (max-width: 767px){
+
+.wiki-navbar-middle{
+  width: auto;
+  margin: auto;
+  text-align: center;
+  display: grid;
+}
+}
+
 .wiki-navbar-right{
   width: 20%;
 }
@@ -639,6 +675,17 @@ h1{
   text-align: center;
   line-height: 2;
   float: left;
+}
+
+@media (max-width: 767px){
+  .wiki-navbar-text{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    text-align: center;
+    line-height: 2;
+    float: left;
+    width: inherit;
+  }
 }
 
 .wiki-year{
@@ -702,6 +749,17 @@ h1{
   font-size: 15px;
 }
 
+
+@media (max-width : 767px){
+  .wiki-signin{
+    height: 35px;
+    width: 80px;
+    background: rgb(177, 167,210);
+    border-radius: 15px;
+    margin-top: 40px;
+    border: none
+  }
+}
 .wiki-main{
   background: rgb(217, 210, 232);
   height:73.8%;
@@ -772,6 +830,12 @@ h1{
 }
 .wiki-info-que{
   color: rgb(130, 11, 210);
+}
+
+@media (max-width: 767px){
+  .wiki-info-que-wrapper{
+    display: block;
+  }
 }
 
 .wiki-info-que:hover{
@@ -1192,6 +1256,12 @@ h1{
 
 .vote-info{
   display: contents;
+}
+
+@media (max-width: 767px){
+  .vote-info{
+    display: -webkit-inline-box;
+  }
 }
 
 .ranking{
