@@ -531,17 +531,19 @@ h1{
     height: fit-content;
     float: left;
     width: initial;
-    margin-right: 10px;
-    margin-left: 40px;
+    margin-right: 0px;
+    margin-left: 0px;
     text-align: center;
+    margin: auto;
   }
 
   .sign-up-right{
     height: fit-content;
     width: initial;
     float: right;
-    margin-left: 40px;
+    margin-left: 0px;
     text-align: center;
+    margin: auto;
   }
 }
 
