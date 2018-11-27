@@ -1340,6 +1340,11 @@ h1{
   overflow-y: scroll;
 }
 
+.wiki-reply-tag{
+  display: inline;
+  font-weight: bold;
+}
+
 .wiki-reply-input-box{
   background: rgb(220, 233, 213);
   height: -webkit-fill-available;

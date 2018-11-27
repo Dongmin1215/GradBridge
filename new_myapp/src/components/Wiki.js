@@ -438,7 +438,8 @@ class WikiPage extends Component {
       }
       db.incRid(sem, qid, cid, rid+1);
       var full_path = `${sem}/${qid}/comments/${cid}/replies/${rid}`;
-      db.addReply(full_path, text);
+      var type = (that.state.myinfo.admission_year == that.state.current ? "editor" : "visitor")
+      db.addReply(full_path, text, that.state.myid, type);
       that.closeComments();
       that.setState({ togglecomment: false });
       that.toggleReply(-1);
@@ -700,7 +701,7 @@ class WikiPage extends Component {
             </div>
           </div>
 
-          <RepliesList reps={com.replies}/>
+          <RepliesList reps={com.replies} uid={myid}/>
           { this.state.addreplycid === com.cid ? 
           <div className='wiki-reply-wrapper'>
             <div className = 'wiki-reply-tri-wrapper'>
