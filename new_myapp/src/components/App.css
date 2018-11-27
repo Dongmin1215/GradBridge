@@ -898,6 +898,17 @@ h1{
   color: #353535;
 }
 
+@media(max-width: 767px){
+  .wiki-other-year{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-style: italic;
+    display: inline-block;
+    color: #353535;
+  }
+  
+}
+
 .wiki-other-year:hover{
   cursor: pointer;
 }
