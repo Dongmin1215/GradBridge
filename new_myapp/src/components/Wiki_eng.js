@@ -87,7 +87,7 @@ class WikiPage extends Component {
     var that = this;
     firebase.auth.onAuthStateChanged(authUser => {
       if (!authUser) {
-        alert("로그인 하세요");
+        alert("You must log in!");
       }
       var myid = authUser.uid;
       var myself = db.getUser(myid);
@@ -739,7 +739,7 @@ class WikiPage extends Component {
                   </div>
                   <Link to = {routes.RANKING}>
                   <div className = "wiki-user-info-text">
-                    점수: {myinfo.points} pts
+                    Points: {myinfo.points} pts
                   </div>
                   </Link>
                 </div>
@@ -747,7 +747,7 @@ class WikiPage extends Component {
           </div>
           <div className="wiki-navbar-row">
             <div className='wiki-navbar-left'>
-              <div className='wiki-navbar-text'>학과: 전산학과</div>
+              <div className='wiki-navbar-text'>Dept: Computer Science</div>
             </div>
             <div className='wiki-navbar-middle'>
               { this.state.prevShow && <div className='wiki-other-year' onClick={this.changePrev}>{this.state.prev}</div>}
@@ -777,12 +777,12 @@ class WikiPage extends Component {
                 <div className = 'wiki-info-wrapper'>
                   <div className = 'wiki-info-doc'>
                     <div className = 'wiki-info-title'>
-                      서류
+                      Document Review
                     </div>
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
-                          <li>자기소개서</li>
+                          <li>Self Introduction</li>
                           { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(0))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
@@ -791,7 +791,7 @@ class WikiPage extends Component {
                           </ul>
                         </div>
                         { topic_input[0] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text' placeholder = '토픽을 추가하세요! 3개의 투표를 얻으면 등록이 되고 20포인트를 얻습니다' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <input className = 'wiki-info-inputbox'type = 'text' placeholder = 'Add a new topic! If it gets approved by other users, you can earn 20 pts!' onChange={event => this.setState({ new_topic: event.target.value })}></input>
                           <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Document/Introduction"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
@@ -801,7 +801,7 @@ class WikiPage extends Component {
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
-                          <li>우수성 입증 자료</li>
+                          <li>Extracurricular</li>
                           { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(1))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
@@ -810,7 +810,7 @@ class WikiPage extends Component {
                           </ul>
                         </div>
                         { topic_input[1] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text' placeholder = '토픽을 추가하세요! 3개의 투표를 얻으면 등록이 되고 20포인트를 얻습니다' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <input className = 'wiki-info-inputbox'type = 'text' placeholder = 'Add a new topic! If it gets approved by other users, you can earn 20 pts!' onChange={event => this.setState({ new_topic: event.target.value })}></input>
                           <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Document/Extracurricular"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
@@ -821,12 +821,12 @@ class WikiPage extends Component {
                   <hr></hr>
                   <div className = 'wiki-info-interviews'>
                     <div className = 'wiki-info-title'>
-                      면접
+                      Interview
                     </div>
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
-                          <li>프로그래밍 시험</li>
+                          <li>Programming Test</li>
                           { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(2))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
@@ -835,7 +835,7 @@ class WikiPage extends Component {
                           </ul>
                         </div>
                         { topic_input[2] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text' placeholder = '토픽을 추가하세요! 3개의 투표를 얻으면 등록이 되고 20포인트를 얻습니다' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <input className = 'wiki-info-inputbox'type = 'text' placeholder = 'Add a new topic! If it gets approved by other users, you can earn 20 pts!' onChange={event => this.setState({ new_topic: event.target.value })}></input>
                           <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Programming"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
@@ -845,7 +845,7 @@ class WikiPage extends Component {
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
-                          <li>대기실</li>
+                          <li>Waiting Room</li>
                           { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(3))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
@@ -854,7 +854,7 @@ class WikiPage extends Component {
                           </ul>
                         </div>
                         { topic_input[3] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text' placeholder = '토픽을 추가하세요! 3개의 투표를 얻으면 등록이 되고 20포인트를 얻습니다' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <input className = 'wiki-info-inputbox'type = 'text' placeholder = 'Add a new topic! If it gets approved by other users, you can earn 20 pts!' onChange={event => this.setState({ new_topic: event.target.value })}></input>
                           <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Waiting"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
@@ -864,7 +864,7 @@ class WikiPage extends Component {
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
-                          <li>면접실 1</li>
+                          <li>Room 1</li>
                           { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(4))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
@@ -873,7 +873,7 @@ class WikiPage extends Component {
                           </ul>
                         </div>
                         { topic_input[4] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text' placeholder = '토픽을 추가하세요! 3개의 투표를 얻으면 등록이 되고 20포인트를 얻습니다' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <input className = 'wiki-info-inputbox'type = 'text' placeholder = 'Add a new topic! If it gets approved by other users, you can earn 20 pts!' onChange={event => this.setState({ new_topic: event.target.value })}></input>
                           <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Room1"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
@@ -883,7 +883,7 @@ class WikiPage extends Component {
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
-                          <li>면접실 2</li>
+                          <li>Room 2</li>
                           { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(5))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
@@ -892,7 +892,7 @@ class WikiPage extends Component {
                           </ul>
                         </div>
                         { topic_input[5] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text' placeholder = '토픽을 추가하세요! 3개의 투표를 얻으면 등록이 되고 20포인트를 얻습니다' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <input className = 'wiki-info-inputbox'type = 'text' placeholder = 'Add a new topic! If it gets approved by other users, you can earn 20 pts!' onChange={event => this.setState({ new_topic: event.target.value })}></input>
                           <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Room2"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
@@ -902,7 +902,7 @@ class WikiPage extends Component {
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
-                          <li>면접실 3</li>
+                          <li>Room 3</li>
                           { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(6))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
@@ -911,7 +911,7 @@ class WikiPage extends Component {
                           </ul>
                         </div>
                         { topic_input[6] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text' placeholder = '토픽을 추가하세요! 3개의 투표를 얻으면 등록이 되고 20포인트를 얻습니다' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <input className = 'wiki-info-inputbox'type = 'text' placeholder = 'Add a new topic! If it gets approved by other users, you can earn 20 pts!' onChange={event => this.setState({ new_topic: event.target.value })}></input>
                           <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Room3"))}>
                            <div className = 'wiki-submit-text'>ADD</div>
                           </button>
@@ -930,16 +930,16 @@ class WikiPage extends Component {
                       <div className ='wiki-comment-filter-col'>
                         <div className = 'wiki-comment-filter-wrapper'>
                             <select className = "wiki-comment-filter-select" value={this.state.univ_option} onChange={this.changeUnivOption}>
-                              <option value="default">대학</option>
-                              <option value="true">카이스트</option>
-                              <option value="false">기타</option>
+                              <option value="default">Univeristy</option>
+                              <option value="true">KAIST</option>
+                              <option value="false">Others</option>
                             </select>
                           </div>
                       </div>
                       <div className ='wiki-comment-filter-col'>
                         <div className = 'wiki-comment-filter-wrapper'>
                           <select className = "wiki-comment-filter-select" value={this.state.major_option} onChange={this.changeMajorOption}>
-                            <option value="default">전공</option>
+                            <option value="default">Major</option>
                             <option value="cs">CS</option>
                             <option value="ee">EE</option>
                             <option value="me">ME</option>
@@ -973,12 +973,12 @@ class WikiPage extends Component {
                   </div>
                   { !this.state.displayUserInfo && is_editor &&
                   <div id = 'wiki-comment-add-top'>
-                    <button className="new-comment-add-btn" onClick={((e) =>this.setState(p => ({togglecomment: !p.togglecomment})))}>새로운 댓글 추가하기</button>  
+                    <button className="new-comment-add-btn" onClick={((e) =>this.setState(p => ({togglecomment: !p.togglecomment})))}>Add a new comment</button>  
                   </div> }
                   { this.state.togglecomment && 
                     <div className = 'wiki-comment-user-box'>
                       <div className = 'wiki-comment-addbox'>
-                        <input className = 'wiki-comment-input' type = 'text' placeholder = '경험을 공유하고 10포인트를 얻으세요!' onChange={event => this.setState({ new_comment: event.target.value })}></input>
+                        <input className = 'wiki-comment-input' type = 'text' placeholder = 'Share your experiences about this topic and earn 10 pts!' onChange={event => this.setState({ new_comment: event.target.value })}></input>
                         <button className = 'wiki-comment-addbutton' type="submit" onClick={(() => this.addComment())}>
                           <div className = 'wiki-submit-text'>ADD</div>
                         </button>

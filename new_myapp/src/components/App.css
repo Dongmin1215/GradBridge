@@ -864,6 +864,7 @@ h1{
   text-align: center;
   line-height: 2;
   float: left;
+  font-weight: bold;
 }
 
 @media (max-width: 767px){

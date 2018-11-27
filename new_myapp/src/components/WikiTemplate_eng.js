@@ -24,14 +24,14 @@ export default class WikiTemplate extends React.Component {
                     {this.props.email == null ? "yourEmail@email.com" : this.props.email}
                   </div>
                   <div className = "wiki-user-info-text">
-                    점수: {this.props.points == null ? "00" : this.props.points} pts
+                    Points: {this.props.points == null ? "00" : this.props.points} pts
                   </div>
                 </div>
             </div>
           </div>
           <div className="wiki-navbar-row">
             <div className='wiki-navbar-left'>
-              <div className='wiki-navbar-text'>학과: 전산학과</div>
+              <div className='wiki-navbar-text'>Dept: Computer Science</div>
             </div>
             <div className='wiki-navbar-middle'>
               <div className='wiki-other-year' >{this.props.prev}</div>
@@ -59,12 +59,12 @@ export default class WikiTemplate extends React.Component {
                 <div className = 'wiki-info-wrapper'>
                   <div className = 'wiki-info-doc'>
                     <div className = 'wiki-info-title'>
-                      서류
+                      Document Review
                     </div>
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
-                          <li>자기소개서</li>
+                          <li>Self Introduction</li>
                           { this.props.is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
@@ -76,7 +76,7 @@ export default class WikiTemplate extends React.Component {
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
-                          <li>우수성 입증 자료</li>
+                          <li>Extracurricular</li>
                           { this.props.is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
@@ -89,12 +89,12 @@ export default class WikiTemplate extends React.Component {
                   <hr></hr>
                   <div className = 'wiki-info-interviews'>
                     <div className = 'wiki-info-title'>
-                      면접
+                      Interview
                     </div>
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
-                          <li>프로그래밍 시험</li>
+                          <li>Programming Test</li>
                           { this.props.is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
@@ -106,7 +106,7 @@ export default class WikiTemplate extends React.Component {
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
-                          <li>대기실</li>
+                          <li>Waiting Room</li>
                           { this.props.is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
@@ -118,7 +118,7 @@ export default class WikiTemplate extends React.Component {
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
-                          <li>면접실 1</li>
+                          <li>Room 1</li>
                           { this.props.is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
@@ -130,7 +130,7 @@ export default class WikiTemplate extends React.Component {
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
-                          <li>면접실 2</li>
+                          <li>Room 2</li>
                           { this.props.is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
@@ -142,7 +142,7 @@ export default class WikiTemplate extends React.Component {
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
-                          <li>면접실 3</li>
+                          <li>Room 3</li>
                           { this.props.is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
                         </div>
                         <div className = 'wiki-info-qid'>

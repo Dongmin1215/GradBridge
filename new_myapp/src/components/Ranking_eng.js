@@ -19,7 +19,7 @@ class Ranking extends Component {
         var that = this;
         firebase.auth.onAuthStateChanged(authUser => {
             if (!authUser) {
-                alert("로그인 하세요!");
+                alert("You must log in!");
             }
             var myid = authUser.uid;
             db.getUser(myid).once("value").then(function(snapshot) {
@@ -60,7 +60,7 @@ class Ranking extends Component {
                         </div>
                         <Link to = {routes.WIKI}>
                         <div className = "wiki-user-info-text">
-                            점수: {this.state.points} pts
+                            Points: {this.state.points} pts
                         </div>
                         </Link>
                         </div>
@@ -69,20 +69,20 @@ class Ranking extends Component {
                 <div className = "ranking-info">
                     <div className = "ranking-title">
                         <img className = 'crown-img' src={require('./images/crown.png')}/>
-                        전체 순위
+                        RANKING
                         <img className = 'crown-img' src={require('./images/crown.png')}/>
                     </div>
                     <div className = "ranking-description">
-                        좋은 정보를 공유해주셔서 고마워요!
+                        Thanks for your contribution!
                         <br></br>
-                        점수를 더 얻고싶으시면
+                        You can earn more points if you
                         <br></br>
                         <div className = "bold">
-                        1) 새로운 토픽을 추가하거나 2) 각 토픽과 관련 된 경험을 나눠주세요.
+                        1) Add a topic or 2) Provide your experience on the topic.
                         </div>
-                        하지만 이상한 내용을 썼다가는 누가 신고하면 점수를 잃을 수 있다는 점~!
+                        Be careful though! You might lose points if somebody else reports you.
                         <br></br>
-                        그럼 화이팅!
+                        Good luck!
                     </div>
                     <div className = "ranking-users">
                     <table>
@@ -92,7 +92,7 @@ class Ranking extends Component {
                     </table>
                     </div>
                     <Link to = {routes.WIKI}><div className = "ranking-goback">
-                    돌아가기
+                    Go back to contribute
                     </div>
                     </Link>
                 </div>
