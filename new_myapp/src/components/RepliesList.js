@@ -13,8 +13,8 @@ export default class RepliesList extends React.Component {
       return null;
     }
     var all_replies = this.props.reps.map(function(rep){
-      var tag = (rep.type == 'editor' ? "Editor" : "Visitor");
-      tag = (rep.uid == this.props.uid ? "Me" : tag);
+      var tag = (rep.type == 'editor' ? "Applicant: " : "");
+      tag = (rep.uid == this.props.uid ? "Me: " : tag);
       return (
         <div className = 'wiki-reply-wrapper'>
           <div className = 'wiki-reply-tri-wrapper'>
@@ -23,7 +23,7 @@ export default class RepliesList extends React.Component {
           </div>
           <div className = 'wiki-reply-box'>
             <div className = 'wiki-reply-context'>
-            <p className = 'wiki-reply-tag'>{tag}</p>{": " + rep.text}
+            <p className = 'wiki-reply-tag'>{tag}</p>{rep.text}
             </div>
           </div>
         </div>
