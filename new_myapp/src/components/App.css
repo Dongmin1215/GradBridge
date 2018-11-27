@@ -1039,6 +1039,13 @@ h1{
   background-color: antiquewhite;
 }
 
+@media (max-width: 767px){
+  .wiki-info-item{
+    display: -webkit-box;
+    font-size: medium;
+  }
+}
+
 .wiki-comment-col{
   background: rgb(217, 210, 232);
   float: right;
@@ -1236,11 +1243,26 @@ h1{
   padding-bottom: 10px;
 }
 
+@media (max-width: 767px){
+  .wiki-comment-user-context{
+    font-size: 13px;
+    padding-bottom: 10px;
+    padding-left: 4px;
+  }
+}
+
 .wiki-info-subtitle-editor{
   width: fit-content;
   display: -webkit-inline-box;
 }
 
+@media (max-width: 767px){
+  .wiki-info-subtitle-editor{
+    width: fit-content;
+    display: -webkit-inline-box;
+    font-size: medium;
+  }
+}
 .wiki-info-subtitle-addimg{
   width: 25px;
   padding-left: 8px;
@@ -1307,6 +1329,28 @@ h1{
   overflow-y: scroll;
 }
 
+
+@media(max-width: 767px){
+  .wiki-reply-box{
+    background: rgb(220, 233, 213);
+    height: -webkit-fill-available;
+    margin-right : 14.5px;
+    width: 85%;
+    float: right;
+    padding:8px;
+    overflow-y: scroll;
+  }
+  
+  .wiki-reply-input-box{
+    background: rgb(220, 233, 213);
+    height: -webkit-fill-available;
+    margin-right : 14.5px;
+    width: 85%;
+    float: right;
+    padding:8px;
+    overflow-y: scroll;
+  }
+}
 .wiki-comment-user-replyimg-wrap{
 
   width: 33px;
@@ -1322,6 +1366,14 @@ h1{
 .wiki-reply-context{
   font-size: 15px;
   overflow-y: scroll;
+}
+
+@media (max-width: 767px){
+  .wiki-reply-context{
+    font-size: 13px;
+    overflow-y: scroll;
+  }
+  
 }
 
 .wiki-reply-tri-wrapper{
