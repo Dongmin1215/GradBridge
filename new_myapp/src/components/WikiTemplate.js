@@ -36,7 +36,7 @@ export default class WikiTemplate extends React.Component {
           </div>
           <div className="wiki-navbar-row">
             <div className='wiki-navbar-left'>
-              <div className='wiki-navbar-text'>학과: 전산학과</div>
+              <div className='wiki-navbar-text'>전산학과</div>
             </div>
             <div className='wiki-navbar-middle'>
               <div className='wiki-other-year' >{this.props.prev}</div>

@@ -21,7 +21,6 @@ const INITIAL_STATE = {
     gpa: '',
     adm_year: '',
     app_dept: '',
-    id_number: '',
     error: null,
 };
 
@@ -81,7 +80,6 @@ class SignUpEditorForm extends Component {
             gpa,
             admission_year,
             applied_dept,
-            id_number,
             error,
         } = this.state;
 
@@ -93,8 +91,7 @@ class SignUpEditorForm extends Component {
             under_major === '' ||
             gpa === '' ||
             admission_year === '' ||
-            applied_dept === '' ||
-            id_number === '';
+            applied_dept === '';
 
         return (
             <form onSubmit={this.onSubmit}>
@@ -115,7 +112,7 @@ class SignUpEditorForm extends Component {
                         <input className ="sign-up-input" value={email}
                         onChange={event => this.setState(byPropKey('email', event.target.value))}
                         type="text"
-                        placeholder="email address"></input>
+                        placeholder="please use your KAIST email"></input>
                         </div>
                     </div>
                     <div className = "user-info">
@@ -231,17 +228,6 @@ class SignUpEditorForm extends Component {
                         <option value="cbe">Chemical and Biomolecular Engineering</option>
                         </select>
                     </div>
-                    </div>
-                    <div className = "user-info">
-                        <div className = "sign-up-category-right"> 
-                            <div id = "sign-up-type">Test Identification number</div>
-                        </div>
-                        <div> 
-                        <input className ="sign-up-input" value={id_number}
-                        onChange={event => this.setState(byPropKey('id_number', event.target.value))}
-                        type="text"
-                        placeholder="enter any number"></input>
-                        </div>
                     </div>
 
                 </div>
