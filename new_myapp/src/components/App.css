@@ -84,7 +84,6 @@ h1{
 }
 
 @media (max-width : 767px){
-
   #top-logo{
     width: 50%;
     margin: auto;
@@ -124,7 +123,24 @@ h1{
 
 
 .wiki-void{
-  width: 40%;
+  width: 40%; 
+  margin-top: 55px;
+  padding-left: 35px;
+}
+
+.wiki-tutorial{
+  font-size: 18px;
+  text-align: left;
+  color: black;
+}
+
+@media (max-width: 767px){
+  .wiki-tutorial{
+    font-size: 15px;
+    text-align: left;
+    color: black;
+    display: none;
+  }
 }
 
 .wiki-middle-top{
@@ -135,20 +151,26 @@ h1{
   width: 40%;
   margin-top: 45px;
   padding-right: 35px;
+  font-size: 18px;
 }
 
 @media (max-width: 767px){
   .wiki-user-info{
-    width: inherit;
-    margin-top: 45px;
-    padding-right: 35px;
+    font-size: 15px;
   }
 }
 
 .wiki-user-info-text{
-  font-size: 18px;
   text-align: right;
   margin-left: 10px;
+}
+
+@media (max-width: 767px){
+  .wiki-user-info-text{
+    text-align: right;
+    margin-left: 10px;
+    font-size: 15px;
+  }
 }
 
 .points{
@@ -860,7 +882,7 @@ h1{
 
 .wiki-navbar-text{
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 17px;
+  font-size: 20px;
   text-align: center;
   line-height: 2;
   float: left;
@@ -870,12 +892,11 @@ h1{
 @media (max-width: 767px){
   .wiki-navbar-text{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 17px;
+    font-size: 15px;
     text-align: center;
     line-height: 2;
     float: left;
-    display: contents;
-    width: inherit;
+    margin-top: 40px;
   }
 }
 

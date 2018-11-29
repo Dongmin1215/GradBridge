@@ -8,6 +8,7 @@ import SignOutButton from './SignOut';
 import UserInfo from './UserInfo';
 import WikiTemplate from './WikiTemplate';
 import RepliesList from './RepliesList';
+import tutorial from './images/tutorial.png';
 
 const INITIAL_STATE = {
   myid: '',
@@ -727,6 +728,9 @@ class WikiPage extends Component {
           <div className = "top">
             <div className = "wiki-title">
                 <div className = "wiki-void">
+                  <a href = {tutorial}>
+                    <div className = "wiki-tutorial">어떻게 이용하나요?</div>
+                  </a>
                 </div>
                 <div className = "wiki-middle-top">
                   <Link to = {routes.LANDING}>
@@ -751,7 +755,7 @@ class WikiPage extends Component {
           </div>
           <div className="wiki-navbar-row">
             <div className='wiki-navbar-left'>
-              <div className='wiki-navbar-text'>학과: <br></br> 전산학과</div>
+              <div className='wiki-navbar-text'> 전산학과</div>
             </div>
             <div className='wiki-navbar-middle'>
               { this.state.prevShow && <div className='wiki-other-year' onClick={this.changePrev}>{this.state.prev}</div>}
