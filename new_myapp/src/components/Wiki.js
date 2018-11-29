@@ -218,7 +218,7 @@ class WikiPage extends Component {
   }
 
   changePrev() {
-    if (this.state.prev.startsWith("17")) {
+    if (this.state.prev.startsWith("15 Spring")) {
       this.setState({
         prevShow : false,
         current : this.state.prev,

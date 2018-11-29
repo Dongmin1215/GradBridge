@@ -208,6 +208,11 @@ class SignUpEditorForm extends Component {
                         <option value="18 Fall">2018 Fall</option>
                         <option value="18 Spring">2018 Spring</option>
                         <option value="17 Fall">2017 Fall</option>
+                        <option value="17 Spring">2017 Spring</option>
+                        <option value="16 Fall">2016 Fall</option>
+                        <option value="16 Spring">2016 Spring</option>
+                        <option value="15 Fall">2015 Fall</option>
+                        <option value="15 Spring">2015 Spring</option>
                         <option value="etc">Before</option>
                         </select>
                     </div>
