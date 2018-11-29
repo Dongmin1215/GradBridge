@@ -648,7 +648,7 @@ class WikiPage extends Component {
     var is_editor = (myinfo.admission_year === current);
     
     if (ready < 7) {
-      return <WikiTemplate prev={this.state.prev} current={current} next={this.state.next} is_editor={is_editor} is_visitor={myinfo.admission_year==null} points={myinfo.points} email={myinfo.email}/>
+      return <WikiTemplate prev={this.state.prev} current={current} next={this.state.next} is_editor={is_editor} points={myinfo.points} email={myinfo.email}/>
     }
 
     if (myid !== '') {
@@ -738,10 +738,10 @@ class WikiPage extends Component {
                     {myinfo.email}
                   </div>
                   <Link to = {routes.RANKING}>
-                    {myinfo.admission_year == null ?
+                    {myinfo.points != undefined ?
                     <div className = "wiki-user-info-text">
                       점수: {myinfo.points} pts
-                    </div>} :
+                    </div> :
                     <div className = "wiki-user-info-text">
                       랭킹
                     </div>}

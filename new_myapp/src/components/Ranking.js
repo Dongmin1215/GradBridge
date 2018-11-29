@@ -61,9 +61,14 @@ class Ranking extends Component {
                             {this.state.email}
                         </div>
                         <Link to = {routes.WIKI}>
+                        {this.state.points != null ?
                         <div className = "wiki-user-info-text">
                             점수: {this.state.points} pts
+                        </div> :
+                        <div className = "wiki-user-info-text">
+                            랭킹
                         </div>
+                        }
                         </Link>
                         </div>
                     </div>

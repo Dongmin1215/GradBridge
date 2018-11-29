@@ -23,9 +23,14 @@ export default class WikiTemplate extends React.Component {
                   <div className = "wiki-user-info-text">
                     {this.props.email == null ? "yourEmail@email.com" : this.props.email}
                   </div>
+                  {this.props.points != undefined ?
                   <div className = "wiki-user-info-text">
                     점수: {this.props.points == null ? "00" : this.props.points} pts
+                  </div> :
+                  <div className = "wiki-user-info-text">
+                    랭킹
                   </div>
+                  }
                 </div>
             </div>
           </div>
