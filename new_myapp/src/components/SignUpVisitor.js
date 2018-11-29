@@ -204,7 +204,7 @@ class SignUpVisitorForm extends Component {
                     </div>
                 </div>
 
-                { error && <p>{error.message}</p> }
+                { error &&  alert(error.message) }
             </form>
         );
     }

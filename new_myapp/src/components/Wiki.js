@@ -817,6 +817,25 @@ class WikiPage extends Component {
                         </div> }
                       </ul>
                     </div>
+                    <div className = 'wiki-info-subtitle'>
+                      <ul>
+                        <div className = 'wiki-info-subtitle-editor'>
+                          <li>기타</li>
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(4))}/> }
+                        </div>
+                        <div className = 'wiki-info-qid'>
+                          <ul>
+                            { room2_questions }
+                          </ul>
+                        </div>
+                        { topic_input[4] && <div className = 'wiki-info-add'>
+                          <input className = 'wiki-info-inputbox'type = 'text' placeholder = '토픽을 추가하세요! 3개의 투표를 얻으면 등록이 되고 20포인트를 얻습니다' onChange={event => this.setState({ new_topic: event.target.value })}></input>
+                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Room1"))}>
+                            <div className = 'wiki-submit-text'>ADD</div>
+                          </button>
+                        </div> }
+                      </ul>
+                    </div>
                   </div>
                   <hr></hr>
                   <div className = 'wiki-info-interviews'>
@@ -845,7 +864,7 @@ class WikiPage extends Component {
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
-                          <li>대기실</li>
+                          <li>면접</li>
                           { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(3))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
@@ -864,7 +883,7 @@ class WikiPage extends Component {
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
-                          <li>면접실 1</li>
+                          <li>기타</li>
                           { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(4))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
@@ -876,44 +895,6 @@ class WikiPage extends Component {
                           <input className = 'wiki-info-inputbox'type = 'text' placeholder = '토픽을 추가하세요! 3개의 투표를 얻으면 등록이 되고 20포인트를 얻습니다' onChange={event => this.setState({ new_topic: event.target.value })}></input>
                           <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Room1"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
-                          </button>
-                        </div> }
-                      </ul>
-                    </div>
-                    <div className = 'wiki-info-subtitle'>
-                      <ul>
-                        <div className = 'wiki-info-subtitle-editor'>
-                          <li>면접실 2</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(5))}/> }
-                        </div>
-                        <div className = 'wiki-info-qid'>
-                          <ul>
-                            { room2_questions }
-                          </ul>
-                        </div>
-                        { topic_input[5] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text' placeholder = '토픽을 추가하세요! 3개의 투표를 얻으면 등록이 되고 20포인트를 얻습니다' onChange={event => this.setState({ new_topic: event.target.value })}></input>
-                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Room2"))}>
-                            <div className = 'wiki-submit-text'>ADD</div>
-                          </button>
-                        </div> }
-                      </ul>
-                    </div>
-                    <div className = 'wiki-info-subtitle'>
-                      <ul>
-                        <div className = 'wiki-info-subtitle-editor'>
-                          <li>면접실 3</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(6))}/> }
-                        </div>
-                        <div className = 'wiki-info-qid'>
-                          <ul>
-                            { room3_questions }
-                          </ul>
-                        </div>
-                        { topic_input[6] && <div className = 'wiki-info-add'>
-                          <input className = 'wiki-info-inputbox'type = 'text' placeholder = '토픽을 추가하세요! 3개의 투표를 얻으면 등록이 되고 20포인트를 얻습니다' onChange={event => this.setState({ new_topic: event.target.value })}></input>
-                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Room3"))}>
-                           <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
                       </ul>

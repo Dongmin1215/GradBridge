@@ -85,6 +85,18 @@ export default class WikiTemplate extends React.Component {
                         </div>
                       </ul>
                     </div>
+                    <div className = 'wiki-info-subtitle'>
+                      <ul>
+                        <div className = 'wiki-info-subtitle-editor'>
+                          <li>기타</li>
+                          { this.props.is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
+                        </div>
+                        <div className = 'wiki-info-qid'>
+                          <ul>
+                          </ul>
+                        </div>
+                      </ul>
+                    </div>
                   </div>
                   <hr></hr>
                   <div className = 'wiki-info-interviews'>
@@ -106,7 +118,7 @@ export default class WikiTemplate extends React.Component {
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
-                          <li>대기실</li>
+                          <li>면접</li>
                           { this.props.is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
@@ -118,31 +130,7 @@ export default class WikiTemplate extends React.Component {
                     <div className = 'wiki-info-subtitle'>
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
-                          <li>면접실 1</li>
-                          { this.props.is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
-                        </div>
-                        <div className = 'wiki-info-qid'>
-                          <ul>
-                          </ul>
-                        </div>
-                      </ul>
-                    </div>
-                    <div className = 'wiki-info-subtitle'>
-                      <ul>
-                        <div className = 'wiki-info-subtitle-editor'>
-                          <li>면접실 2</li>
-                          { this.props.is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
-                        </div>
-                        <div className = 'wiki-info-qid'>
-                          <ul>
-                          </ul>
-                        </div>
-                      </ul>
-                    </div>
-                    <div className = 'wiki-info-subtitle'>
-                      <ul>
-                        <div className = 'wiki-info-subtitle-editor'>
-                          <li>면접실 3</li>
+                          <li>기타</li>
                           { this.props.is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
