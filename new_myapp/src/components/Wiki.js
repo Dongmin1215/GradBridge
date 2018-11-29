@@ -751,7 +751,7 @@ class WikiPage extends Component {
           </div>
           <div className="wiki-navbar-row">
             <div className='wiki-navbar-left'>
-              <div className='wiki-navbar-text'>학과: 전산학과</div>
+              <div className='wiki-navbar-text'>학과: <br></br> 전산학과</div>
             </div>
             <div className='wiki-navbar-middle'>
               { this.state.prevShow && <div className='wiki-other-year' onClick={this.changePrev}>{this.state.prev}</div>}
@@ -961,7 +961,7 @@ class WikiPage extends Component {
                     <button className="new-comment-add-btn" onClick={((e) =>this.setState(p => ({togglecomment: !p.togglecomment})))}>새로운 댓글 추가하기</button>  
                   </div> }
                   { this.state.togglecomment && 
-                    <div className = 'wiki-comment-user-box'>
+                    <div className = 'wiki-comment-user'>
                       <div className = 'wiki-comment-addbox'>
                         <input className = 'wiki-comment-input' type = 'text' placeholder = '경험을 공유하고 10포인트를 얻으세요!' onChange={event => this.setState({ new_comment: event.target.value })}></input>
                         <button className = 'wiki-comment-addbutton' type="submit" onClick={(() => this.addComment())}>
