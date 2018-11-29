@@ -710,7 +710,7 @@ class WikiPage extends Component {
             </div>
             <div className = 'wiki-reply-input-box'> 
               <div className = 'wiki-reply-add'>
-                <input className = 'wiki-reply-input' type = 'text' placeholder = 'Add a reply!' onChange={e => this.setState({ new_reply: e.target.value })}></input>
+                <input className = 'wiki-reply-input' type = 'text' placeholder = '답글을 달아 대화를 이어나가세요!' onChange={e => this.setState({ new_reply: e.target.value })}></input>
                 <button className = 'wiki-reply-addbutton' type="submit" onClick={(() => this.addReply(com.cid, this.state.comment_que, current))}>
                   <div className = 'wiki-submit-text'>ADD</div>
                 </button>
