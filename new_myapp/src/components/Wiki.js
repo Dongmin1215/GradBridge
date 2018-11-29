@@ -911,7 +911,7 @@ class WikiPage extends Component {
                       <div className ='wiki-comment-filter-col'>
                         <div className = 'wiki-comment-filter-wrapper'>
                             <select className = "wiki-comment-filter-select" value={this.state.univ_option} onChange={this.changeUnivOption}>
-                              <option value="default">대학</option>
+                              <option value="default">출신 대학</option>
                               <option value="true">카이스트</option>
                               <option value="false">기타</option>
                             </select>

@@ -125,7 +125,7 @@ class SignUpEditorForm extends Component {
                         <div>
                         <input type="password" className ="sign-up-input" value={passwordOne}
                         onChange={event => this.setState(byPropKey('passwordOne', event.target.value))}
-                        placeholder="password"></input>
+                        placeholder="6 characters or more"></input>
                         </div>
                     </div>
                     <div className = "user-info">
@@ -240,7 +240,7 @@ class SignUpEditorForm extends Component {
                         <input className ="sign-up-input" value={id_number}
                         onChange={event => this.setState(byPropKey('id_number', event.target.value))}
                         type="text"
-                        placeholder="used only for verification"></input>
+                        placeholder="enter any number"></input>
                         </div>
                     </div>
 
