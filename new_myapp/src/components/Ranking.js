@@ -25,11 +25,13 @@ class Ranking extends Component {
             db.getUser(myid).once("value").then(function(snapshot) {
                 var myinfo = snapshot.val();
                 var top_ranks = []
-                var cnt = 5
                 db.getRankers().once("value").then(function(snapshot) {
+                    var cnt = snapshot.numChildren()
                     snapshot.forEach(function(child) {
                         var {email, points} = child.val();
-                        top_ranks.push({num : cnt, email, points});
+                        if (points != undefined) {
+                            top_ranks.push({num : cnt, email, points});
+                        }
                         cnt -= 1;
                     });
                     that.setState({ ranks: top_ranks, email: myinfo.email, points: myinfo.points });
