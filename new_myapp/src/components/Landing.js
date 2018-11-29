@@ -38,13 +38,15 @@ const LandingPage = () =>
 			</Link>
 		</div>
 		<div className="text">
-			Welcome! <br></br>
-			GradBridge provides information related to admission of KAIST graduate school.
+			안녕하세요! <br></br>
+			GradBridge는 카이스트 대학원 입시에 관련된 정보를 제공합니다.
 			<br></br>
-			Previous applicants can collaborate to make GradBridge more reliable and awesome!
+			더 풍부하고 믿을만한 정보를 위해서 입시 경험자들의 도움이 필요해요.
+			<br></br>
+			이전 지원자들로부터 어떤 정보가 모아졌는지 볼까요?
 			<br></br>
 			<br></br>
-			To get started, click on the department that you are interested in.
+			관심 있는 학과를 선택해주세요.
 		</div>
 		<div className="major-list">
 			<AuthUserContext.Consumer>

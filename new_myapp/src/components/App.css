@@ -1420,6 +1420,7 @@ h1{
   width:80%;
   height:-webkit-fill-available;
   border: none;
+  font-size: 14px;
 }
 
 .wiki-reply-add{
