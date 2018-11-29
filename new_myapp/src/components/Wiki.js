@@ -454,7 +454,7 @@ class WikiPage extends Component {
     var info = this.state.myinfo;
     var sem = this.state.current
     var points = this.state.myinfo.points + 10;
-    if (text === '' || text.length < 5) {
+    if (text === '' || text.length < 4) {
       alert("Please type in a proper topic/question to talk about");
       return;
     }
@@ -477,7 +477,7 @@ class WikiPage extends Component {
   addTopic(path) {
     var that = this;
     var text = this.state.new_topic;
-    if (text === '' || text.length < 5) {
+    if (text === '' || text.length < 2) {
       alert("Please type in a proper topic/question to talk about");
       return;
     }
