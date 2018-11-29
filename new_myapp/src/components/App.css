@@ -134,6 +134,14 @@ h1{
   color: black;
 }
 
+.tutorial-img{
+  display: block;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
 @media (max-width: 767px){
   .wiki-tutorial{
     font-size: 15px;
@@ -1808,4 +1816,5 @@ td{
   text-align: center;
   font-weight: 300;
   line-height: 1.4;
+  color: black;
 }

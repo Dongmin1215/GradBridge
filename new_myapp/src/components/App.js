@@ -16,6 +16,7 @@ import WikiPage from './Wiki';
 import SignUpEditorPage from './SignUpEditor';
 import SignUpVisitorPage from './SignUpVisitor';
 import Ranking from './Ranking';
+import Tutorial from './Tutorial';
 
 import * as routes from '../constants/routes';
 import withAuthentication from './withAuthentication';
@@ -34,6 +35,7 @@ const App = () =>
       <Route exact path={routes.SIGN_UP_EDITOR} component={SignUpEditorPage} />
       <Route exact path={routes.SIGN_UP_VISITOR} component={SignUpVisitorPage} />
       <Route exact path={routes.RANKING} component={Ranking} />
+      <Route exact path={routes.TUTORIAL} component={Tutorial} />
     </div>
   </Router>
 

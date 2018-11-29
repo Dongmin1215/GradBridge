@@ -8,3 +8,4 @@ export const WIKI = '/wiki';
 export const SIGN_UP_EDITOR = '/signup-editor';
 export const SIGN_UP_VISITOR = '/signup-visitor';
 export const RANKING = '/ranking';
+export const TUTORIAL = '/tutorial';

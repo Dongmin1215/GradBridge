@@ -8,7 +8,6 @@ import SignOutButton from './SignOut';
 import UserInfo from './UserInfo';
 import WikiTemplate from './WikiTemplate';
 import RepliesList from './RepliesList';
-import tutorial from './images/tutorial.png';
 
 const INITIAL_STATE = {
   myid: '',
@@ -728,9 +727,9 @@ class WikiPage extends Component {
           <div className = "top">
             <div className = "wiki-title">
                 <div className = "wiki-void">
-                  <a href = {tutorial}>
+                  <Link to = {routes.TUTORIAL}>
                     <div className = "wiki-tutorial">어떻게 이용하나요?</div>
-                  </a>
+                  </Link>
                 </div>
                 <div className = "wiki-middle-top">
                   <Link to = {routes.LANDING}>
