@@ -43,20 +43,17 @@ db.ref(`${korean}pages/${semester}/Document/Introduction`);
 export const getExtracurricular = (semester) =>
 db.ref(`${korean}pages/${semester}/Document/Extracurricular`);
 
+export const getOther1 = (semester) =>
+db.ref(`${korean}pages/${semester}/Document/Other`);
+
 export const getProgramming = (semester) =>
 db.ref(`${korean}pages/${semester}/Interview/Programming`);
 
 export const getWaiting = (semester) =>
 db.ref(`${korean}pages/${semester}/Interview/Waiting`);
 
-export const getRoom1 = (semester) =>
-db.ref(`${korean}pages/${semester}/Interview/Room1`);
-
-export const getRoom2 = (semester) =>
-db.ref(`${korean}pages/${semester}/Interview/Room2`);
-
-export const getRoom3 = (semester) =>
-db.ref(`${korean}pages/${semester}/Interview/Room3`);
+export const getOther2 = (semester) =>
+db.ref(`${korean}pages/${semester}/Interview/Other`);
 
 export const getComments = (semester, qid) =>
 db.ref(`${korean}comments/${semester}/${qid}/comments`);

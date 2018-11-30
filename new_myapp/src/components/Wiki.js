@@ -17,17 +17,16 @@ const INITIAL_STATE = {
   next: '19 Fall',
   intros : [],
   extras : [],
+  other1s : [],
   progs : [],
   waits : [],
-  room1s : [],
-  room2s : [],
-  room3s : [],
+  other2s : [],
   comment_que : 'none',
   comments : [],
   currentUser: null,
   displayUserInfo: false,
   ready : 0,
-  topic_input: [false, false, false, false, false, false, false],
+  topic_input: [false, false, false, false, false, false],
   new_topic : "",
   prevShow : true,
   nextShow : true,
@@ -63,7 +62,7 @@ class WikiPage extends Component {
       comment_que : 'none',
       comment_width : '100%',
       comment_display : 'none',
-      topic_input: [false, false, false, false, false, false, false],
+      topic_input: [false, false, false, false, false, false],
       new_topic : "",
     })
   }
@@ -72,18 +71,16 @@ class WikiPage extends Component {
     this.setState({ ready: 0 });
     const intros = []
     const extras = []
+    const other1s = []
     const progs = []
     const waits = []
-    const room1s = []
-    const room2s = []
-    const room3s = []
+    const other2s = []
     var introduction = db.getIntroduction(this.state.current);
     var extracurricular = db.getExtracurricular(this.state.current);
+    var othertopic1 = db.getOther1(this.state.current);
     var programming = db.getProgramming(this.state.current);
     var waiting = db.getWaiting(this.state.current);
-    var room1 = db.getRoom1(this.state.current);
-    var room2 = db.getRoom2(this.state.current);
-    var room3 = db.getRoom3(this.state.current);
+    var othertopic2 = db.getOther2(this.state.current);
     var that = this;
     firebase.auth.onAuthStateChanged(authUser => {
       if (!authUser) {
@@ -122,6 +119,19 @@ class WikiPage extends Component {
             ready : that.state.ready + 1
           });
         });
+        othertopic1.once("value").then(function(snapshot) {
+          snapshot.forEach(function(child) {
+            const qid = child.key;
+            const {text, uid, visibility, vote,} = child.val();
+            if (visibility || is_editor) {
+              other1s.push({qid, text, uid, visibility, vote,});
+            }
+          });
+          that.setState({
+            other1s,
+            ready : that.state.ready + 1
+          });
+        });
         programming.once("value").then(function(snapshot) {
           snapshot.forEach(function(child) {
             const qid = child.key;
@@ -148,42 +158,16 @@ class WikiPage extends Component {
             ready : that.state.ready + 1
           });
         });
-        room1.once("value").then(function(snapshot) {
+        othertopic2.once("value").then(function(snapshot) {
           snapshot.forEach(function(child) {
             const qid = child.key;
             const {text, uid, visibility, vote,} = child.val();
             if (visibility || is_editor) {
-              room1s.push({qid, text, uid, visibility, vote,});
+              other2s.push({qid, text, uid, visibility, vote,});
             }
           });
           that.setState({
-            room1s,
-            ready : that.state.ready + 1
-          });
-        });
-        room2.once("value").then(function(snapshot) {
-          snapshot.forEach(function(child) {
-            const qid = child.key;
-            const {text, uid, visibility, vote,} = child.val();
-            if (visibility || is_editor) {
-              room2s.push({qid, text, uid, visibility, vote,});
-            }
-          });
-          that.setState({
-            room2s,
-            ready : that.state.ready + 1
-          });
-        });
-        room3.once("value").then(function(snapshot) {
-          snapshot.forEach(function(child) {
-            const qid = child.key;
-            const {text, uid, visibility, vote,} = child.val();
-            if (visibility || is_editor) {
-              room3s.push({qid, text, uid, visibility, vote,});
-            }
-          });
-          that.setState({
-            room3s,
+            other2s,
             ready : that.state.ready + 1
           });
         });
@@ -306,7 +290,7 @@ class WikiPage extends Component {
   }
 
   clickAdd(topic_idx) {
-    var init = [false, false, false, false, false, false, false];
+    var init = [false, false, false, false, false, false];
     if (topic_idx !== -1 && !this.state.topic_input[topic_idx]) {
       init[topic_idx] = true;
     }
@@ -635,11 +619,10 @@ class WikiPage extends Component {
       current,
       intros,
       extras,
+      other1s,
       progs,
       waits,
-      room1s,
-      room2s,
-      room3s,
+      other2s,
       comments,
       ready,
       topic_input,
@@ -647,7 +630,7 @@ class WikiPage extends Component {
 
     var is_editor = (myinfo.admission_year === current);
     
-    if (ready < 7) {
+    if (ready < 6) {
       return <WikiTemplate prev={this.state.prev} current={current} next={this.state.next} is_editor={is_editor} points={myinfo.points} email={myinfo.email}/>
     }
 
@@ -660,6 +643,10 @@ class WikiPage extends Component {
         return this.parseQuestions(que, 'Document/Extracurricular', is_editor);
       }, this);
       
+      var other1_questions = other1s.map(function(que){
+        return this.parseQuestions(que, 'Document/Other', is_editor);
+      }, this);
+
       var prog_questions = progs.map(function(que){
         return this.parseQuestions(que, 'Interview/Programming', is_editor);
       }, this);
@@ -668,16 +655,8 @@ class WikiPage extends Component {
         return this.parseQuestions(que, 'Interview/Waiting', is_editor);
       }, this);
       
-      var room1_questions = room1s.map(function(que){
-        return this.parseQuestions(que, 'Interview/Room1', is_editor);
-      }, this);
-      
-      var room2_questions = room2s.map(function(que){
-        return this.parseQuestions(que, 'Interview/Room2', is_editor);
-      }, this);
-      
-      var room3_questions = room3s.map(function(que){
-        return this.parseQuestions(que, 'Interview/Room3', is_editor);
+      var other2_questions = other2s.map(function(que){
+        return this.parseQuestions(que, 'Interview/Other', is_editor);
       }, this);
     }
 
@@ -828,16 +807,16 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>기타</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(4))}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(2))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
-                            { room2_questions }
+                            { other1_questions }
                           </ul>
                         </div>
-                        { topic_input[4] && <div className = 'wiki-info-add'>
+                        { topic_input[2] && <div className = 'wiki-info-add'>
                           <input className = 'wiki-info-inputbox'type = 'text' placeholder = '토픽을 추가하세요! 3개의 투표를 얻으면 등록이 되고 20포인트를 얻습니다' onChange={event => this.setState({ new_topic: event.target.value })}></input>
-                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Room1"))}>
+                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Document/Other"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
@@ -853,14 +832,14 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>프로그래밍 시험</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(2))}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(3))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
                             { prog_questions }
                           </ul>
                         </div>
-                        { topic_input[2] && <div className = 'wiki-info-add'>
+                        { topic_input[3] && <div className = 'wiki-info-add'>
                           <input className = 'wiki-info-inputbox'type = 'text' placeholder = '토픽을 추가하세요! 3개의 투표를 얻으면 등록이 되고 20포인트를 얻습니다' onChange={event => this.setState({ new_topic: event.target.value })}></input>
                           <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Programming"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
@@ -872,16 +851,16 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>면접</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(3))}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(4))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
                             { wait_questions }
                           </ul>
                         </div>
-                        { topic_input[3] && <div className = 'wiki-info-add'>
+                        { topic_input[4] && <div className = 'wiki-info-add'>
                           <input className = 'wiki-info-inputbox'type = 'text' placeholder = '토픽을 추가하세요! 3개의 투표를 얻으면 등록이 되고 20포인트를 얻습니다' onChange={event => this.setState({ new_topic: event.target.value })}></input>
-                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Waiting"))}>
+                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Interview"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
@@ -891,16 +870,16 @@ class WikiPage extends Component {
                       <ul>
                         <div className = 'wiki-info-subtitle-editor'>
                           <li>기타</li>
-                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(4))}/> }
+                          { is_editor && <img className = 'wiki-info-subtitle-addimg' src={require('./images/add2.png')} onClick={(() => this.clickAdd(5))}/> }
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
-                            { room1_questions }
+                            { other2_questions }
                           </ul>
                         </div>
-                        { topic_input[4] && <div className = 'wiki-info-add'>
+                        { topic_input[5] && <div className = 'wiki-info-add'>
                           <input className = 'wiki-info-inputbox'type = 'text' placeholder = '토픽을 추가하세요! 3개의 투표를 얻으면 등록이 되고 20포인트를 얻습니다' onChange={event => this.setState({ new_topic: event.target.value })}></input>
-                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Room1"))}>
+                          <button className = 'wiki-info-submit' type="submit" onClick={(() => this.addTopic("Interview/Other"))}>
                             <div className = 'wiki-submit-text'>ADD</div>
                           </button>
                         </div> }
