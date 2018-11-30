@@ -49,8 +49,8 @@ db.ref(`${korean}pages/${semester}/Document/Other`);
 export const getProgramming = (semester) =>
 db.ref(`${korean}pages/${semester}/Interview/Programming`);
 
-export const getWaiting = (semester) =>
-db.ref(`${korean}pages/${semester}/Interview/Waiting`);
+export const getInterview = (semester) =>
+db.ref(`${korean}pages/${semester}/Interview/Interview`);
 
 export const getOther2 = (semester) =>
 db.ref(`${korean}pages/${semester}/Interview/Other`);

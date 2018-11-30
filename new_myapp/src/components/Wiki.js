@@ -19,7 +19,7 @@ const INITIAL_STATE = {
   extras : [],
   other1s : [],
   progs : [],
-  waits : [],
+  inters : [],
   other2s : [],
   comment_que : 'none',
   comments : [],
@@ -73,13 +73,13 @@ class WikiPage extends Component {
     const extras = []
     const other1s = []
     const progs = []
-    const waits = []
+    const inters = []
     const other2s = []
     var introduction = db.getIntroduction(this.state.current);
     var extracurricular = db.getExtracurricular(this.state.current);
     var othertopic1 = db.getOther1(this.state.current);
     var programming = db.getProgramming(this.state.current);
-    var waiting = db.getWaiting(this.state.current);
+    var interview = db.getInterview(this.state.current);
     var othertopic2 = db.getOther2(this.state.current);
     var that = this;
     firebase.auth.onAuthStateChanged(authUser => {
@@ -145,16 +145,16 @@ class WikiPage extends Component {
             ready : that.state.ready + 1
           });
         });
-        waiting.once("value").then(function(snapshot) {
+        interview.once("value").then(function(snapshot) {
           snapshot.forEach(function(child) {
             const qid = child.key;
             const {text, uid, visibility, vote,} = child.val();
             if (visibility || is_editor) {
-              waits.push({qid, text, uid, visibility, vote,});
+              inters.push({qid, text, uid, visibility, vote,});
             }
           });
           that.setState({
-            waits,
+            inters,
             ready : that.state.ready + 1
           });
         });
@@ -621,7 +621,7 @@ class WikiPage extends Component {
       extras,
       other1s,
       progs,
-      waits,
+      inters,
       other2s,
       comments,
       ready,
@@ -651,8 +651,8 @@ class WikiPage extends Component {
         return this.parseQuestions(que, 'Interview/Programming', is_editor);
       }, this);
 
-      var wait_questions = waits.map(function(que){
-        return this.parseQuestions(que, 'Interview/Waiting', is_editor);
+      var inter_questions = inters.map(function(que){
+        return this.parseQuestions(que, 'Interview/Interview', is_editor);
       }, this);
       
       var other2_questions = other2s.map(function(que){
@@ -855,7 +855,7 @@ class WikiPage extends Component {
                         </div>
                         <div className = 'wiki-info-qid'>
                           <ul>
-                            { wait_questions }
+                            { inter_questions }
                           </ul>
                         </div>
                         { topic_input[4] && <div className = 'wiki-info-add'>
