@@ -91,7 +91,8 @@ class WikiPage extends Component {
       this.setState({ myid });
       myself.once("value").then(function(snapshot) {
         var myinfo = snapshot.val();
-        var is_editor = (myinfo.admission_year === that.state.current)
+        //var is_editor = (myinfo.admission_year === that.state.current)
+        var is_editor = (myinfo.admission_year != "null");
         that.setState({ myinfo });
         introduction.once("value").then(function(snapshot) {
           snapshot.forEach(function(child) {
@@ -207,7 +208,10 @@ class WikiPage extends Component {
         prevShow : false,
         current : this.state.prev,
         next: this.state.current
+      }, () => {
+        this.changeState();
       });
+      this.closeComments();
       return;
     }
     if (this.state.prev.endsWith("Spring")) {
@@ -386,10 +390,10 @@ class WikiPage extends Component {
     })
   }
 
-  parseQuestions(que, path, is_editor) {
+  parseQuestions(que, path, is_editor, view_all) {
     return <div className="wiki-info-item">
       
-      { (!is_editor || que.visibility) &&
+      { que.visibility &&
        <li onClick={(() => this.handleClick(que))}>{que.text}</li>
       }
       { is_editor && !que.visibility && 
@@ -402,7 +406,12 @@ class WikiPage extends Component {
           <div className = 'disagreeNum'>{que.vote[2]}</div>
           <img className = 'disagree' src={require('./images/disagree.png')} onClick={(() => this.vote('a',`${path}/${que.qid}`))}/> 
         </div>
-        </div>
+      </div>
+      }
+      { !is_editor && view_all && !que.visibility &&
+      <div className = 'wiki-info-que-wrapper'>
+        <li className = 'wiki-info-que'onClick={(() => this.handleClick(que))}>{que.text}</li>
+      </div>
       }
       </div>;
   }
@@ -629,6 +638,7 @@ class WikiPage extends Component {
     } = this.state;
 
     var is_editor = (myinfo.admission_year === current);
+    var view_all = (myinfo.admission_year != "null");
     
     if (ready < 6) {
       return <WikiTemplate prev={this.state.prev} current={current} next={this.state.next} is_editor={is_editor} points={myinfo.points} email={myinfo.email}/>
@@ -636,27 +646,27 @@ class WikiPage extends Component {
 
     if (myid !== '') {
       var intro_questions = intros.map(function(que){
-        return this.parseQuestions(que, 'Document/Introduction', is_editor);
+        return this.parseQuestions(que, 'Document/Introduction', is_editor, view_all);
       }, this);
       
       var extra_questions = extras.map(function(que){
-        return this.parseQuestions(que, 'Document/Extracurricular', is_editor);
+        return this.parseQuestions(que, 'Document/Extracurricular', is_editor, view_all);
       }, this);
       
       var other1_questions = other1s.map(function(que){
-        return this.parseQuestions(que, 'Document/Other', is_editor);
+        return this.parseQuestions(que, 'Document/Other', is_editor, view_all);
       }, this);
 
       var prog_questions = progs.map(function(que){
-        return this.parseQuestions(que, 'Interview/Programming', is_editor);
+        return this.parseQuestions(que, 'Interview/Programming', is_editor, view_all);
       }, this);
 
       var inter_questions = inters.map(function(que){
-        return this.parseQuestions(que, 'Interview/Interview', is_editor);
+        return this.parseQuestions(que, 'Interview/Interview', is_editor, view_all);
       }, this);
       
       var other2_questions = other2s.map(function(que){
-        return this.parseQuestions(que, 'Interview/Other', is_editor);
+        return this.parseQuestions(que, 'Interview/Other', is_editor, view_all);
       }, this);
     }
 
