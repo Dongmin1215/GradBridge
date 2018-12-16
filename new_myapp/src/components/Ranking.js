@@ -29,6 +29,15 @@ class Ranking extends Component {
                     var cnt = snapshot.numChildren()
                     snapshot.forEach(function(child) {
                         var {email, points} = child.val();
+                        var id = email.split("@")[0];
+                        if (id.length > 2){
+                            var new_id = id[0];
+                            for (var i = 1; i < id.length-1; i++) {
+                                new_id += "*";
+                            }
+                            new_id += id[id.length-1];
+                            email = new_id + "@" + email.split("@")[1];
+                        }
                         if (points != undefined) {
                             top_ranks.push({num : cnt, email, points});
                         }
